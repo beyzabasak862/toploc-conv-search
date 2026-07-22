@@ -49,3 +49,17 @@
 2026-07-22 12:01:48,473 [INFO] [M=64][120/193] Indexed: 24,059,805 vectors
 2026-07-22 12:52:02,022 [INFO] [M=64][130/193] Indexed: 26,066,845 vectors
 2026-07-22 13:50:55,944 [INFO] [M=64][140/193] Indexed: 28,073,885 vectors
+2026-07-22 14:55:11,579 [INFO] [M=64][150/193] Indexed: 30,080,925 vectors
+2026-07-22 14:55:11,582 [INFO] [M=64] Saving checkpoint at file 150...
+2026-07-22 15:14:40,457 [INFO] [M=64] Checkpoint saved.
+2026-07-22 15:54:50,084 [INFO] [M=64][160/193] Indexed: 32,087,965 vectors
+2026-07-22 16:33:55,873 [INFO] [M=64][170/193] Indexed: 34,095,005 vectors
+2026-07-22 17:13:24,513 [INFO] [M=64][180/193] Indexed: 36,102,045 vectors
+2026-07-22 17:56:40,439 [INFO] [M=64][190/193] Indexed: 38,109,085 vectors
+2026-07-22 18:07:31,356 [INFO] [M=64] Total vectors indexed: 38,636,446
+2026-07-22 18:33:44,425 [INFO] [M=64] complete.
+2026-07-22 18:33:44,425 [INFO] [M=64] Index saved to:  /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/treccast_hnsw_M64_dragon_mips.index
+2026-07-22 18:33:44,426 [INFO] [M=64] IDs saved to:    /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/treccast_hnsw_idsM64_dragon_mips.npy
+2026-07-22 18:33:57,622 [INFO] All requested M indexes complete.
+2026-07-22 18:33:57,623 [INFO] M values built: [16, 64]
+2026-07-22 18:33:57,623 [INFO] max_norm (68.408218) saved: /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/dragon_mips_maxnorm.json  <- needed at query time!

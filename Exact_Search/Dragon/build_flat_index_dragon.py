@@ -26,7 +26,7 @@ import logging
 # Configuration
 # -----------------------
 DATA_GLOB  = "/home/toploc1/Datasets/conversational/CAST2019/dragon_embeddings/**/*.parquet"
-OUTPUT_DIR = "/home/toploc1/Datasets/toploc1/Exact_Search/Dragon"
+OUTPUT_DIR = "/home/toploc1/Datasets/toploc1/Exact_Search/Dragon/Exact Search"
  
 INDEX_PATH      = os.path.join(OUTPUT_DIR, "treccast_flat_dragon.index")
 IDS_PATH        = os.path.join(OUTPUT_DIR, "treccast_flat_dragon_ids.npy")

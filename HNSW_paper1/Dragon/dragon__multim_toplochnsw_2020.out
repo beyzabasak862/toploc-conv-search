@@ -1,0 +1,7 @@
+nohup: ignoring input
+2026-07-22 23:45:01,342 [INFO] Queries: 208 | dim=769 (768 + 1 MIPS dim)
+2026-07-22 23:45:01,343 [INFO] Conversations: 25 | turns/conv min=6 max=11
+2026-07-22 23:45:01,343 [INFO] Followup queries: 183 (single batched level-0 call per config)
+2026-07-22 23:45:01,438 [INFO] Loaded qrels: 208 queries, 40451 judgments
+2026-07-22 23:45:01,484 [INFO] ##################  M = 16  ##################
+2026-07-22 23:45:01,484 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/treccast_hnsw_M16_dragon_mips.index (~119 GB, be patient)

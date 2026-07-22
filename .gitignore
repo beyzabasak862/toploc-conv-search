@@ -8,6 +8,8 @@
 *.safetensors
 *.parquet
 
+!Data Exploration/**/*.parquet
+!HNSW_paper1/**/*.parquet
 # ---- whole artifact / dependency folders (by name, any depth) ----
 indexes/
 models/
@@ -23,12 +25,4 @@ __pycache__/
 .ipynb_checkpoints/
 .ir_datasets/
 mein_env*/
-.venv/
-venv/
-env/
-.venv*/
-venv*/
-*_env/
-**/site-packages/
-**/pyvenv.cfg
 /HNSW/

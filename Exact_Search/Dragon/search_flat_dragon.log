@@ -33,3 +33,10 @@
 2026-07-22 12:37:44,068 [INFO] [cast2020] Loading qrels from /home/toploc1/Datasets/toploc1/Data Exploration/cast2020_qrels.qrel
 2026-07-22 12:37:44,125 [INFO] Loaded qrels: 208 queries, 40451 judgments
 2026-07-22 12:37:44,126 [INFO] [cast2020] --- Flat | exact search ---
+2026-07-22 15:04:57,095 [INFO] [cast2020]   search_ms (total):   8831506.2
+2026-07-22 15:04:57,127 [INFO] [cast2020]   avg_query_time_ms:   42459.16
+2026-07-22 15:04:57,131 [INFO] [cast2020]   MRR@10:  0.7651
+2026-07-22 15:04:57,132 [INFO] [cast2020]   NDCG@3:  0.4742
+2026-07-22 15:04:57,137 [INFO] [cast2020]   NDCG@10: 0.4631
+2026-07-22 15:04:57,403 [INFO] [cast2020] Flat baseline complete. Results saved to /home/toploc1/Datasets/toploc1/Exact_Search/Dragon/metrics_flat_dragon_cast2020.json
+2026-07-22 15:04:58,151 [INFO] All datasets complete.
