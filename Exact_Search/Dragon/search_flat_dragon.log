@@ -1,0 +1,35 @@
+2026-07-21 18:23:21,086 [INFO] Loading queries from /home/toploc1/Datasets/toploc1/indexes/Dragon_indexes/topics_dragon_embeddings.parquet
+2026-07-21 18:23:22,093 [INFO] Queries: 479 | dim=768
+2026-07-21 18:23:22,093 [INFO] Loading qrels from /home/toploc1/Datasets/conversational/CAST2019/topics/qrels.qrel
+2026-07-21 18:23:22,129 [INFO] Loaded qrels: 173 queries, 29350 judgments
+2026-07-21 18:23:22,135 [INFO] === Loading flat index from /home/toploc1/Datasets/toploc1/indexes/Dragon/Flat Search/treccast_flat_dragon.index ===
+2026-07-21 18:53:05,077 [INFO]   ntotal=38,636,446 | d=768 (exact inner-product search)
+2026-07-21 18:53:33,470 [INFO]   ID map loaded: 38,636,446 entries
+2026-07-21 18:53:33,471 [INFO] --- Flat | exact search ---
+2026-07-21 18:54:49,769 [INFO]   search_ms (total):   75730.7
+2026-07-21 18:54:49,769 [INFO]   avg_query_time_ms:   158.10
+2026-07-21 18:54:49,769 [INFO]   MRR@10:  0.8082
+2026-07-21 18:54:49,769 [INFO]   NDCG@3:  0.5289
+2026-07-21 18:54:49,769 [INFO]   NDCG@10: 0.4929
+2026-07-21 18:54:49,863 [INFO] Flat baseline complete. Results saved to /home/toploc1/Datasets/toploc1/Exact_Search/Dragon/metrics_flat_dragon.json
+2026-07-22 10:07:32,034 [INFO] === Loading flat index from /home/toploc1/Datasets/toploc1/indexes/Dragon/Flat Search/treccast_flat_dragon.index ===
+2026-07-22 10:57:57,139 [INFO]   ntotal=38,636,446 | d=768 (exact inner-product search)
+2026-07-22 10:58:24,287 [INFO]   ID map loaded: 38,636,446 entries
+2026-07-22 10:58:24,287 [INFO] ##### DATASET: cast2019 #####
+2026-07-22 10:58:24,294 [INFO] [cast2019] Loading queries from /home/toploc1/Datasets/toploc1/indexes/Dragon_indexes/topics_dragon_embeddings.parquet
+2026-07-22 10:58:30,049 [INFO] [cast2019] Queries: 479 | dim=768
+2026-07-22 10:58:30,049 [INFO] [cast2019] Loading qrels from /home/toploc1/Datasets/conversational/CAST2019/topics/qrels.qrel
+2026-07-22 10:58:30,082 [INFO] Loaded qrels: 173 queries, 29350 judgments
+2026-07-22 10:58:30,082 [INFO] [cast2019] --- Flat | exact search ---
+2026-07-22 12:37:43,854 [INFO] [cast2019]   search_ms (total):   5953743.2
+2026-07-22 12:37:43,855 [INFO] [cast2019]   avg_query_time_ms:   12429.53
+2026-07-22 12:37:43,856 [INFO] [cast2019]   MRR@10:  0.8082
+2026-07-22 12:37:43,858 [INFO] [cast2019]   NDCG@3:  0.5289
+2026-07-22 12:37:43,859 [INFO] [cast2019]   NDCG@10: 0.4929
+2026-07-22 12:37:43,872 [INFO] [cast2019] Flat baseline complete. Results saved to /home/toploc1/Datasets/toploc1/Exact_Search/Dragon/metrics_flat_dragon_cast2019.json
+2026-07-22 12:37:43,880 [INFO] ##### DATASET: cast2020 #####
+2026-07-22 12:37:43,887 [INFO] [cast2020] Loading queries from /home/toploc1/Datasets/toploc1/Data Exploration/topics_dragon_embeddings_2020.parquet
+2026-07-22 12:37:44,018 [INFO] [cast2020] Queries: 208 | dim=768
+2026-07-22 12:37:44,068 [INFO] [cast2020] Loading qrels from /home/toploc1/Datasets/toploc1/Data Exploration/cast2020_qrels.qrel
+2026-07-22 12:37:44,125 [INFO] Loaded qrels: 208 queries, 40451 judgments
+2026-07-22 12:37:44,126 [INFO] [cast2020] --- Flat | exact search ---

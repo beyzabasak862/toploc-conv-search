@@ -1,0 +1,35 @@
+2026-06-21 12:57:43,649 [INFO] Total files found: 194
+2026-06-21 12:59:29,269 [INFO] Vector dimension: 1024
+2026-06-21 12:59:29,283 [INFO] Initialized flat (exact) inner-product index.
+2026-06-21 13:00:55,884 [INFO] Total files found: 194
+2026-06-21 13:02:42,015 [INFO] Vector dimension: 1024
+2026-06-21 13:02:42,028 [INFO] Initialized flat (exact) inner-product index.
+2026-06-21 13:18:24,794 [INFO] [10/194] Indexed: 2,000,000 vectors
+2026-06-21 13:34:07,207 [INFO] [20/194] Indexed: 4,000,000 vectors
+2026-06-21 13:49:36,092 [INFO] [30/194] Indexed: 6,000,000 vectors
+2026-06-21 14:05:36,849 [INFO] [40/194] Indexed: 8,000,000 vectors
+2026-06-21 14:21:15,199 [INFO] [50/194] Indexed: 10,000,000 vectors
+2026-06-21 14:21:15,200 [INFO] Saving checkpoint at file 50...
+2026-06-21 14:27:12,318 [INFO] Checkpoint saved.
+2026-06-21 14:42:56,385 [INFO] [60/194] Indexed: 12,000,000 vectors
+2026-06-21 14:59:10,702 [INFO] [70/194] Indexed: 14,000,000 vectors
+2026-06-21 15:14:52,737 [INFO] [80/194] Indexed: 16,000,000 vectors
+2026-06-21 15:30:53,524 [INFO] [90/194] Indexed: 18,000,000 vectors
+2026-06-21 15:46:24,446 [INFO] [100/194] Indexed: 20,000,000 vectors
+2026-06-21 15:46:24,446 [INFO] Saving checkpoint at file 100...
+2026-06-21 15:58:20,384 [INFO] Checkpoint saved.
+2026-06-21 16:13:00,623 [INFO] [110/194] Indexed: 21,845,725 vectors
+2026-06-21 16:28:48,268 [INFO] [120/194] Indexed: 23,845,725 vectors
+2026-06-21 16:45:36,449 [INFO] [130/194] Indexed: 25,845,725 vectors
+2026-06-21 17:01:27,092 [INFO] [140/194] Indexed: 27,845,725 vectors
+2026-06-21 17:17:19,870 [INFO] [150/194] Indexed: 29,845,725 vectors
+2026-06-21 17:17:19,870 [INFO] Saving checkpoint at file 150...
+2026-06-21 17:35:12,984 [INFO] Checkpoint saved.
+2026-06-21 17:50:54,270 [INFO] [160/194] Indexed: 31,845,725 vectors
+2026-06-21 18:06:36,531 [INFO] [170/194] Indexed: 33,845,725 vectors
+2026-06-21 18:22:15,151 [INFO] [180/194] Indexed: 35,845,725 vectors
+2026-06-21 18:37:58,360 [INFO] [190/194] Indexed: 37,845,725 vectors
+2026-06-21 18:44:09,204 [INFO] Saving final index and ID map...
+2026-06-21 19:07:19,085 [INFO] Pipeline complete. Total vectors indexed: 38,636,446
+2026-06-21 19:07:19,085 [INFO] Index saved to:  /home/toploc1/Datasets/toploc1/Exact_Search/treccast_flat.index
+2026-06-21 19:07:19,085 [INFO] IDs saved to:    /home/toploc1/Datasets/toploc1/Exact_Search/treccast_flat_ids.npy

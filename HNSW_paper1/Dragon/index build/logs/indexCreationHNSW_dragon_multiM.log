@@ -1,0 +1,51 @@
+2026-07-20 17:10:28,154 [INFO] Total files found: 193
+2026-07-20 17:10:28,162 [INFO] Pass 1 already complete: max_norm=68.408218
+2026-07-20 17:10:28,171 [INFO] ================  BUILDING HNSW  M=16  ================
+2026-07-20 17:30:57,028 [INFO] [M=16] resuming from file 50/193, index has 10,035,200 vectors
+2026-07-20 18:08:36,601 [INFO] [M=16][60/193] Indexed: 12,042,240 vectors
+2026-07-21 17:50:55,640 [INFO] Total files found: 193
+2026-07-21 17:50:55,641 [INFO] Pass 1 already complete: max_norm=68.408218
+2026-07-21 17:50:55,643 [INFO] ================  BUILDING HNSW  M=16  ================
+2026-07-21 17:59:23,653 [INFO] [M=16] resuming from file 50/193, index has 10,035,200 vectors
+2026-07-21 18:29:59,287 [INFO] [M=16][60/193] Indexed: 12,042,240 vectors
+2026-07-21 19:02:12,509 [INFO] [M=16][70/193] Indexed: 14,049,280 vectors
+2026-07-21 19:38:01,232 [INFO] [M=16][80/193] Indexed: 16,056,320 vectors
+2026-07-21 20:14:14,708 [INFO] [M=16][90/193] Indexed: 18,063,360 vectors
+2026-07-21 20:54:37,678 [INFO] [M=16][100/193] Indexed: 20,045,725 vectors
+2026-07-21 20:54:37,679 [INFO] [M=16] Saving checkpoint at file 100...
+2026-07-21 21:06:37,021 [INFO] [M=16] Checkpoint saved.
+2026-07-21 21:37:26,756 [INFO] [M=16][110/193] Indexed: 22,052,765 vectors
+2026-07-21 22:08:34,027 [INFO] [M=16][120/193] Indexed: 24,059,805 vectors
+2026-07-21 22:43:23,636 [INFO] [M=16][130/193] Indexed: 26,066,845 vectors
+2026-07-21 23:13:37,384 [INFO] [M=16][140/193] Indexed: 28,073,885 vectors
+2026-07-21 23:42:44,414 [INFO] [M=16][150/193] Indexed: 30,080,925 vectors
+2026-07-21 23:42:44,414 [INFO] [M=16] Saving checkpoint at file 150...
+2026-07-21 23:59:50,146 [INFO] [M=16] Checkpoint saved.
+2026-07-22 00:31:21,097 [INFO] [M=16][160/193] Indexed: 32,087,965 vectors
+2026-07-22 01:02:43,697 [INFO] [M=16][170/193] Indexed: 34,095,005 vectors
+2026-07-22 01:48:32,695 [INFO] [M=16][180/193] Indexed: 36,102,045 vectors
+2026-07-22 02:35:49,219 [INFO] [M=16][190/193] Indexed: 38,109,085 vectors
+2026-07-22 02:44:18,977 [INFO] [M=16] Total vectors indexed: 38,636,446
+2026-07-22 03:12:10,332 [INFO] [M=16] complete.
+2026-07-22 03:12:10,332 [INFO] [M=16] Index saved to:  /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/treccast_hnsw_M16_dragon_mips.index
+2026-07-22 03:12:10,332 [INFO] [M=16] IDs saved to:    /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/treccast_hnsw_idsM16_dragon_mips.npy
+2026-07-22 03:12:30,445 [INFO] ================  BUILDING HNSW  M=64  ================
+2026-07-22 03:12:30,476 [INFO] [M=64] HNSW index created: d=769 (768 + 1 MIPS dim), M=64, efConstruction=500
+2026-07-22 03:57:17,695 [INFO] [M=64][10/193] Indexed: 2,007,040 vectors
+2026-07-22 04:39:39,534 [INFO] [M=64][20/193] Indexed: 4,014,080 vectors
+2026-07-22 05:19:55,393 [INFO] [M=64][30/193] Indexed: 6,021,120 vectors
+2026-07-22 06:21:05,635 [INFO] [M=64][40/193] Indexed: 8,028,160 vectors
+2026-07-22 07:01:26,427 [INFO] [M=64][50/193] Indexed: 10,035,200 vectors
+2026-07-22 07:01:26,428 [INFO] [M=64] Saving checkpoint at file 50...
+2026-07-22 07:07:39,887 [INFO] [M=64] Checkpoint saved.
+2026-07-22 07:48:01,591 [INFO] [M=64][60/193] Indexed: 12,042,240 vectors
+2026-07-22 08:28:06,816 [INFO] [M=64][70/193] Indexed: 14,049,280 vectors
+2026-07-22 09:06:06,294 [INFO] [M=64][80/193] Indexed: 16,056,320 vectors
+2026-07-22 09:44:21,407 [INFO] [M=64][90/193] Indexed: 18,063,360 vectors
+2026-07-22 10:22:07,296 [INFO] [M=64][100/193] Indexed: 20,045,725 vectors
+2026-07-22 10:22:07,296 [INFO] [M=64] Saving checkpoint at file 100...
+2026-07-22 10:34:11,064 [INFO] [M=64] Checkpoint saved.
+2026-07-22 11:15:22,506 [INFO] [M=64][110/193] Indexed: 22,052,765 vectors
+2026-07-22 12:01:48,473 [INFO] [M=64][120/193] Indexed: 24,059,805 vectors
+2026-07-22 12:52:02,022 [INFO] [M=64][130/193] Indexed: 26,066,845 vectors
+2026-07-22 13:50:55,944 [INFO] [M=64][140/193] Indexed: 28,073,885 vectors

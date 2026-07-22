@@ -1,0 +1,25 @@
+2026-07-13 15:54:04,433 [INFO] Loading index (mmap=True)
+2026-07-13 15:54:24,038 [INFO] Index: 38,636,446 vectors, nlist=32768, omp_threads=128
+2026-07-13 15:54:28,794 [INFO] Queries: 479 | dim=1024 | k=10
+2026-07-13 15:54:28,794 [INFO] Default parallel_mode = 0
+2026-07-13 15:54:29,419 [INFO] --- nprobe=1 ---
+2026-07-13 15:54:57,062 [INFO]   parallel_mode=0 | fused=  0.670 ms/q | preassigned=  0.286 ms/q | preassigned/fused =  0.43x
+2026-07-13 15:55:00,428 [INFO]   parallel_mode=1 | fused=  1.468 ms/q | preassigned=  0.284 ms/q | preassigned/fused =  0.19x
+2026-07-13 15:55:03,104 [INFO]   parallel_mode=2 | fused=  1.294 ms/q | preassigned=  0.109 ms/q | preassigned/fused =  0.08x
+2026-07-13 15:55:05,758 [INFO]   parallel_mode=3 | fused=  1.290 ms/q | preassigned=  0.076 ms/q | preassigned/fused =  0.06x
+2026-07-13 15:55:06,734 [INFO] --- nprobe=8 ---
+2026-07-13 15:57:08,473 [INFO]   parallel_mode=0 | fused=  1.454 ms/q | preassigned=  2.360 ms/q | preassigned/fused =  1.62x
+2026-07-13 15:57:17,404 [INFO]   parallel_mode=1 | fused=  2.836 ms/q | preassigned=  1.538 ms/q | preassigned/fused =  0.54x
+2026-07-13 15:57:20,688 [INFO]   parallel_mode=2 | fused=  1.602 ms/q | preassigned=  0.381 ms/q | preassigned/fused =  0.24x
+2026-07-13 15:57:24,798 [INFO]   parallel_mode=3 | fused=  1.865 ms/q | preassigned=  0.414 ms/q | preassigned/fused =  0.22x
+2026-07-13 15:57:25,191 [INFO] --- nprobe=64 ---
+2026-07-13 16:05:33,450 [INFO]   parallel_mode=0 | fused=  3.703 ms/q | preassigned= 17.114 ms/q | preassigned/fused =  4.62x
+2026-07-13 16:06:02,744 [INFO]   parallel_mode=1 | fused=  9.634 ms/q | preassigned=  5.735 ms/q | preassigned/fused =  0.60x
+2026-07-13 16:06:17,586 [INFO]   parallel_mode=2 | fused=  5.672 ms/q | preassigned=  2.642 ms/q | preassigned/fused =  0.47x
+2026-07-13 16:06:34,750 [INFO]   parallel_mode=3 | fused=  6.273 ms/q | preassigned=  2.953 ms/q | preassigned/fused =  0.47x
+2026-07-13 16:06:34,936 [INFO] --- nprobe=256 ---
+2026-07-13 16:18:03,514 [INFO]   parallel_mode=0 | fused= 10.596 ms/q | preassigned= 78.724 ms/q | preassigned/fused =  7.43x
+2026-07-13 16:20:45,542 [INFO]   parallel_mode=1 | fused= 43.728 ms/q | preassigned= 40.485 ms/q | preassigned/fused =  0.93x
+2026-07-13 16:21:32,238 [INFO]   parallel_mode=2 | fused= 14.344 ms/q | preassigned= 10.504 ms/q | preassigned/fused =  0.73x
+2026-07-13 16:22:22,554 [INFO]   parallel_mode=3 | fused= 15.985 ms/q | preassigned=  9.407 ms/q | preassigned/fused =  0.59x
+2026-07-13 16:22:22,554 [INFO] Done. If preassigned/fused >> 1 at high nprobe across all parallel modes, the collapse is the API path, not TopLoc.

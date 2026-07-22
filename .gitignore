@@ -1,0 +1,34 @@
+# ---- large binary artifacts (matched anywhere) ----
+*.index
+*.npy
+*.faiss
+*.bin
+*.pt
+*.pth
+*.safetensors
+*.parquet
+
+# ---- whole artifact / dependency folders (by name, any depth) ----
+indexes/
+models/
+faiss/
+faiss_install/
+
+# ---- checkpoints (index-build progress, not useful history) ----
+*checkpoint*.json
+
+# ---- python / notebooks / caches ----
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.ir_datasets/
+mein_env*/
+.venv/
+venv/
+env/
+.venv*/
+venv*/
+*_env/
+**/site-packages/
+**/pyvenv.cfg
+/HNSW/

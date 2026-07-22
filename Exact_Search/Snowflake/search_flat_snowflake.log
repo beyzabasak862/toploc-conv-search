@@ -1,0 +1,28 @@
+2026-07-22 00:06:13,751 [INFO] === Loading flat index from /home/toploc1/Datasets/toploc1/indexes/Snowflake/Flat Search/treccast_flat.index ===
+2026-07-22 01:11:16,800 [INFO]   ntotal=38,636,446 | d=1024 (exact inner-product search)
+2026-07-22 01:13:24,609 [INFO]   ID map loaded: 38,636,446 entries
+2026-07-22 01:13:24,610 [INFO] ##### DATASET: cast2019 #####
+2026-07-22 01:13:24,629 [INFO] [cast2019] Loading queries from /home/toploc1/Datasets/conversational/CAST2019/topics/topics_snowflake_embeddings.parquet
+2026-07-22 01:13:36,417 [INFO] [cast2019] Queries: 479 | dim=1024
+2026-07-22 01:13:36,417 [INFO] [cast2019] Loading qrels from /home/toploc1/Datasets/conversational/CAST2019/topics/qrels.qrel
+2026-07-22 01:13:36,472 [INFO] Loaded qrels: 173 queries, 29350 judgments
+2026-07-22 01:13:36,472 [INFO] [cast2019] --- Flat | exact search ---
+2026-07-22 02:17:30,104 [INFO] [cast2019]   search_ms (total):   3832891.6
+2026-07-22 02:17:30,134 [INFO] [cast2019]   avg_query_time_ms:   8001.86
+2026-07-22 02:17:30,138 [INFO] [cast2019]   MRR@10:  0.8158
+2026-07-22 02:17:30,147 [INFO] [cast2019]   NDCG@3:  0.5501
+2026-07-22 02:17:30,147 [INFO] [cast2019]   NDCG@10: 0.5020
+2026-07-22 02:17:30,234 [INFO] [cast2019] Flat baseline complete. Results saved to /home/toploc1/Datasets/toploc1/Exact_Search/Snowflake/metrics_flat_snowflake_cast2019.json
+2026-07-22 02:17:30,421 [INFO] ##### DATASET: cast2020 #####
+2026-07-22 02:17:30,433 [INFO] [cast2020] Loading queries from /home/toploc1/Datasets/toploc1/Data Exploration/cast2020_query_embeddings.parquet
+2026-07-22 02:17:31,403 [INFO] [cast2020] Queries: 208 | dim=1024
+2026-07-22 02:17:31,403 [INFO] [cast2020] Loading qrels from /home/toploc1/Datasets/toploc1/Data Exploration/cast2020_qrels.qrel
+2026-07-22 02:17:31,453 [INFO] Loaded qrels: 208 queries, 40451 judgments
+2026-07-22 02:17:31,454 [INFO] [cast2020] --- Flat | exact search ---
+2026-07-22 04:20:04,104 [INFO] [cast2020]   search_ms (total):   7352353.9
+2026-07-22 04:20:04,104 [INFO] [cast2020]   avg_query_time_ms:   35347.86
+2026-07-22 04:20:04,105 [INFO] [cast2020]   MRR@10:  0.7885
+2026-07-22 04:20:04,105 [INFO] [cast2020]   NDCG@3:  0.5065
+2026-07-22 04:20:04,105 [INFO] [cast2020]   NDCG@10: 0.4741
+2026-07-22 04:20:04,108 [INFO] [cast2020] Flat baseline complete. Results saved to /home/toploc1/Datasets/toploc1/Exact_Search/Snowflake/metrics_flat_snowflake_cast2020.json
+2026-07-22 04:20:04,153 [INFO] All datasets complete.

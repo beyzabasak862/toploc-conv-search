@@ -1,0 +1,14 @@
+nohup: ignoring input
+2026-06-08 18:28:46,071 [INFO] === Step 1: Load demo embeddings ===
+2026-06-08 18:29:07,053 [INFO] Loaded 26,102 embeddings, dim=1024
+2026-06-08 18:29:07,164 [INFO] ID map saved → /home/toploc1/Datasets/toploc1/demo/demo_ids.npy
+2026-06-08 18:29:07,165 [INFO] === Step 2: Build Flat index ===
+2026-06-08 18:29:08,264 [INFO] Flat index saved (26,102 vectors) → /home/toploc1/Datasets/toploc1/demo/demo_flat.index
+2026-06-08 18:29:08,276 [INFO] === Step 3: Build IVF index ===
+2026-06-08 18:29:08,276 [INFO]   nlist=161
+2026-06-08 18:29:10,707 [INFO] IVF index saved (26,102 vectors) → /home/toploc1/Datasets/toploc1/demo/demo_ivf.index
+2026-06-08 18:29:10,707 [INFO] === Step 4: Build HNSW index ===
+2026-06-08 18:29:14,214 [INFO] HNSW index saved (26,102 vectors) → /home/toploc1/Datasets/toploc1/demo/demo_hnsw.index
+2026-06-08 18:29:14,214 [INFO] === Step 5: Update metadata ===
+2026-06-08 18:29:14,222 [INFO] Metadata updated → /home/toploc1/Datasets/toploc1/demo/demo_metadata.json
+2026-06-08 18:29:14,222 [INFO] === Phase 2 COMPLETE ===

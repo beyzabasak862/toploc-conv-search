@@ -1,0 +1,201 @@
+nohup: ignoring input
+2026-07-07 18:26:52,147 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/Dragon_indexes/treccast_dragon_ivf.index (mmap=True)
+2026-07-07 18:27:12,585 [INFO] Index loaded: 38,636,446 vectors, nlist=32768
+2026-07-07 18:27:12,610 [INFO] Centroid matrix: (32768, 768)
+2026-07-07 18:27:33,469 [INFO] Queries: 479 | dim=768
+2026-07-07 18:27:33,492 [INFO] Loaded qrels: 173 queries
+2026-07-07 18:27:33,492 [INFO] Conversations: 50 | follow-up queries: 429 | avg follow-ups/conv: 8.58
+2026-07-07 18:27:33,493 [INFO] === baseline nprobe=1 ===
+2026-07-07 18:28:11,210 [INFO]   k=  10: fused fu=  0.461 ft=  0.434 | control fu=  0.201 ft=  0.942 | fused/control= 2.30x
+2026-07-07 18:28:12,661 [INFO]   k= 100: fused fu=  0.459 ft=  0.458 | control fu=  0.210 ft=  0.993 | fused/control= 2.18x
+2026-07-07 18:28:14,256 [INFO]   k=1000: fused fu=  0.476 ft=  0.487 | control fu=  0.281 ft=  1.049 | fused/control= 1.69x
+2026-07-07 18:28:14,257 [INFO]   MRR@10=0.1010  NDCG@3=0.0357  NDCG@10=0.0296
+2026-07-07 18:28:14,262 [INFO] === baseline nprobe=2 ===
+2026-07-07 18:28:39,546 [INFO]   k=  10: fused fu=  0.757 ft=  0.654 | control fu=  0.252 ft=  1.014 | fused/control= 3.00x
+2026-07-07 18:28:41,580 [INFO]   k= 100: fused fu=  0.720 ft=  0.654 | control fu=  0.271 ft=  1.034 | fused/control= 2.65x
+2026-07-07 18:28:43,848 [INFO]   k=1000: fused fu=  0.763 ft=  0.718 | control fu=  0.354 ft=  1.163 | fused/control= 2.15x
+2026-07-07 18:28:43,849 [INFO]   MRR@10=0.0990  NDCG@3=0.0387  NDCG@10=0.0315
+2026-07-07 18:28:43,853 [INFO] === baseline nprobe=4 ===
+2026-07-07 18:29:20,877 [INFO]   k=  10: fused fu=  1.122 ft=  1.040 | control fu=  0.432 ft=  1.153 | fused/control= 2.60x
+2026-07-07 18:29:23,888 [INFO]   k= 100: fused fu=  1.097 ft=  0.960 | control fu=  0.406 ft=  1.211 | fused/control= 2.70x
+2026-07-07 18:29:27,177 [INFO]   k=1000: fused fu=  1.153 ft=  1.015 | control fu=  0.503 ft=  1.292 | fused/control= 2.29x
+2026-07-07 18:29:27,177 [INFO]   MRR@10=0.1369  NDCG@3=0.0582  NDCG@10=0.0441
+2026-07-07 18:29:27,182 [INFO] === baseline nprobe=8 ===
+2026-07-07 18:30:25,438 [INFO]   k=  10: fused fu=  1.751 ft=  1.611 | control fu=  0.672 ft=  1.375 | fused/control= 2.61x
+2026-07-07 18:30:30,061 [INFO]   k= 100: fused fu=  1.692 ft=  1.604 | control fu=  0.647 ft=  1.428 | fused/control= 2.62x
+2026-07-07 18:30:35,019 [INFO]   k=1000: fused fu=  1.746 ft=  1.634 | control fu=  0.750 ft=  1.550 | fused/control= 2.33x
+2026-07-07 18:30:35,020 [INFO]   MRR@10=0.1580  NDCG@3=0.0661  NDCG@10=0.0498
+2026-07-07 18:30:35,024 [INFO] === baseline nprobe=16 ===
+2026-07-07 18:31:56,184 [INFO]   k=  10: fused fu=  2.643 ft=  2.605 | control fu=  1.088 ft=  1.684 | fused/control= 2.43x
+2026-07-07 18:32:03,540 [INFO]   k= 100: fused fu=  2.696 ft=  2.401 | control fu=  1.098 ft=  1.779 | fused/control= 2.45x
+2026-07-07 18:32:11,191 [INFO]   k=1000: fused fu=  2.734 ft=  2.392 | control fu=  1.213 ft=  1.889 | fused/control= 2.25x
+2026-07-07 18:32:11,191 [INFO]   MRR@10=0.1701  NDCG@3=0.0717  NDCG@10=0.0531
+2026-07-07 18:32:11,195 [INFO] === baseline nprobe=32 ===
+2026-07-07 18:34:18,467 [INFO]   k=  10: fused fu=  4.024 ft=  3.511 | control fu=  1.909 ft=  2.818 | fused/control= 2.11x
+2026-07-07 18:34:29,974 [INFO]   k= 100: fused fu=  4.037 ft=  3.833 | control fu=  1.926 ft=  2.563 | fused/control= 2.10x
+2026-07-07 18:34:41,703 [INFO]   k=1000: fused fu=  3.966 ft=  3.920 | control fu=  2.065 ft=  2.682 | fused/control= 1.92x
+2026-07-07 18:34:41,703 [INFO]   MRR@10=0.1899  NDCG@3=0.0813  NDCG@10=0.0600
+2026-07-07 18:34:41,709 [INFO] === baseline nprobe=64 ===
+2026-07-07 18:37:24,548 [INFO]   k=  10: fused fu=  5.934 ft=  5.712 | control fu=  3.494 ft=  4.178 | fused/control= 1.70x
+2026-07-07 18:37:42,734 [INFO]   k= 100: fused fu=  6.005 ft=  5.572 | control fu=  3.513 ft=  3.935 | fused/control= 1.71x
+2026-07-07 18:38:01,434 [INFO]   k=1000: fused fu=  5.997 ft=  5.584 | control fu=  3.701 ft=  4.132 | fused/control= 1.62x
+2026-07-07 18:38:01,434 [INFO]   MRR@10=0.1974  NDCG@3=0.0852  NDCG@10=0.0625
+2026-07-07 18:38:01,439 [INFO] === baseline nprobe=128 ===
+2026-07-07 18:41:16,781 [INFO]   k=  10: fused fu=  9.387 ft=  8.938 | control fu=  6.368 ft=  6.872 | fused/control= 1.47x
+2026-07-07 18:41:47,270 [INFO]   k= 100: fused fu=  9.617 ft=  8.576 | control fu=  6.391 ft=  6.902 | fused/control= 1.50x
+2026-07-07 18:42:18,007 [INFO]   k=1000: fused fu=  9.300 ft=  9.079 | control fu=  6.679 ft=  7.182 | fused/control= 1.39x
+2026-07-07 18:42:18,007 [INFO]   MRR@10=0.2116  NDCG@3=0.0896  NDCG@10=0.0661
+2026-07-07 18:42:18,013 [INFO] === baseline nprobe=256 ===
+2026-07-07 18:45:51,342 [INFO]   k=  10: fused fu= 15.779 ft= 15.174 | control fu= 12.098 ft= 12.459 | fused/control= 1.30x
+2026-07-07 18:46:45,071 [INFO]   k= 100: fused fu= 16.058 ft= 16.755 | control fu= 12.168 ft= 12.533 | fused/control= 1.32x
+2026-07-07 18:47:39,173 [INFO]   k=1000: fused fu= 15.483 ft= 14.360 | control fu= 12.603 ft= 12.981 | fused/control= 1.23x
+2026-07-07 18:47:39,173 [INFO]   MRR@10=0.2171  NDCG@3=0.0904  NDCG@10=0.0665
+2026-07-07 18:47:39,277 [INFO] [h=512] caches built once: 1.97 ms/conv (excluded from follow-up latency; charged to first-turn TOTAL and break-even)
+2026-07-07 18:47:39,767 [INFO]   h=  512 nprobe=   1 k=  10 | fu fused=  0.461 ctrl=  0.201 toploc=  0.115 | speedup total= 4.02x mech= 1.75x impl= 2.30x | breakeven=   5.7 | conv= 1.44x
+2026-07-07 18:47:39,993 [INFO]   h=  512 nprobe=   1 k= 100 | fu fused=  0.459 ctrl=  0.210 toploc=  0.122 | speedup total= 3.76x mech= 1.72x impl= 2.18x | breakeven=   5.9 | conv= 1.41x
+2026-07-07 18:47:40,343 [INFO]   h=  512 nprobe=   1 k=1000 | fu fused=  0.476 ctrl=  0.281 toploc=  0.188 | speedup total= 2.53x mech= 1.50x impl= 1.69x | breakeven=   6.9 | conv= 1.22x
+2026-07-07 18:47:40,344 [INFO]   h=  512 nprobe=   1 recall | NDCG@10 base=0.0296 toploc=0.1495 (delta +0.1199)
+2026-07-07 18:47:41,027 [INFO]   h=  512 nprobe=   2 k=  10 | fu fused=  0.757 ctrl=  0.252 toploc=  0.191 | speedup total= 3.97x mech= 1.32x impl= 3.00x | breakeven=   3.5 | conv= 1.90x
+2026-07-07 18:47:41,395 [INFO]   h=  512 nprobe=   2 k= 100 | fu fused=  0.720 ctrl=  0.271 toploc=  0.195 | speedup total= 3.69x mech= 1.39x impl= 2.65x | breakeven=   3.8 | conv= 1.79x
+2026-07-07 18:47:41,937 [INFO]   h=  512 nprobe=   2 k=1000 | fu fused=  0.763 ctrl=  0.354 toploc=  0.288 | speedup total= 2.65x mech= 1.23x impl= 2.15x | breakeven=   4.2 | conv= 1.55x
+2026-07-07 18:47:41,938 [INFO]   h=  512 nprobe=   2 recall | NDCG@10 base=0.0315 toploc=0.2095 (delta +0.1780)
+2026-07-07 18:47:42,939 [INFO]   h=  512 nprobe=   4 k=  10 | fu fused=  1.122 ctrl=  0.432 toploc=  0.320 | speedup total= 3.50x mech= 1.35x impl= 2.60x | breakeven=   2.5 | conv= 2.13x
+2026-07-07 18:47:43,559 [INFO]   h=  512 nprobe=   4 k= 100 | fu fused=  1.097 ctrl=  0.406 toploc=  0.327 | speedup total= 3.36x mech= 1.24x impl= 2.70x | breakeven=   2.6 | conv= 2.05x
+2026-07-07 18:47:44,382 [INFO]   h=  512 nprobe=   4 k=1000 | fu fused=  1.153 ctrl=  0.503 toploc=  0.435 | speedup total= 2.65x mech= 1.16x impl= 2.29x | breakeven=   2.7 | conv= 1.79x
+2026-07-07 18:47:44,383 [INFO]   h=  512 nprobe=   4 recall | NDCG@10 base=0.0441 toploc=0.2862 (delta +0.2421)
+2026-07-07 18:47:46,105 [INFO]   h=  512 nprobe=   8 k=  10 | fu fused=  1.751 ctrl=  0.672 toploc=  0.584 | speedup total= 3.00x mech= 1.15x impl= 2.61x | breakeven=   1.7 | conv= 2.22x
+2026-07-07 18:47:47,225 [INFO]   h=  512 nprobe=   8 k= 100 | fu fused=  1.692 ctrl=  0.647 toploc=  0.592 | speedup total= 2.86x mech= 1.09x impl= 2.62x | breakeven=   1.8 | conv= 2.13x
+2026-07-07 18:47:48,559 [INFO]   h=  512 nprobe=   8 k=1000 | fu fused=  1.746 ctrl=  0.750 toploc=  0.706 | speedup total= 2.47x mech= 1.06x impl= 2.33x | breakeven=   1.9 | conv= 1.92x
+2026-07-07 18:47:48,560 [INFO]   h=  512 nprobe=   8 recall | NDCG@10 base=0.0498 toploc=0.3240 (delta +0.2742)
+2026-07-07 18:47:51,315 [INFO]   h=  512 nprobe=  16 k=  10 | fu fused=  2.643 ctrl=  1.088 toploc=  1.063 | speedup total= 2.49x mech= 1.02x impl= 2.43x | breakeven=   1.2 | conv= 2.11x
+2026-07-07 18:47:53,334 [INFO]   h=  512 nprobe=  16 k= 100 | fu fused=  2.696 ctrl=  1.098 toploc=  1.075 | speedup total= 2.51x mech= 1.02x impl= 2.45x | breakeven=   1.2 | conv= 2.12x
+2026-07-07 18:47:55,578 [INFO]   h=  512 nprobe=  16 k=1000 | fu fused=  2.734 ctrl=  1.213 toploc=  1.189 | speedup total= 2.30x mech= 1.02x impl= 2.25x | breakeven=   1.3 | conv= 1.97x
+2026-07-07 18:47:55,578 [INFO]   h=  512 nprobe=  16 recall | NDCG@10 base=0.0531 toploc=0.3407 (delta +0.2876)
+2026-07-07 18:48:00,610 [INFO]   h=  512 nprobe=  32 k=  10 | fu fused=  4.024 ctrl=  1.909 toploc=  1.978 | speedup total= 2.03x mech= 0.97x impl= 2.11x | breakeven=   1.0 | conv= 1.85x
+2026-07-07 18:48:04,366 [INFO]   h=  512 nprobe=  32 k= 100 | fu fused=  4.037 ctrl=  1.926 toploc=  1.995 | speedup total= 2.02x mech= 0.97x impl= 2.10x | breakeven=   1.0 | conv= 1.85x
+2026-07-07 18:48:08,402 [INFO]   h=  512 nprobe=  32 k=1000 | fu fused=  3.966 ctrl=  2.065 toploc=  2.143 | speedup total= 1.85x mech= 0.96x impl= 1.92x | breakeven=   1.1 | conv= 1.71x
+2026-07-07 18:48:08,403 [INFO]   h=  512 nprobe=  32 recall | NDCG@10 base=0.0600 toploc=0.3673 (delta +0.3074)
+2026-07-07 18:48:17,271 [INFO]   h=  512 nprobe=  64 k=  10 | fu fused=  5.934 ctrl=  3.494 toploc=  3.615 | speedup total= 1.64x mech= 0.97x impl= 1.70x | breakeven=   0.9 | conv= 1.57x
+2026-07-07 18:48:24,120 [INFO]   h=  512 nprobe=  64 k= 100 | fu fused=  6.005 ctrl=  3.513 toploc=  3.635 | speedup total= 1.65x mech= 0.97x impl= 1.71x | breakeven=   0.8 | conv= 1.58x
+2026-07-07 18:48:31,335 [INFO]   h=  512 nprobe=  64 k=1000 | fu fused=  5.997 ctrl=  3.701 toploc=  3.832 | speedup total= 1.56x mech= 0.97x impl= 1.62x | breakeven=   0.9 | conv= 1.50x
+2026-07-07 18:48:31,335 [INFO]   h=  512 nprobe=  64 recall | NDCG@10 base=0.0625 toploc=0.3819 (delta +0.3194)
+2026-07-07 18:48:48,855 [INFO]   h=  512 nprobe= 128 k=  10 | fu fused=  9.387 ctrl=  6.368 toploc=  6.586 | speedup total= 1.43x mech= 0.97x impl= 1.47x | breakeven=   0.7 | conv= 1.39x
+2026-07-07 18:49:01,409 [INFO]   h=  512 nprobe= 128 k= 100 | fu fused=  9.617 ctrl=  6.391 toploc=  6.619 | speedup total= 1.45x mech= 0.97x impl= 1.50x | breakeven=   0.7 | conv= 1.41x
+2026-07-07 18:49:14,524 [INFO]   h=  512 nprobe= 128 k=1000 | fu fused=  9.300 ctrl=  6.679 toploc=  6.916 | speedup total= 1.34x mech= 0.97x impl= 1.39x | breakeven=   0.8 | conv= 1.32x
+2026-07-07 18:49:14,525 [INFO]   h=  512 nprobe= 128 recall | NDCG@10 base=0.0661 toploc=0.3892 (delta +0.3231)
+2026-07-07 18:49:52,129 [INFO]   h=  512 nprobe= 256 k=  10 | fu fused= 15.779 ctrl= 12.098 toploc= 12.656 | speedup total= 1.25x mech= 0.96x impl= 1.30x | breakeven=   0.6 | conv= 1.23x
+2026-07-07 18:50:16,212 [INFO]   h=  512 nprobe= 256 k= 100 | fu fused= 16.058 ctrl= 12.168 toploc= 12.682 | speedup total= 1.27x mech= 0.96x impl= 1.32x | breakeven=   0.6 | conv= 1.26x
+2026-07-07 18:50:41,236 [INFO]   h=  512 nprobe= 256 k=1000 | fu fused= 15.483 ctrl= 12.603 toploc= 13.168 | speedup total= 1.18x mech= 0.96x impl= 1.23x | breakeven=   0.9 | conv= 1.16x
+2026-07-07 18:50:41,236 [INFO]   h=  512 nprobe= 256 recall | NDCG@10 base=0.0665 toploc=0.3903 (delta +0.3238)
+2026-07-07 18:50:41,344 [INFO] [h=1024] caches built once: 2.03 ms/conv (excluded from follow-up latency; charged to first-turn TOTAL and break-even)
+2026-07-07 18:50:41,855 [INFO]   h= 1024 nprobe=   1 k=  10 | fu fused=  0.461 ctrl=  0.201 toploc=  0.135 | speedup total= 3.42x mech= 1.49x impl= 2.30x | breakeven=   6.2 | conv= 1.34x
+2026-07-07 18:50:42,114 [INFO]   h= 1024 nprobe=   1 k= 100 | fu fused=  0.459 ctrl=  0.210 toploc=  0.138 | speedup total= 3.32x mech= 1.52x impl= 2.18x | breakeven=   6.3 | conv= 1.33x
+2026-07-07 18:50:42,497 [INFO]   h= 1024 nprobe=   1 k=1000 | fu fused=  0.476 ctrl=  0.281 toploc=  0.207 | speedup total= 2.30x mech= 1.36x impl= 1.69x | breakeven=   7.5 | conv= 1.15x
+2026-07-07 18:50:42,497 [INFO]   h= 1024 nprobe=   1 recall | NDCG@10 base=0.0296 toploc=0.1526 (delta +0.1230)
+2026-07-07 18:50:43,218 [INFO]   h= 1024 nprobe=   2 k=  10 | fu fused=  0.757 ctrl=  0.252 toploc=  0.207 | speedup total= 3.65x mech= 1.22x impl= 3.00x | breakeven=   3.7 | conv= 1.80x
+2026-07-07 18:50:43,619 [INFO]   h= 1024 nprobe=   2 k= 100 | fu fused=  0.720 ctrl=  0.271 toploc=  0.214 | speedup total= 3.36x mech= 1.27x impl= 2.65x | breakeven=   4.0 | conv= 1.69x
+2026-07-07 18:50:44,189 [INFO]   h= 1024 nprobe=   2 k=1000 | fu fused=  0.763 ctrl=  0.354 toploc=  0.303 | speedup total= 2.51x mech= 1.17x impl= 2.15x | breakeven=   4.4 | conv= 1.49x
+2026-07-07 18:50:44,190 [INFO]   h= 1024 nprobe=   2 recall | NDCG@10 base=0.0315 toploc=0.2143 (delta +0.1828)
+2026-07-07 18:50:45,245 [INFO]   h= 1024 nprobe=   4 k=  10 | fu fused=  1.122 ctrl=  0.432 toploc=  0.344 | speedup total= 3.26x mech= 1.26x impl= 2.60x | breakeven=   2.6 | conv= 2.03x
+2026-07-07 18:50:45,903 [INFO]   h= 1024 nprobe=   4 k= 100 | fu fused=  1.097 ctrl=  0.406 toploc=  0.349 | speedup total= 3.14x mech= 1.16x impl= 2.70x | breakeven=   2.7 | conv= 1.95x
+2026-07-07 18:50:46,763 [INFO]   h= 1024 nprobe=   4 k=1000 | fu fused=  1.153 ctrl=  0.503 toploc=  0.455 | speedup total= 2.53x mech= 1.10x impl= 2.29x | breakeven=   2.9 | conv= 1.73x
+2026-07-07 18:50:46,764 [INFO]   h= 1024 nprobe=   4 recall | NDCG@10 base=0.0441 toploc=0.2833 (delta +0.2392)
+2026-07-07 18:50:48,447 [INFO]   h= 1024 nprobe=   8 k=  10 | fu fused=  1.751 ctrl=  0.672 toploc=  0.609 | speedup total= 2.87x mech= 1.10x impl= 2.61x | breakeven=   1.8 | conv= 2.14x
+2026-07-07 18:50:49,607 [INFO]   h= 1024 nprobe=   8 k= 100 | fu fused=  1.692 ctrl=  0.647 toploc=  0.616 | speedup total= 2.75x mech= 1.05x impl= 2.62x | breakeven=   1.9 | conv= 2.06x
+2026-07-07 18:50:50,975 [INFO]   h= 1024 nprobe=   8 k=1000 | fu fused=  1.746 ctrl=  0.750 toploc=  0.724 | speedup total= 2.41x mech= 1.04x impl= 2.33x | breakeven=   2.0 | conv= 1.88x
+2026-07-07 18:50:50,975 [INFO]   h= 1024 nprobe=   8 recall | NDCG@10 base=0.0498 toploc=0.3253 (delta +0.2755)
+2026-07-07 18:50:53,808 [INFO]   h= 1024 nprobe=  16 k=  10 | fu fused=  2.643 ctrl=  1.088 toploc=  1.093 | speedup total= 2.42x mech= 1.00x impl= 2.43x | breakeven=   1.3 | conv= 2.06x
+2026-07-07 18:50:55,875 [INFO]   h= 1024 nprobe=  16 k= 100 | fu fused=  2.696 ctrl=  1.098 toploc=  1.105 | speedup total= 2.44x mech= 0.99x impl= 2.45x | breakeven=   1.3 | conv= 2.06x
+2026-07-07 18:50:58,171 [INFO]   h= 1024 nprobe=  16 k=1000 | fu fused=  2.734 ctrl=  1.213 toploc=  1.223 | speedup total= 2.24x mech= 0.99x impl= 2.25x | breakeven=   1.3 | conv= 1.92x
+2026-07-07 18:50:58,172 [INFO]   h= 1024 nprobe=  16 recall | NDCG@10 base=0.0531 toploc=0.3433 (delta +0.2902)
+2026-07-07 18:51:03,125 [INFO]   h= 1024 nprobe=  32 k=  10 | fu fused=  4.024 ctrl=  1.909 toploc=  1.972 | speedup total= 2.04x mech= 0.97x impl= 2.11x | breakeven=   1.0 | conv= 1.85x
+2026-07-07 18:51:06,852 [INFO]   h= 1024 nprobe=  32 k= 100 | fu fused=  4.037 ctrl=  1.926 toploc=  1.983 | speedup total= 2.04x mech= 0.97x impl= 2.10x | breakeven=   1.0 | conv= 1.86x
+2026-07-07 18:51:10,844 [INFO]   h= 1024 nprobe=  32 k=1000 | fu fused=  3.966 ctrl=  2.065 toploc=  2.120 | speedup total= 1.87x mech= 0.97x impl= 1.92x | breakeven=   1.1 | conv= 1.73x
+2026-07-07 18:51:10,844 [INFO]   h= 1024 nprobe=  32 recall | NDCG@10 base=0.0600 toploc=0.3723 (delta +0.3124)
+2026-07-07 18:51:19,643 [INFO]   h= 1024 nprobe=  64 k=  10 | fu fused=  5.934 ctrl=  3.494 toploc=  3.610 | speedup total= 1.64x mech= 0.97x impl= 1.70x | breakeven=   0.9 | conv= 1.57x
+2026-07-07 18:51:26,477 [INFO]   h= 1024 nprobe=  64 k= 100 | fu fused=  6.005 ctrl=  3.513 toploc=  3.628 | speedup total= 1.66x mech= 0.97x impl= 1.71x | breakeven=   0.9 | conv= 1.58x
+2026-07-07 18:51:33,672 [INFO]   h= 1024 nprobe=  64 k=1000 | fu fused=  5.997 ctrl=  3.701 toploc=  3.819 | speedup total= 1.57x mech= 0.97x impl= 1.62x | breakeven=   0.9 | conv= 1.50x
+2026-07-07 18:51:33,672 [INFO]   h= 1024 nprobe=  64 recall | NDCG@10 base=0.0625 toploc=0.3839 (delta +0.3214)
+2026-07-07 18:51:51,196 [INFO]   h= 1024 nprobe= 128 k=  10 | fu fused=  9.387 ctrl=  6.368 toploc=  6.619 | speedup total= 1.42x mech= 0.96x impl= 1.47x | breakeven=   0.7 | conv= 1.38x
+2026-07-07 18:52:03,799 [INFO]   h= 1024 nprobe= 128 k= 100 | fu fused=  9.617 ctrl=  6.391 toploc=  6.646 | speedup total= 1.45x mech= 0.96x impl= 1.50x | breakeven=   0.7 | conv= 1.40x
+2026-07-07 18:52:16,944 [INFO]   h= 1024 nprobe= 128 k=1000 | fu fused=  9.300 ctrl=  6.679 toploc=  6.929 | speedup total= 1.34x mech= 0.96x impl= 1.39x | breakeven=   0.9 | conv= 1.31x
+2026-07-07 18:52:16,944 [INFO]   h= 1024 nprobe= 128 recall | NDCG@10 base=0.0661 toploc=0.3945 (delta +0.3284)
+2026-07-07 18:52:56,172 [INFO]   h= 1024 nprobe= 256 k=  10 | fu fused= 15.779 ctrl= 12.098 toploc= 12.755 | speedup total= 1.24x mech= 0.95x impl= 1.30x | breakeven=   0.7 | conv= 1.22x
+2026-07-07 18:53:20,467 [INFO]   h= 1024 nprobe= 256 k= 100 | fu fused= 16.058 ctrl= 12.168 toploc= 12.805 | speedup total= 1.25x mech= 0.95x impl= 1.32x | breakeven=   0.6 | conv= 1.25x
+2026-07-07 18:53:45,722 [INFO]   h= 1024 nprobe= 256 k=1000 | fu fused= 15.483 ctrl= 12.603 toploc= 13.305 | speedup total= 1.16x mech= 0.95x impl= 1.23x | breakeven=   0.9 | conv= 1.15x
+2026-07-07 18:53:45,723 [INFO]   h= 1024 nprobe= 256 recall | NDCG@10 base=0.0665 toploc=0.3975 (delta +0.3311)
+2026-07-07 18:53:46,060 [INFO] [h=4096] caches built once: 6.48 ms/conv (excluded from follow-up latency; charged to first-turn TOTAL and break-even)
+2026-07-07 18:53:46,789 [INFO]   h= 4096 nprobe=   1 k=  10 | fu fused=  0.461 ctrl=  0.201 toploc=  0.240 | speedup total= 1.92x mech= 0.84x impl= 2.30x | breakeven=  29.3 | conv= 0.51x
+2026-07-07 18:53:47,224 [INFO]   h= 4096 nprobe=   1 k= 100 | fu fused=  0.459 ctrl=  0.210 toploc=  0.243 | speedup total= 1.89x mech= 0.87x impl= 2.18x | breakeven=  30.0 | conv= 0.51x
+2026-07-07 18:53:47,791 [INFO]   h= 4096 nprobe=   1 k=1000 | fu fused=  0.476 ctrl=  0.281 toploc=  0.312 | speedup total= 1.52x mech= 0.90x impl= 1.69x | breakeven=  39.6 | conv= 0.49x
+2026-07-07 18:53:47,791 [INFO]   h= 4096 nprobe=   1 recall | NDCG@10 base=0.0296 toploc=0.1493 (delta +0.1197)
+2026-07-07 18:53:48,740 [INFO]   h= 4096 nprobe=   2 k=  10 | fu fused=  0.757 ctrl=  0.252 toploc=  0.314 | speedup total= 2.41x mech= 0.80x impl= 3.00x | breakeven=  14.6 | conv= 0.77x
+2026-07-07 18:53:49,327 [INFO]   h= 4096 nprobe=   2 k= 100 | fu fused=  0.720 ctrl=  0.271 toploc=  0.322 | speedup total= 2.23x mech= 0.84x impl= 2.65x | breakeven=  16.3 | conv= 0.73x
+2026-07-07 18:53:50,073 [INFO]   h= 4096 nprobe=   2 k=1000 | fu fused=  0.763 ctrl=  0.354 toploc=  0.406 | speedup total= 1.88x mech= 0.87x impl= 2.15x | breakeven=  18.2 | conv= 0.71x
+2026-07-07 18:53:50,073 [INFO]   h= 4096 nprobe=   2 recall | NDCG@10 base=0.0315 toploc=0.2121 (delta +0.1806)
+2026-07-07 18:53:51,372 [INFO]   h= 4096 nprobe=   4 k=  10 | fu fused=  1.122 ctrl=  0.432 toploc=  0.455 | speedup total= 2.46x mech= 0.95x impl= 2.60x | breakeven=   9.7 | conv= 1.00x
+2026-07-07 18:53:52,222 [INFO]   h= 4096 nprobe=   4 k= 100 | fu fused=  1.097 ctrl=  0.406 toploc=  0.463 | speedup total= 2.37x mech= 0.88x impl= 2.70x | breakeven=  10.2 | conv= 0.97x
+2026-07-07 18:53:53,272 [INFO]   h= 4096 nprobe=   4 k=1000 | fu fused=  1.153 ctrl=  0.503 toploc=  0.567 | speedup total= 2.03x mech= 0.89x impl= 2.29x | breakeven=  11.1 | conv= 0.93x
+2026-07-07 18:53:53,273 [INFO]   h= 4096 nprobe=   4 recall | NDCG@10 base=0.0441 toploc=0.2857 (delta +0.2416)
+2026-07-07 18:53:55,175 [INFO]   h= 4096 nprobe=   8 k=  10 | fu fused=  1.751 ctrl=  0.672 toploc=  0.706 | speedup total= 2.48x mech= 0.95x impl= 2.61x | breakeven=   6.2 | conv= 1.27x
+2026-07-07 18:53:56,513 [INFO]   h= 4096 nprobe=   8 k= 100 | fu fused=  1.692 ctrl=  0.647 toploc=  0.719 | speedup total= 2.35x mech= 0.90x impl= 2.62x | breakeven=   6.7 | conv= 1.22x
+2026-07-07 18:53:58,048 [INFO]   h= 4096 nprobe=   8 k=1000 | fu fused=  1.746 ctrl=  0.750 toploc=  0.822 | speedup total= 2.12x mech= 0.91x impl= 2.33x | breakeven=   7.0 | conv= 1.17x
+2026-07-07 18:53:58,048 [INFO]   h= 4096 nprobe=   8 recall | NDCG@10 base=0.0498 toploc=0.3209 (delta +0.2711)
+2026-07-07 18:54:01,094 [INFO]   h= 4096 nprobe=  16 k=  10 | fu fused=  2.643 ctrl=  1.088 toploc=  1.198 | speedup total= 2.21x mech= 0.91x impl= 2.43x | breakeven=   4.5 | conv= 1.43x
+2026-07-07 18:54:03,339 [INFO]   h= 4096 nprobe=  16 k= 100 | fu fused=  2.696 ctrl=  1.098 toploc=  1.206 | speedup total= 2.23x mech= 0.91x impl= 2.45x | breakeven=   4.4 | conv= 1.44x
+2026-07-07 18:54:05,805 [INFO]   h= 4096 nprobe=  16 k=1000 | fu fused=  2.734 ctrl=  1.213 toploc=  1.322 | speedup total= 2.07x mech= 0.92x impl= 2.25x | breakeven=   4.6 | conv= 1.37x
+2026-07-07 18:54:05,806 [INFO]   h= 4096 nprobe=  16 recall | NDCG@10 base=0.0531 toploc=0.3430 (delta +0.2899)
+2026-07-07 18:54:11,040 [INFO]   h= 4096 nprobe=  32 k=  10 | fu fused=  4.024 ctrl=  1.909 toploc=  2.106 | speedup total= 1.91x mech= 0.91x impl= 2.11x | breakeven=   3.4 | conv= 1.45x
+2026-07-07 18:54:15,002 [INFO]   h= 4096 nprobe=  32 k= 100 | fu fused=  4.037 ctrl=  1.926 toploc=  2.119 | speedup total= 1.91x mech= 0.91x impl= 2.10x | breakeven=   3.4 | conv= 1.46x
+2026-07-07 18:54:19,265 [INFO]   h= 4096 nprobe=  32 k=1000 | fu fused=  3.966 ctrl=  2.065 toploc=  2.270 | speedup total= 1.75x mech= 0.91x impl= 1.92x | breakeven=   3.8 | conv= 1.37x
+2026-07-07 18:54:19,265 [INFO]   h= 4096 nprobe=  32 recall | NDCG@10 base=0.0600 toploc=0.3707 (delta +0.3108)
+2026-07-07 18:54:28,526 [INFO]   h= 4096 nprobe=  64 k=  10 | fu fused=  5.934 ctrl=  3.494 toploc=  3.794 | speedup total= 1.56x mech= 0.92x impl= 1.70x | breakeven=   3.0 | conv= 1.34x
+2026-07-07 18:54:35,713 [INFO]   h= 4096 nprobe=  64 k= 100 | fu fused=  6.005 ctrl=  3.513 toploc=  3.826 | speedup total= 1.57x mech= 0.92x impl= 1.71x | breakeven=   3.0 | conv= 1.35x
+2026-07-07 18:54:43,204 [INFO]   h= 4096 nprobe=  64 k=1000 | fu fused=  5.997 ctrl=  3.701 toploc=  3.996 | speedup total= 1.50x mech= 0.93x impl= 1.62x | breakeven=   3.2 | conv= 1.30x
+2026-07-07 18:54:43,205 [INFO]   h= 4096 nprobe=  64 recall | NDCG@10 base=0.0625 toploc=0.3837 (delta +0.3212)
+2026-07-07 18:55:00,791 [INFO]   h= 4096 nprobe= 128 k=  10 | fu fused=  9.387 ctrl=  6.368 toploc=  6.887 | speedup total= 1.36x mech= 0.92x impl= 1.47x | breakeven=   2.6 | conv= 1.25x
+2026-07-07 18:55:13,796 [INFO]   h= 4096 nprobe= 128 k= 100 | fu fused=  9.617 ctrl=  6.391 toploc=  6.866 | speedup total= 1.40x mech= 0.93x impl= 1.50x | breakeven=   2.4 | conv= 1.28x
+2026-07-07 18:55:27,305 [INFO]   h= 4096 nprobe= 128 k=1000 | fu fused=  9.300 ctrl=  6.679 toploc=  7.146 | speedup total= 1.30x mech= 0.93x impl= 1.39x | breakeven=   3.0 | conv= 1.20x
+2026-07-07 18:55:27,305 [INFO]   h= 4096 nprobe= 128 recall | NDCG@10 base=0.0661 toploc=0.3940 (delta +0.3279)
+2026-07-07 18:56:07,819 [INFO]   h= 4096 nprobe= 256 k=  10 | fu fused= 15.779 ctrl= 12.098 toploc= 12.961 | speedup total= 1.22x mech= 0.93x impl= 1.30x | breakeven=   2.3 | conv= 1.16x
+2026-07-07 18:56:32,466 [INFO]   h= 4096 nprobe= 256 k= 100 | fu fused= 16.058 ctrl= 12.168 toploc= 13.007 | speedup total= 1.23x mech= 0.94x impl= 1.32x | breakeven=   2.1 | conv= 1.19x
+2026-07-07 18:56:58,137 [INFO]   h= 4096 nprobe= 256 k=1000 | fu fused= 15.483 ctrl= 12.603 toploc= 13.552 | speedup total= 1.14x mech= 0.93x impl= 1.23x | breakeven=   3.4 | conv= 1.09x
+2026-07-07 18:56:58,137 [INFO]   h= 4096 nprobe= 256 recall | NDCG@10 base=0.0665 toploc=0.3994 (delta +0.3329)
+2026-07-07 18:56:58,688 [INFO] [h=8192] caches built once: 10.62 ms/conv (excluded from follow-up latency; charged to first-turn TOTAL and break-even)
+2026-07-07 18:56:59,716 [INFO]   h= 8192 nprobe=   1 k=  10 | fu fused=  0.461 ctrl=  0.201 toploc=  0.381 | speedup total= 1.21x mech= 0.53x impl= 2.30x | breakeven= 132.6 | conv= 0.31x
+2026-07-07 18:57:00,396 [INFO]   h= 8192 nprobe=   1 k= 100 | fu fused=  0.459 ctrl=  0.210 toploc=  0.383 | speedup total= 1.20x mech= 0.55x impl= 2.18x | breakeven= 139.0 | conv= 0.31x
+2026-07-07 18:57:01,198 [INFO]   h= 8192 nprobe=   1 k=1000 | fu fused=  0.476 ctrl=  0.281 toploc=  0.451 | speedup total= 1.05x mech= 0.62x impl= 1.69x | breakeven= 429.3 | conv= 0.31x
+2026-07-07 18:57:01,198 [INFO]   h= 8192 nprobe=   1 recall | NDCG@10 base=0.0296 toploc=0.1465 (delta +0.1168)
+2026-07-07 18:57:02,456 [INFO]   h= 8192 nprobe=   2 k=  10 | fu fused=  0.757 ctrl=  0.252 toploc=  0.456 | speedup total= 1.66x mech= 0.55x impl= 3.00x | breakeven=  35.2 | conv= 0.49x
+2026-07-07 18:57:03,285 [INFO]   h= 8192 nprobe=   2 k= 100 | fu fused=  0.720 ctrl=  0.271 toploc=  0.460 | speedup total= 1.57x mech= 0.59x impl= 2.65x | breakeven=  40.8 | conv= 0.46x
+2026-07-07 18:57:04,279 [INFO]   h= 8192 nprobe=   2 k=1000 | fu fused=  0.763 ctrl=  0.354 toploc=  0.546 | speedup total= 1.40x mech= 0.65x impl= 2.15x | breakeven=  49.0 | conv= 0.47x
+2026-07-07 18:57:04,279 [INFO]   h= 8192 nprobe=   2 recall | NDCG@10 base=0.0315 toploc=0.2131 (delta +0.1816)
+2026-07-07 18:57:05,867 [INFO]   h= 8192 nprobe=   4 k=  10 | fu fused=  1.122 ctrl=  0.432 toploc=  0.590 | speedup total= 1.90x mech= 0.73x impl= 2.60x | breakeven=  20.0 | conv= 0.67x
+2026-07-07 18:57:06,946 [INFO]   h= 8192 nprobe=   4 k= 100 | fu fused=  1.097 ctrl=  0.406 toploc=  0.596 | speedup total= 1.84x mech= 0.68x impl= 2.70x | breakeven=  21.2 | conv= 0.65x
+2026-07-07 18:57:08,236 [INFO]   h= 8192 nprobe=   4 k=1000 | fu fused=  1.153 ctrl=  0.503 toploc=  0.706 | speedup total= 1.63x mech= 0.71x impl= 2.29x | breakeven=  23.8 | conv= 0.64x
+2026-07-07 18:57:08,236 [INFO]   h= 8192 nprobe=   4 recall | NDCG@10 base=0.0441 toploc=0.2773 (delta +0.2332)
+2026-07-07 18:57:10,447 [INFO]   h= 8192 nprobe=   8 k=  10 | fu fused=  1.751 ctrl=  0.672 toploc=  0.844 | speedup total= 2.07x mech= 0.80x impl= 2.61x | breakeven=  11.7 | conv= 0.91x
+2026-07-07 18:57:12,012 [INFO]   h= 8192 nprobe=   8 k= 100 | fu fused=  1.692 ctrl=  0.647 toploc=  0.853 | speedup total= 1.98x mech= 0.76x impl= 2.62x | breakeven=  12.7 | conv= 0.87x
+2026-07-07 18:57:13,799 [INFO]   h= 8192 nprobe=   8 k=1000 | fu fused=  1.746 ctrl=  0.750 toploc=  0.968 | speedup total= 1.80x mech= 0.77x impl= 2.33x | breakeven=  13.6 | conv= 0.85x
+2026-07-07 18:57:13,799 [INFO]   h= 8192 nprobe=   8 recall | NDCG@10 base=0.0498 toploc=0.3226 (delta +0.2727)
+2026-07-07 18:57:17,153 [INFO]   h= 8192 nprobe=  16 k=  10 | fu fused=  2.643 ctrl=  1.088 toploc=  1.335 | speedup total= 1.98x mech= 0.82x impl= 2.43x | breakeven=   8.1 | conv= 1.10x
+2026-07-07 18:57:19,634 [INFO]   h= 8192 nprobe=  16 k= 100 | fu fused=  2.696 ctrl=  1.098 toploc=  1.342 | speedup total= 2.01x mech= 0.82x impl= 2.45x | breakeven=   7.8 | conv= 1.11x
+2026-07-07 18:57:22,341 [INFO]   h= 8192 nprobe=  16 k=1000 | fu fused=  2.734 ctrl=  1.213 toploc=  1.462 | speedup total= 1.87x mech= 0.83x impl= 2.25x | breakeven=   8.3 | conv= 1.07x
+2026-07-07 18:57:22,342 [INFO]   h= 8192 nprobe=  16 recall | NDCG@10 base=0.0531 toploc=0.3431 (delta +0.2900)
+2026-07-07 18:57:27,835 [INFO]   h= 8192 nprobe=  32 k=  10 | fu fused=  4.024 ctrl=  1.909 toploc=  2.224 | speedup total= 1.81x mech= 0.86x impl= 2.11x | breakeven=   5.9 | conv= 1.21x
+2026-07-07 18:57:32,007 [INFO]   h= 8192 nprobe=  32 k= 100 | fu fused=  4.037 ctrl=  1.926 toploc=  2.238 | speedup total= 1.80x mech= 0.86x impl= 2.10x | breakeven=   5.9 | conv= 1.22x
+2026-07-07 18:57:36,468 [INFO]   h= 8192 nprobe=  32 k=1000 | fu fused=  3.966 ctrl=  2.065 toploc=  2.394 | speedup total= 1.66x mech= 0.86x impl= 1.92x | breakeven=   6.7 | conv= 1.15x
+2026-07-07 18:57:36,468 [INFO]   h= 8192 nprobe=  32 recall | NDCG@10 base=0.0600 toploc=0.3682 (delta +0.3083)
+2026-07-07 18:57:45,833 [INFO]   h= 8192 nprobe=  64 k=  10 | fu fused=  5.934 ctrl=  3.494 toploc=  3.873 | speedup total= 1.53x mech= 0.90x impl= 1.70x | breakeven=   5.2 | conv= 1.21x
+2026-07-07 18:57:53,127 [INFO]   h= 8192 nprobe=  64 k= 100 | fu fused=  6.005 ctrl=  3.513 toploc=  3.891 | speedup total= 1.54x mech= 0.90x impl= 1.71x | breakeven=   5.0 | conv= 1.21x
+2026-07-07 18:58:00,740 [INFO]   h= 8192 nprobe=  64 k=1000 | fu fused=  5.997 ctrl=  3.701 toploc=  4.061 | speedup total= 1.48x mech= 0.91x impl= 1.62x | breakeven=   5.5 | conv= 1.17x
+2026-07-07 18:58:00,741 [INFO]   h= 8192 nprobe=  64 recall | NDCG@10 base=0.0625 toploc=0.3880 (delta +0.3255)
+2026-07-07 18:58:17,364 [INFO]   h= 8192 nprobe= 128 k=  10 | fu fused=  9.387 ctrl=  6.368 toploc=  6.890 | speedup total= 1.36x mech= 0.92x impl= 1.47x | breakeven=   4.3 | conv= 1.18x
+2026-07-07 18:58:30,425 [INFO]   h= 8192 nprobe= 128 k= 100 | fu fused=  9.617 ctrl=  6.391 toploc=  6.917 | speedup total= 1.39x mech= 0.92x impl= 1.50x | breakeven=   3.9 | conv= 1.20x
+2026-07-07 18:58:44,041 [INFO]   h= 8192 nprobe= 128 k=1000 | fu fused=  9.300 ctrl=  6.679 toploc=  7.208 | speedup total= 1.29x mech= 0.93x impl= 1.39x | breakeven=   5.1 | conv= 1.13x
+2026-07-07 18:58:44,041 [INFO]   h= 8192 nprobe= 128 recall | NDCG@10 base=0.0661 toploc=0.3981 (delta +0.3320)
+2026-07-07 18:59:16,689 [INFO]   h= 8192 nprobe= 256 k=  10 | fu fused= 15.779 ctrl= 12.098 toploc= 12.942 | speedup total= 1.22x mech= 0.93x impl= 1.30x | breakeven=   3.7 | conv= 1.13x
+2026-07-07 18:59:41,271 [INFO]   h= 8192 nprobe= 256 k= 100 | fu fused= 16.058 ctrl= 12.168 toploc= 12.966 | speedup total= 1.24x mech= 0.94x impl= 1.32x | breakeven=   3.4 | conv= 1.16x
+2026-07-07 19:00:06,887 [INFO]   h= 8192 nprobe= 256 k=1000 | fu fused= 15.483 ctrl= 12.603 toploc= 13.500 | speedup total= 1.15x mech= 0.93x impl= 1.23x | breakeven=   5.4 | conv= 1.06x
+2026-07-07 19:00:06,887 [INFO]   h= 8192 nprobe= 256 recall | NDCG@10 base=0.0665 toploc=0.4029 (delta +0.3364)
+2026-07-07 19:00:06,909 [INFO] Done. Results saved to /home/toploc1/Datasets/toploc1/IVF/dragon/metrics_ivf_toploc_dragon_v11.json

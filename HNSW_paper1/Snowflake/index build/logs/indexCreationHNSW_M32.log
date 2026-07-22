@@ -1,0 +1,33 @@
+2026-05-12 18:32:16,143 [INFO] Total files found: 194
+2026-05-12 18:33:51,461 [INFO] Vector dimension: 1024
+2026-05-12 18:33:51,461 [INFO] HNSW index created: d=1024, M=32, efConstruction=500
+2026-05-12 19:22:38,830 [INFO] [10/194] Indexed: 2,000,000 vectors
+2026-05-12 20:13:08,454 [INFO] [20/194] Indexed: 4,000,000 vectors
+2026-05-12 21:02:14,910 [INFO] [30/194] Indexed: 6,000,000 vectors
+2026-05-12 21:50:36,299 [INFO] [40/194] Indexed: 8,000,000 vectors
+2026-05-12 22:46:06,388 [INFO] [50/194] Indexed: 10,000,000 vectors
+2026-05-12 22:46:06,388 [INFO] Saving checkpoint at file 50...
+2026-05-12 22:55:44,108 [INFO] Checkpoint saved.
+2026-05-12 23:57:02,229 [INFO] [60/194] Indexed: 12,000,000 vectors
+2026-05-13 00:59:04,199 [INFO] [70/194] Indexed: 14,000,000 vectors
+2026-05-13 02:00:25,381 [INFO] [80/194] Indexed: 16,000,000 vectors
+2026-05-13 03:02:29,239 [INFO] [90/194] Indexed: 18,000,000 vectors
+2026-05-13 04:04:32,172 [INFO] [100/194] Indexed: 20,000,000 vectors
+2026-05-13 04:04:32,173 [INFO] Saving checkpoint at file 100...
+2026-05-13 04:23:22,179 [INFO] Checkpoint saved.
+2026-05-13 05:20:49,222 [INFO] [110/194] Indexed: 21,845,725 vectors
+2026-05-13 06:23:12,815 [INFO] [120/194] Indexed: 23,845,725 vectors
+2026-05-13 07:26:35,013 [INFO] [130/194] Indexed: 25,845,725 vectors
+2026-05-13 08:28:53,214 [INFO] [140/194] Indexed: 27,845,725 vectors
+2026-05-13 09:31:05,879 [INFO] [150/194] Indexed: 29,845,725 vectors
+2026-05-13 09:31:05,879 [INFO] Saving checkpoint at file 150...
+2026-05-13 09:59:17,466 [INFO] Checkpoint saved.
+2026-05-13 11:01:36,828 [INFO] [160/194] Indexed: 31,845,725 vectors
+2026-05-13 12:04:09,093 [INFO] [170/194] Indexed: 33,845,725 vectors
+2026-05-13 13:06:40,619 [INFO] [180/194] Indexed: 35,845,725 vectors
+2026-05-13 14:10:09,506 [INFO] [190/194] Indexed: 37,845,725 vectors
+2026-05-13 14:35:05,440 [INFO] Total vectors indexed: 38,636,446
+2026-05-13 14:35:05,450 [INFO] Saving final index and ID map...
+2026-05-13 15:26:50,597 [INFO] Pipeline complete.
+2026-05-13 15:26:50,598 [INFO] Index saved to:  /home/toploc1/Datasets/toploc1/indexes/treccast_hnsw.index
+2026-05-13 15:26:50,598 [INFO] IDs saved to:    /home/toploc1/Datasets/toploc1/indexes/treccast_hnsw_ids.npy

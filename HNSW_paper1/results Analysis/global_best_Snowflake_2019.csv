@@ -1,0 +1,2 @@
+scope,TOL,base M,base ef,base ms,TopLoc M,TopLoc up,TopLoc ef,TopLoc ms,speedup,base NDCG@10,TopLoc NDCG@10,base MRR@10,TopLoc MRR@10,base NDCG@3,TopLoc NDCG@3
+combined,0.0,32,512,3.0298,32,2,256,0.7622,3.975,0.5017,0.5019,0.8129,0.8129,0.5493,0.5493

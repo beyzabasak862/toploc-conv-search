@@ -1,0 +1,28 @@
+2026-07-15 15:01:48,253 [INFO] Total files found: 193
+2026-07-15 15:01:48,263 [INFO] Flat IP index created: d=768 (raw Dragon, no transform)
+2026-07-15 15:02:41,115 [INFO] [10/193] Indexed: 2,007,040 vectors
+2026-07-15 15:03:35,315 [INFO] [20/193] Indexed: 4,014,080 vectors
+2026-07-15 15:04:28,377 [INFO] [30/193] Indexed: 6,021,120 vectors
+2026-07-15 15:05:42,949 [INFO] [40/193] Indexed: 8,028,160 vectors
+2026-07-15 15:06:37,613 [INFO] [50/193] Indexed: 10,035,200 vectors
+2026-07-15 15:07:29,602 [INFO] [60/193] Indexed: 12,042,240 vectors
+2026-07-15 15:09:06,052 [INFO] [70/193] Indexed: 14,049,280 vectors
+2026-07-15 15:09:59,697 [INFO] [80/193] Indexed: 16,056,320 vectors
+2026-07-15 15:10:53,580 [INFO] [90/193] Indexed: 18,063,360 vectors
+2026-07-15 15:11:50,430 [INFO] [100/193] Indexed: 20,045,725 vectors
+2026-07-15 15:12:57,978 [INFO] [110/193] Indexed: 22,052,765 vectors
+2026-07-15 15:14:04,112 [INFO] [120/193] Indexed: 24,059,805 vectors
+2026-07-15 15:16:29,222 [INFO] [130/193] Indexed: 26,066,845 vectors
+2026-07-15 15:17:21,244 [INFO] [140/193] Indexed: 28,073,885 vectors
+2026-07-15 15:18:29,012 [INFO] [150/193] Indexed: 30,080,925 vectors
+2026-07-15 15:19:22,405 [INFO] [160/193] Indexed: 32,087,965 vectors
+2026-07-15 15:20:25,024 [INFO] [170/193] Indexed: 34,095,005 vectors
+2026-07-15 15:21:30,271 [INFO] [180/193] Indexed: 36,102,045 vectors
+2026-07-15 15:22:37,973 [INFO] [190/193] Indexed: 38,109,085 vectors
+2026-07-15 15:22:54,229 [INFO] Total vectors indexed: 38,636,446
+2026-07-15 15:40:36,649 [INFO] Checkpoint saved (38,636,446 vectors).
+2026-07-15 15:40:36,650 [INFO] Pipeline complete.
+2026-07-15 15:40:36,650 [INFO] Index saved to:  /home/toploc1/Datasets/toploc1/Exact_Search/treccast_flat_dragon.index
+2026-07-15 15:40:36,651 [INFO] IDs saved to:    /home/toploc1/Datasets/toploc1/Exact_Search/treccast_flat_dragon_ids.npy
+2026-07-15 17:20:46,357 [INFO] Total files found: 193
+2026-07-15 17:20:46,366 [INFO] Flat IP index created: d=768 (raw Dragon, no transform)

@@ -1,0 +1,6 @@
+nohup: ignoring input
+2026-07-20 17:10:28,154 [INFO] Total files found: 193
+2026-07-20 17:10:28,162 [INFO] Pass 1 already complete: max_norm=68.408218
+2026-07-20 17:10:28,171 [INFO] ================  BUILDING HNSW  M=16  ================
+2026-07-20 17:30:57,028 [INFO] [M=16] resuming from file 50/193, index has 10,035,200 vectors
+2026-07-20 18:08:36,601 [INFO] [M=16][60/193] Indexed: 12,042,240 vectors

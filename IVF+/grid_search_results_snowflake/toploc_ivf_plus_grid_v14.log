@@ -1,0 +1,73 @@
+2026-07-14 16:41:14,484 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/treccast_34M_ivf.index (mmap=True)
+2026-07-14 16:41:18,800 [INFO] Index loaded: 38,636,446 vectors, nlist=32768
+2026-07-14 16:41:21,657 [INFO] Centroid matrix: (32768, 1024)
+2026-07-14 16:42:01,023 [INFO] Queries: 479 | dim=1024
+2026-07-14 16:42:01,055 [INFO] Loaded qrels: 173 queries
+2026-07-14 16:42:01,056 [INFO] Conversations: 50 | follow-up queries: 429 | avg follow-ups/conv: 8.58
+2026-07-14 16:42:01,056 [INFO] === baseline nprobe=1 ===
+2026-07-14 16:42:27,794 [INFO]   k=  10: followup=  1.558 ms/q  firstturn=  1.377 ms/q
+2026-07-14 16:42:30,789 [INFO]   k= 100: followup=  1.575 ms/q  firstturn=  1.508 ms/q
+2026-07-14 16:42:33,721 [INFO]   k=1000: followup=  1.494 ms/q  firstturn=  1.467 ms/q
+2026-07-14 16:42:33,722 [INFO]   MRR@10=0.6378  NDCG@10=0.3313
+2026-07-14 16:42:33,734 [INFO] === baseline nprobe=2 ===
+2026-07-14 16:43:01,770 [INFO]   k=  10: followup=  1.788 ms/q  firstturn=  1.779 ms/q
+2026-07-14 16:43:05,134 [INFO]   k= 100: followup=  1.760 ms/q  firstturn=  1.645 ms/q
+2026-07-14 16:43:08,485 [INFO]   k=1000: followup=  1.764 ms/q  firstturn=  1.695 ms/q
+2026-07-14 16:43:08,490 [INFO]   MRR@10=0.6747  NDCG@10=0.3862
+2026-07-14 16:43:08,499 [INFO] === baseline nprobe=4 ===
+2026-07-14 16:43:56,972 [INFO]   k=  10: followup=  2.097 ms/q  firstturn=  2.190 ms/q
+2026-07-14 16:44:00,927 [INFO]   k= 100: followup=  2.081 ms/q  firstturn=  1.989 ms/q
+2026-07-14 16:44:04,949 [INFO]   k=1000: followup=  2.121 ms/q  firstturn=  1.966 ms/q
+2026-07-14 16:44:04,949 [INFO]   MRR@10=0.7311  NDCG@10=0.4226
+2026-07-14 16:44:04,958 [INFO] === baseline nprobe=8 ===
+2026-07-14 16:45:23,648 [INFO]   k=  10: followup=  2.639 ms/q  firstturn=  2.701 ms/q
+2026-07-14 16:45:28,699 [INFO]   k= 100: followup=  2.642 ms/q  firstturn=  2.610 ms/q
+2026-07-14 16:45:33,724 [INFO]   k=1000: followup=  2.651 ms/q  firstturn=  2.515 ms/q
+2026-07-14 16:45:33,725 [INFO]   MRR@10=0.7570  NDCG@10=0.4407
+2026-07-14 16:45:33,731 [INFO] === baseline nprobe=16 ===
+2026-07-14 16:47:32,021 [INFO]   k=  10: followup=  3.627 ms/q  firstturn=  3.526 ms/q
+2026-07-14 16:47:38,947 [INFO]   k= 100: followup=  3.630 ms/q  firstturn=  3.676 ms/q
+2026-07-14 16:47:45,830 [INFO]   k=1000: followup=  3.598 ms/q  firstturn=  3.531 ms/q
+2026-07-14 16:47:45,831 [INFO]   MRR@10=0.7616  NDCG@10=0.4415
+2026-07-14 16:47:45,845 [INFO] === baseline nprobe=32 ===
+2026-07-14 16:50:36,787 [INFO]   k=  10: followup=  6.058 ms/q  firstturn=  5.574 ms/q
+2026-07-14 16:50:47,654 [INFO]   k= 100: followup=  5.636 ms/q  firstturn=  5.757 ms/q
+2026-07-14 16:50:58,841 [INFO]   k=1000: followup=  5.882 ms/q  firstturn=  5.789 ms/q
+2026-07-14 16:50:58,841 [INFO]   MRR@10=0.7805  NDCG@10=0.4622
+2026-07-14 16:50:58,844 [INFO] === baseline nprobe=64 ===
+2026-07-14 16:54:14,502 [INFO]   k=  10: followup=  8.793 ms/q  firstturn=  8.242 ms/q
+2026-07-14 16:54:30,863 [INFO]   k= 100: followup=  8.551 ms/q  firstturn=  8.598 ms/q
+2026-07-14 16:54:47,549 [INFO]   k=1000: followup=  8.762 ms/q  firstturn=  8.587 ms/q
+2026-07-14 16:54:47,549 [INFO]   MRR@10=0.7772  NDCG@10=0.4722
+2026-07-14 16:54:47,560 [INFO] === baseline nprobe=128 ===
+2026-07-14 16:58:48,654 [INFO]   k=  10: followup= 13.251 ms/q  firstturn= 13.075 ms/q
+2026-07-14 16:59:13,331 [INFO]   k= 100: followup= 12.749 ms/q  firstturn= 12.548 ms/q
+2026-07-14 16:59:37,771 [INFO]   k=1000: followup= 12.735 ms/q  firstturn= 12.817 ms/q
+2026-07-14 16:59:37,771 [INFO]   MRR@10=0.7947  NDCG@10=0.4838
+2026-07-14 16:59:37,775 [INFO] === baseline nprobe=256 ===
+2026-07-14 17:03:59,660 [INFO]   k=  10: followup= 19.326 ms/q  firstturn= 20.591 ms/q
+2026-07-14 17:04:35,654 [INFO]   k= 100: followup= 18.720 ms/q  firstturn= 18.719 ms/q
+2026-07-14 17:05:12,334 [INFO]   k=1000: followup= 19.173 ms/q  firstturn= 19.586 ms/q
+2026-07-14 17:05:12,335 [INFO]   MRR@10=0.7978  NDCG@10=0.4897
+2026-07-14 17:05:12,467 [INFO] [h=512] initial cache build (ONE-TIME): 2.39 ms/conv (outside all timers, charged to first-turn total + break-even only)
+2026-07-14 17:05:16,941 [INFO]   h=  512 a=0.0  nprobe=   1 | marginal= 0.485 blended= 0.485 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.410 | speedup= 3.21x conv= 2.00x | NDCG@10=0.3243
+2026-07-14 17:08:49,048 [INFO]   h=  512 a=0.0  nprobe=   2 | marginal=37.754 blended=37.754 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.319 | speedup= 0.05x conv= 0.05x | NDCG@10=0.3749
+2026-07-14 17:12:21,608 [INFO]   h=  512 a=0.0  nprobe=   4 | marginal=37.689 blended=37.689 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.279 | speedup= 0.06x conv= 0.06x | NDCG@10=0.4164
+2026-07-14 17:15:54,410 [INFO]   h=  512 a=0.0  nprobe=   8 | marginal=38.035 blended=38.035 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.291 | speedup= 0.07x conv= 0.08x | NDCG@10=0.4369
+2026-07-14 17:19:28,369 [INFO]   h=  512 a=0.0  nprobe=  16 | marginal=38.100 blended=38.100 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.296 | speedup= 0.10x conv= 0.10x | NDCG@10=0.4456
+2026-07-14 17:23:08,754 [INFO]   h=  512 a=0.0  nprobe=  32 | marginal=39.271 blended=39.271 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.322 | speedup= 0.15x conv= 0.17x | NDCG@10=0.4539
+2026-07-14 17:26:56,460 [INFO]   h=  512 a=0.0  nprobe=  64 | marginal=39.966 blended=39.966 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.360 | speedup= 0.22x conv= 0.24x | NDCG@10=0.4595
+2026-07-14 17:32:41,850 [INFO]   h=  512 a=0.0  nprobe= 128 | marginal=42.197 blended=42.197 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.431 | speedup= 0.31x conv= 0.34x | NDCG@10=0.4682
+2026-07-14 17:38:57,329 [INFO]   h=  512 a=0.0  nprobe= 256 | marginal=45.693 blended=45.693 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.594 | speedup= 0.42x conv= 0.46x | NDCG@10=0.4702
+2026-07-14 17:39:40,720 [INFO]   h=  512 a=0.05 nprobe=   1 | marginal= 0.460 blended= 6.752 refresh/event=10.785 (k=10) | refreshes=249 (58.0%) mean|I0|/np=0.420 | speedup= 0.23x conv= 0.24x | NDCG@10=0.3330
+2026-07-14 17:43:29,825 [INFO]   h=  512 a=0.05 nprobe=   2 | marginal=37.864 blended=40.071 refresh/event=11.035 (k=10) | refreshes=161 (37.5%) mean|I0|/np=0.368 | speedup= 0.04x conv= 0.05x | NDCG@10=0.3897
+2026-07-14 17:47:18,086 [INFO]   h=  512 a=0.05 nprobe=   4 | marginal=38.012 blended=39.537 refresh/event=10.834 (k=10) | refreshes=116 (27.0%) mean|I0|/np=0.300 | speedup= 0.05x conv= 0.06x | NDCG@10=0.4207
+2026-07-14 17:51:07,877 [INFO]   h=  512 a=0.05 nprobe=   8 | marginal=38.351 blended=39.327 refresh/event=10.876 (k=10) | refreshes= 70 (16.3%) mean|I0|/np=0.295 | speedup= 0.07x conv= 0.07x | NDCG@10=0.4375
+2026-07-14 17:55:22,911 [INFO]   h=  512 a=0.05 nprobe=  16 | marginal=38.401 blended=38.841 refresh/event=11.018 (k=10) | refreshes= 28 ( 6.5%) mean|I0|/np=0.292 | speedup= 0.09x conv= 0.10x | NDCG@10=0.4369
+2026-07-14 17:59:10,681 [INFO]   h=  512 a=0.05 nprobe=  32 | marginal=39.413 blended=39.522 refresh/event=11.130 (k=10) | refreshes=  7 ( 1.6%) mean|I0|/np=0.318 | speedup= 0.15x conv= 0.17x | NDCG@10=0.4538
+2026-07-14 18:03:16,144 [INFO]   h=  512 a=0.05 nprobe=  64 | marginal=38.680 blended=38.691 refresh/event=10.648 (k=10) | refreshes=  1 ( 0.2%) mean|I0|/np=0.360 | speedup= 0.23x conv= 0.25x | NDCG@10=0.4595
+2026-07-14 18:07:42,450 [INFO]   h=  512 a=0.05 nprobe= 128 | marginal=41.138 blended=41.138 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.431 | speedup= 0.32x conv= 0.35x | NDCG@10=0.4682
+2026-07-14 18:12:39,374 [INFO]   h=  512 a=0.05 nprobe= 256 | marginal=44.653 blended=44.653 refresh/event= 0.000 (k=10) | refreshes=  0 ( 0.0%) mean|I0|/np=0.594 | speedup= 0.43x conv= 0.47x | NDCG@10=0.4702
+2026-07-14 18:13:17,943 [INFO]   h=  512 a=0.1  nprobe=   1 | marginal= 0.440 blended= 6.554 refresh/event=10.445 (k=10) | refreshes=249 (58.0%) mean|I0|/np=0.420 | speedup= 0.24x conv= 0.25x | NDCG@10=0.3330
+2026-07-14 18:17:00,270 [INFO]   h=  512 a=0.1  nprobe=   2 | marginal=37.285 blended=39.420 refresh/event=10.970 (k=10) | refreshes=161 (37.5%) mean|I0|/np=0.368 | speedup= 0.05x conv= 0.05x | NDCG@10=0.3897
+2026-07-14 18:20:39,922 [INFO]   h=  512 a=0.1  nprobe=   4 | marginal=37.462 blended=39.081 refresh/event=10.996 (k=10) | refreshes=116 (27.0%) mean|I0|/np=0.300 | speedup= 0.05x conv= 0.06x | NDCG@10=0.4207

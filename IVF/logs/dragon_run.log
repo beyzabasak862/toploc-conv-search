@@ -1,0 +1,387 @@
+nohup: ignoring input
+2026-06-02 20:31:02,431 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/treccast_34M_ivf.index
+2026-06-02 20:59:54,859 [INFO] Index loaded: 38,636,446 vectors
+2026-06-02 20:59:54,862 [INFO] Index nlist (|C|): 32,768
+2026-06-02 21:00:17,453 [INFO] ID map loaded: 38,636,446 entries
+2026-06-02 21:00:17,453 [INFO] Loading queries from ../conversational/CAST2019/topics/topics_snowflake_embeddings.parquet
+2026-06-02 21:00:30,379 [INFO] Queries: 479 | dim=1024
+2026-06-02 21:00:30,385 [INFO] Conversations: 50 | avg turns: 9.6
+2026-06-02 21:00:30,386 [INFO] Loading qrels from ../conversational/CAST2019/topics/qrels.qrel
+2026-06-02 21:00:30,460 [INFO] Loaded qrels: 173 queries, 29350 judgments
+2026-06-02 21:00:30,460 [INFO] --- h=512 | nprobe=1 ---
+2026-06-02 21:00:31,615 [INFO]   centroid_ms (C->C0, total):      572.2
+2026-06-02 21:00:31,615 [INFO]   refine_ms   (C0->nprobe, total): 50.4
+2026-06-02 21:00:31,616 [INFO]   scan_ms     (posting, total):    291.7
+2026-06-02 21:00:31,616 [INFO]   avg_query_time_ms:               1.91
+2026-06-02 21:00:31,616 [INFO]   MRR@10:  0.6186
+2026-06-02 21:00:31,616 [INFO]   NDCG@3:  0.3823
+2026-06-02 21:00:31,616 [INFO]   NDCG@10: 0.3243
+2026-06-02 21:00:31,617 [INFO] --- h=512 | nprobe=2 ---
+2026-06-02 21:00:32,879 [INFO]   centroid_ms (C->C0, total):      534.4
+2026-06-02 21:00:32,880 [INFO]   refine_ms   (C0->nprobe, total): 39.9
+2026-06-02 21:00:32,880 [INFO]   scan_ms     (posting, total):    446.9
+2026-06-02 21:00:32,880 [INFO]   avg_query_time_ms:               2.13
+2026-06-02 21:00:32,880 [INFO]   MRR@10:  0.6637
+2026-06-02 21:00:32,880 [INFO]   NDCG@3:  0.4332
+2026-06-02 21:00:32,880 [INFO]   NDCG@10: 0.3749
+2026-06-02 21:00:32,881 [INFO] --- h=512 | nprobe=4 ---
+2026-06-02 21:00:34,497 [INFO]   centroid_ms (C->C0, total):      535.5
+2026-06-02 21:00:34,497 [INFO]   refine_ms   (C0->nprobe, total): 39.9
+2026-06-02 21:00:34,497 [INFO]   scan_ms     (posting, total):    806.3
+2026-06-02 21:00:34,497 [INFO]   avg_query_time_ms:               2.88
+2026-06-02 21:00:34,498 [INFO]   MRR@10:  0.7222
+2026-06-02 21:00:34,498 [INFO]   NDCG@3:  0.4768
+2026-06-02 21:00:34,498 [INFO]   NDCG@10: 0.4164
+2026-06-02 21:00:34,498 [INFO] --- h=512 | nprobe=8 ---
+2026-06-02 21:00:36,898 [INFO]   centroid_ms (C->C0, total):      531.9
+2026-06-02 21:00:36,898 [INFO]   refine_ms   (C0->nprobe, total): 41.0
+2026-06-02 21:00:36,898 [INFO]   scan_ms     (posting, total):    1594.5
+2026-06-02 21:00:36,899 [INFO]   avg_query_time_ms:               4.52
+2026-06-02 21:00:36,899 [INFO]   MRR@10:  0.7541
+2026-06-02 21:00:36,899 [INFO]   NDCG@3:  0.4984
+2026-06-02 21:00:36,899 [INFO]   NDCG@10: 0.4369
+2026-06-02 21:00:36,899 [INFO] --- h=512 | nprobe=16 ---
+2026-06-02 21:00:40,855 [INFO]   centroid_ms (C->C0, total):      534.3
+2026-06-02 21:00:40,855 [INFO]   refine_ms   (C0->nprobe, total): 40.6
+2026-06-02 21:00:40,855 [INFO]   scan_ms     (posting, total):    3148.9
+2026-06-02 21:00:40,856 [INFO]   avg_query_time_ms:               7.77
+2026-06-02 21:00:40,856 [INFO]   MRR@10:  0.7670
+2026-06-02 21:00:40,856 [INFO]   NDCG@3:  0.5024
+2026-06-02 21:00:40,856 [INFO]   NDCG@10: 0.4456
+2026-06-02 21:00:40,856 [INFO] --- h=512 | nprobe=32 ---
+2026-06-02 21:00:47,693 [INFO]   centroid_ms (C->C0, total):      533.5
+2026-06-02 21:00:47,694 [INFO]   refine_ms   (C0->nprobe, total): 40.4
+2026-06-02 21:00:47,694 [INFO]   scan_ms     (posting, total):    6028.3
+2026-06-02 21:00:47,694 [INFO]   avg_query_time_ms:               13.78
+2026-06-02 21:00:47,694 [INFO]   MRR@10:  0.7725
+2026-06-02 21:00:47,694 [INFO]   NDCG@3:  0.5087
+2026-06-02 21:00:47,695 [INFO]   NDCG@10: 0.4539
+2026-06-02 21:00:47,695 [INFO] --- h=512 | nprobe=64 ---
+2026-06-02 21:01:00,212 [INFO]   centroid_ms (C->C0, total):      533.9
+2026-06-02 21:01:00,212 [INFO]   refine_ms   (C0->nprobe, total): 42.2
+2026-06-02 21:01:00,212 [INFO]   scan_ms     (posting, total):    11708.3
+2026-06-02 21:01:00,213 [INFO]   avg_query_time_ms:               25.65
+2026-06-02 21:01:00,213 [INFO]   MRR@10:  0.7701
+2026-06-02 21:01:00,213 [INFO]   NDCG@3:  0.5115
+2026-06-02 21:01:00,213 [INFO]   NDCG@10: 0.4595
+2026-06-02 21:01:00,213 [INFO] --- h=512 | nprobe=128 ---
+2026-06-02 21:01:23,813 [INFO]   centroid_ms (C->C0, total):      533.6
+2026-06-02 21:01:23,813 [INFO]   refine_ms   (C0->nprobe, total): 43.4
+2026-06-02 21:01:23,813 [INFO]   scan_ms     (posting, total):    22790.9
+2026-06-02 21:01:23,814 [INFO]   avg_query_time_ms:               48.78
+2026-06-02 21:01:23,814 [INFO]   MRR@10:  0.7807
+2026-06-02 21:01:23,814 [INFO]   NDCG@3:  0.5181
+2026-06-02 21:01:23,814 [INFO]   NDCG@10: 0.4682
+2026-06-02 21:01:23,815 [INFO] --- h=512 | nprobe=256 ---
+2026-06-02 21:02:09,530 [INFO]   centroid_ms (C->C0, total):      533.0
+2026-06-02 21:02:09,530 [INFO]   refine_ms   (C0->nprobe, total): 44.9
+2026-06-02 21:02:09,531 [INFO]   scan_ms     (posting, total):    44903.9
+2026-06-02 21:02:09,531 [INFO]   avg_query_time_ms:               94.95
+2026-06-02 21:02:09,531 [INFO]   MRR@10:  0.7828
+2026-06-02 21:02:09,531 [INFO]   NDCG@3:  0.5184
+2026-06-02 21:02:09,531 [INFO]   NDCG@10: 0.4702
+2026-06-02 21:02:09,532 [INFO] --- h=512 | nprobe=512 ---
+2026-06-02 21:03:40,162 [INFO]   centroid_ms (C->C0, total):      533.7
+2026-06-02 21:03:40,162 [INFO]   refine_ms   (C0->nprobe, total): 49.8
+2026-06-02 21:03:40,162 [INFO]   scan_ms     (posting, total):    89812.4
+2026-06-02 21:03:40,162 [INFO]   avg_query_time_ms:               188.72
+2026-06-02 21:03:40,163 [INFO]   MRR@10:  0.7828
+2026-06-02 21:03:40,163 [INFO]   NDCG@3:  0.5184
+2026-06-02 21:03:40,163 [INFO]   NDCG@10: 0.4693
+2026-06-02 21:03:40,163 [INFO] --- h=1024 | nprobe=1 ---
+2026-06-02 21:03:41,525 [INFO]   centroid_ms (C->C0, total):      623.6
+2026-06-02 21:03:41,525 [INFO]   refine_ms   (C0->nprobe, total): 86.0
+2026-06-02 21:03:41,525 [INFO]   scan_ms     (posting, total):    321.9
+2026-06-02 21:03:41,526 [INFO]   avg_query_time_ms:               2.15
+2026-06-02 21:03:41,526 [INFO]   MRR@10:  0.6222
+2026-06-02 21:03:41,526 [INFO]   NDCG@3:  0.3841
+2026-06-02 21:03:41,526 [INFO]   NDCG@10: 0.3287
+2026-06-02 21:03:41,526 [INFO] --- h=1024 | nprobe=2 ---
+2026-06-02 21:03:43,106 [INFO]   centroid_ms (C->C0, total):      619.7
+2026-06-02 21:03:43,107 [INFO]   refine_ms   (C0->nprobe, total): 84.7
+2026-06-02 21:03:43,107 [INFO]   scan_ms     (posting, total):    542.5
+2026-06-02 21:03:43,107 [INFO]   avg_query_time_ms:               2.60
+2026-06-02 21:03:43,107 [INFO]   MRR@10:  0.6625
+2026-06-02 21:03:43,107 [INFO]   NDCG@3:  0.4346
+2026-06-02 21:03:43,108 [INFO]   NDCG@10: 0.3807
+2026-06-02 21:03:43,108 [INFO] --- h=1024 | nprobe=4 ---
+2026-06-02 21:03:44,937 [INFO]   centroid_ms (C->C0, total):      574.0
+2026-06-02 21:03:44,937 [INFO]   refine_ms   (C0->nprobe, total): 80.4
+2026-06-02 21:03:44,937 [INFO]   scan_ms     (posting, total):    893.6
+2026-06-02 21:03:44,937 [INFO]   avg_query_time_ms:               3.23
+2026-06-02 21:03:44,937 [INFO]   MRR@10:  0.7237
+2026-06-02 21:03:44,938 [INFO]   NDCG@3:  0.4765
+2026-06-02 21:03:44,938 [INFO]   NDCG@10: 0.4178
+2026-06-02 21:03:44,938 [INFO] --- h=1024 | nprobe=8 ---
+2026-06-02 21:03:47,726 [INFO]   centroid_ms (C->C0, total):      595.5
+2026-06-02 21:03:47,726 [INFO]   refine_ms   (C0->nprobe, total): 81.2
+2026-06-02 21:03:47,727 [INFO]   scan_ms     (posting, total):    1821.1
+2026-06-02 21:03:47,727 [INFO]   avg_query_time_ms:               5.21
+2026-06-02 21:03:47,727 [INFO]   MRR@10:  0.7590
+2026-06-02 21:03:47,728 [INFO]   NDCG@3:  0.5032
+2026-06-02 21:03:47,728 [INFO]   NDCG@10: 0.4425
+2026-06-02 21:03:47,728 [INFO] --- h=1024 | nprobe=16 ---
+2026-06-02 21:03:51,987 [INFO]   centroid_ms (C->C0, total):      562.4
+2026-06-02 21:03:51,987 [INFO]   refine_ms   (C0->nprobe, total): 78.4
+2026-06-02 21:03:51,988 [INFO]   scan_ms     (posting, total):    3328.9
+2026-06-02 21:03:51,988 [INFO]   avg_query_time_ms:               8.29
+2026-06-02 21:03:51,988 [INFO]   MRR@10:  0.7716
+2026-06-02 21:03:51,989 [INFO]   NDCG@3:  0.5101
+2026-06-02 21:03:51,989 [INFO]   NDCG@10: 0.4484
+2026-06-02 21:03:51,989 [INFO] --- h=1024 | nprobe=32 ---
+2026-06-02 21:03:59,379 [INFO]   centroid_ms (C->C0, total):      560.7
+2026-06-02 21:03:59,379 [INFO]   refine_ms   (C0->nprobe, total): 83.3
+2026-06-02 21:03:59,379 [INFO]   scan_ms     (posting, total):    6434.7
+2026-06-02 21:03:59,380 [INFO]   avg_query_time_ms:               14.78
+2026-06-02 21:03:59,380 [INFO]   MRR@10:  0.7866
+2026-06-02 21:03:59,380 [INFO]   NDCG@3:  0.5211
+2026-06-02 21:03:59,380 [INFO]   NDCG@10: 0.4635
+2026-06-02 21:03:59,380 [INFO] --- h=1024 | nprobe=64 ---
+2026-06-02 21:04:12,350 [INFO]   centroid_ms (C->C0, total):      536.4
+2026-06-02 21:04:12,350 [INFO]   refine_ms   (C0->nprobe, total): 85.8
+2026-06-02 21:04:12,350 [INFO]   scan_ms     (posting, total):    12015.0
+2026-06-02 21:04:12,351 [INFO]   avg_query_time_ms:               26.38
+2026-06-02 21:04:12,351 [INFO]   MRR@10:  0.7804
+2026-06-02 21:04:12,351 [INFO]   NDCG@3:  0.5229
+2026-06-02 21:04:12,351 [INFO]   NDCG@10: 0.4668
+2026-06-02 21:04:12,351 [INFO] --- h=1024 | nprobe=128 ---
+2026-06-02 21:04:36,157 [INFO]   centroid_ms (C->C0, total):      538.8
+2026-06-02 21:04:36,158 [INFO]   refine_ms   (C0->nprobe, total): 82.3
+2026-06-02 21:04:36,158 [INFO]   scan_ms     (posting, total):    22863.2
+2026-06-02 21:04:36,158 [INFO]   avg_query_time_ms:               49.03
+2026-06-02 21:04:36,158 [INFO]   MRR@10:  0.7828
+2026-06-02 21:04:36,158 [INFO]   NDCG@3:  0.5245
+2026-06-02 21:04:36,159 [INFO]   NDCG@10: 0.4756
+2026-06-02 21:04:36,159 [INFO] --- h=1024 | nprobe=256 ---
+2026-06-02 21:05:21,888 [INFO]   centroid_ms (C->C0, total):      536.5
+2026-06-02 21:05:21,888 [INFO]   refine_ms   (C0->nprobe, total): 88.7
+2026-06-02 21:05:21,888 [INFO]   scan_ms     (posting, total):    44791.9
+2026-06-02 21:05:21,888 [INFO]   avg_query_time_ms:               94.82
+2026-06-02 21:05:21,889 [INFO]   MRR@10:  0.7892
+2026-06-02 21:05:21,889 [INFO]   NDCG@3:  0.5256
+2026-06-02 21:05:21,889 [INFO]   NDCG@10: 0.4785
+2026-06-02 21:05:21,889 [INFO] --- h=1024 | nprobe=512 ---
+2026-06-02 21:06:50,821 [INFO]   centroid_ms (C->C0, total):      534.7
+2026-06-02 21:06:50,822 [INFO]   refine_ms   (C0->nprobe, total): 92.8
+2026-06-02 21:06:50,822 [INFO]   scan_ms     (posting, total):    87978.5
+2026-06-02 21:06:50,822 [INFO]   avg_query_time_ms:               184.98
+2026-06-02 21:06:50,822 [INFO]   MRR@10:  0.7996
+2026-06-02 21:06:50,822 [INFO]   NDCG@3:  0.5280
+2026-06-02 21:06:50,822 [INFO]   NDCG@10: 0.4798
+2026-06-02 21:06:50,823 [INFO] --- h=1024 | nprobe=1024 ---
+2026-06-02 21:09:47,934 [INFO]   centroid_ms (C->C0, total):      537.2
+2026-06-02 21:09:47,934 [INFO]   refine_ms   (C0->nprobe, total): 106.7
+2026-06-02 21:09:47,934 [INFO]   scan_ms     (posting, total):    176137.0
+2026-06-02 21:09:47,934 [INFO]   avg_query_time_ms:               369.06
+2026-06-02 21:09:47,934 [INFO]   MRR@10:  0.7996
+2026-06-02 21:09:47,935 [INFO]   NDCG@3:  0.5280
+2026-06-02 21:09:47,935 [INFO]   NDCG@10: 0.4799
+2026-06-02 21:09:47,935 [INFO] --- h=4096 | nprobe=1 ---
+2026-06-02 21:09:49,515 [INFO]   centroid_ms (C->C0, total):      639.2
+2026-06-02 21:09:49,515 [INFO]   refine_ms   (C0->nprobe, total): 303.7
+2026-06-02 21:09:49,515 [INFO]   scan_ms     (posting, total):    310.3
+2026-06-02 21:09:49,515 [INFO]   avg_query_time_ms:               2.62
+2026-06-02 21:09:49,516 [INFO]   MRR@10:  0.6303
+2026-06-02 21:09:49,516 [INFO]   NDCG@3:  0.3878
+2026-06-02 21:09:49,516 [INFO]   NDCG@10: 0.3288
+2026-06-02 21:09:49,516 [INFO] --- h=4096 | nprobe=2 ---
+2026-06-02 21:09:51,287 [INFO]   centroid_ms (C->C0, total):      605.6
+2026-06-02 21:09:51,287 [INFO]   refine_ms   (C0->nprobe, total): 282.5
+2026-06-02 21:09:51,287 [INFO]   scan_ms     (posting, total):    508.9
+2026-06-02 21:09:51,287 [INFO]   avg_query_time_ms:               2.92
+2026-06-02 21:09:51,287 [INFO]   MRR@10:  0.6618
+2026-06-02 21:09:51,288 [INFO]   NDCG@3:  0.4359
+2026-06-02 21:09:51,288 [INFO]   NDCG@10: 0.3827
+2026-06-02 21:09:51,288 [INFO] --- h=4096 | nprobe=4 ---
+2026-06-02 21:09:53,445 [INFO]   centroid_ms (C->C0, total):      619.2
+2026-06-02 21:09:53,446 [INFO]   refine_ms   (C0->nprobe, total): 288.2
+2026-06-02 21:09:53,446 [INFO]   scan_ms     (posting, total):    937.0
+2026-06-02 21:09:53,446 [INFO]   avg_query_time_ms:               3.85
+2026-06-02 21:09:53,446 [INFO]   MRR@10:  0.7181
+2026-06-02 21:09:53,446 [INFO]   NDCG@3:  0.4785
+2026-06-02 21:09:53,447 [INFO]   NDCG@10: 0.4176
+2026-06-02 21:09:53,447 [INFO] --- h=4096 | nprobe=8 ---
+2026-06-02 21:09:56,384 [INFO]   centroid_ms (C->C0, total):      596.3
+2026-06-02 21:09:56,384 [INFO]   refine_ms   (C0->nprobe, total): 281.3
+2026-06-02 21:09:56,384 [INFO]   scan_ms     (posting, total):    1753.1
+2026-06-02 21:09:56,385 [INFO]   avg_query_time_ms:               5.49
+2026-06-02 21:09:56,385 [INFO]   MRR@10:  0.7545
+2026-06-02 21:09:56,385 [INFO]   NDCG@3:  0.5023
+2026-06-02 21:09:56,385 [INFO]   NDCG@10: 0.4418
+2026-06-02 21:09:56,386 [INFO] --- h=4096 | nprobe=16 ---
+2026-06-02 21:10:00,921 [INFO]   centroid_ms (C->C0, total):      585.9
+2026-06-02 21:10:00,921 [INFO]   refine_ms   (C0->nprobe, total): 276.8
+2026-06-02 21:10:00,921 [INFO]   scan_ms     (posting, total):    3366.7
+2026-06-02 21:10:00,922 [INFO]   avg_query_time_ms:               8.83
+2026-06-02 21:10:00,922 [INFO]   MRR@10:  0.7768
+2026-06-02 21:10:00,922 [INFO]   NDCG@3:  0.5147
+2026-06-02 21:10:00,922 [INFO]   NDCG@10: 0.4519
+2026-06-02 21:10:00,922 [INFO] --- h=4096 | nprobe=32 ---
+2026-06-02 21:10:08,369 [INFO]   centroid_ms (C->C0, total):      570.7
+2026-06-02 21:10:08,369 [INFO]   refine_ms   (C0->nprobe, total): 280.4
+2026-06-02 21:10:08,369 [INFO]   scan_ms     (posting, total):    6270.2
+2026-06-02 21:10:08,370 [INFO]   avg_query_time_ms:               14.87
+2026-06-02 21:10:08,370 [INFO]   MRR@10:  0.7797
+2026-06-02 21:10:08,370 [INFO]   NDCG@3:  0.5205
+2026-06-02 21:10:08,370 [INFO]   NDCG@10: 0.4586
+2026-06-02 21:10:08,370 [INFO] --- h=4096 | nprobe=64 ---
+2026-06-02 21:10:21,734 [INFO]   centroid_ms (C->C0, total):      563.6
+2026-06-02 21:10:21,734 [INFO]   refine_ms   (C0->nprobe, total): 290.8
+2026-06-02 21:10:21,735 [INFO]   scan_ms     (posting, total):    12165.7
+2026-06-02 21:10:21,735 [INFO]   avg_query_time_ms:               27.18
+2026-06-02 21:10:21,735 [INFO]   MRR@10:  0.7805
+2026-06-02 21:10:21,736 [INFO]   NDCG@3:  0.5367
+2026-06-02 21:10:21,736 [INFO]   NDCG@10: 0.4761
+2026-06-02 21:10:21,736 [INFO] --- h=4096 | nprobe=128 ---
+2026-06-02 21:10:45,946 [INFO]   centroid_ms (C->C0, total):      567.2
+2026-06-02 21:10:45,947 [INFO]   refine_ms   (C0->nprobe, total): 292.6
+2026-06-02 21:10:45,947 [INFO]   scan_ms     (posting, total):    23001.1
+2026-06-02 21:10:45,947 [INFO]   avg_query_time_ms:               49.81
+2026-06-02 21:10:45,947 [INFO]   MRR@10:  0.7783
+2026-06-02 21:10:45,947 [INFO]   NDCG@3:  0.5328
+2026-06-02 21:10:45,948 [INFO]   NDCG@10: 0.4811
+2026-06-02 21:10:45,948 [INFO] --- h=4096 | nprobe=256 ---
+2026-06-02 21:11:31,623 [INFO]   centroid_ms (C->C0, total):      560.0
+2026-06-02 21:11:31,624 [INFO]   refine_ms   (C0->nprobe, total): 282.3
+2026-06-02 21:11:31,624 [INFO]   scan_ms     (posting, total):    44488.3
+2026-06-02 21:11:31,624 [INFO]   avg_query_time_ms:               94.64
+2026-06-02 21:11:31,624 [INFO]   MRR@10:  0.7900
+2026-06-02 21:11:31,624 [INFO]   NDCG@3:  0.5391
+2026-06-02 21:11:31,625 [INFO]   NDCG@10: 0.4892
+2026-06-02 21:11:31,625 [INFO] --- h=4096 | nprobe=512 ---
+2026-06-02 21:13:00,864 [INFO]   centroid_ms (C->C0, total):      564.0
+2026-06-02 21:13:00,864 [INFO]   refine_ms   (C0->nprobe, total): 303.8
+2026-06-02 21:13:00,864 [INFO]   scan_ms     (posting, total):    88000.4
+2026-06-02 21:13:00,864 [INFO]   avg_query_time_ms:               185.53
+2026-06-02 21:13:00,864 [INFO]   MRR@10:  0.8045
+2026-06-02 21:13:00,865 [INFO]   NDCG@3:  0.5488
+2026-06-02 21:13:00,865 [INFO]   NDCG@10: 0.4984
+2026-06-02 21:13:00,865 [INFO] --- h=4096 | nprobe=1024 ---
+2026-06-02 21:15:54,754 [INFO]   centroid_ms (C->C0, total):      563.5
+2026-06-02 21:15:54,754 [INFO]   refine_ms   (C0->nprobe, total): 334.2
+2026-06-02 21:15:54,754 [INFO]   scan_ms     (posting, total):    172629.9
+2026-06-02 21:15:54,755 [INFO]   avg_query_time_ms:               362.27
+2026-06-02 21:15:54,755 [INFO]   MRR@10:  0.8081
+2026-06-02 21:15:54,755 [INFO]   NDCG@3:  0.5488
+2026-06-02 21:15:54,755 [INFO]   NDCG@10: 0.4982
+2026-06-02 21:15:54,756 [INFO] --- h=4096 | nprobe=2048 ---
+2026-06-02 21:21:35,687 [INFO]   centroid_ms (C->C0, total):      562.1
+2026-06-02 21:21:35,687 [INFO]   refine_ms   (C0->nprobe, total): 338.3
+2026-06-02 21:21:35,688 [INFO]   scan_ms     (posting, total):    339681.7
+2026-06-02 21:21:35,688 [INFO]   avg_query_time_ms:               711.03
+2026-06-02 21:21:35,688 [INFO]   MRR@10:  0.8081
+2026-06-02 21:21:35,688 [INFO]   NDCG@3:  0.5488
+2026-06-02 21:21:35,688 [INFO]   NDCG@10: 0.4997
+2026-06-02 21:21:35,689 [INFO] --- h=4096 | nprobe=4096 ---
+2026-06-02 21:33:02,992 [INFO]   centroid_ms (C->C0, total):      564.7
+2026-06-02 21:33:02,992 [INFO]   refine_ms   (C0->nprobe, total): 336.8
+2026-06-02 21:33:02,993 [INFO]   scan_ms     (posting, total):    686034.1
+2026-06-02 21:33:02,993 [INFO]   avg_query_time_ms:               1434.10
+2026-06-02 21:33:02,993 [INFO]   MRR@10:  0.8081
+2026-06-02 21:33:02,993 [INFO]   NDCG@3:  0.5488
+2026-06-02 21:33:02,993 [INFO]   NDCG@10: 0.4994
+2026-06-02 21:33:02,994 [INFO] --- h=8192 | nprobe=1 ---
+2026-06-02 21:33:05,540 [INFO]   centroid_ms (C->C0, total):      618.1
+2026-06-02 21:33:05,540 [INFO]   refine_ms   (C0->nprobe, total): 1196.2
+2026-06-02 21:33:05,541 [INFO]   scan_ms     (posting, total):    296.1
+2026-06-02 21:33:05,541 [INFO]   avg_query_time_ms:               4.41
+2026-06-02 21:33:05,541 [INFO]   MRR@10:  0.6291
+2026-06-02 21:33:05,541 [INFO]   NDCG@3:  0.3893
+2026-06-02 21:33:05,542 [INFO]   NDCG@10: 0.3299
+2026-06-02 21:33:05,542 [INFO] --- h=8192 | nprobe=2 ---
+2026-06-02 21:33:08,292 [INFO]   centroid_ms (C->C0, total):      617.3
+2026-06-02 21:33:08,293 [INFO]   refine_ms   (C0->nprobe, total): 1185.1
+2026-06-02 21:33:08,293 [INFO]   scan_ms     (posting, total):    499.1
+2026-06-02 21:33:08,293 [INFO]   avg_query_time_ms:               4.80
+2026-06-02 21:33:08,293 [INFO]   MRR@10:  0.6660
+2026-06-02 21:33:08,294 [INFO]   NDCG@3:  0.4395
+2026-06-02 21:33:08,294 [INFO]   NDCG@10: 0.3846
+2026-06-02 21:33:08,294 [INFO] --- h=8192 | nprobe=4 ---
+2026-06-02 21:33:11,621 [INFO]   centroid_ms (C->C0, total):      653.1
+2026-06-02 21:33:11,621 [INFO]   refine_ms   (C0->nprobe, total): 1278.6
+2026-06-02 21:33:11,621 [INFO]   scan_ms     (posting, total):    941.2
+2026-06-02 21:33:11,621 [INFO]   avg_query_time_ms:               6.00
+2026-06-02 21:33:11,622 [INFO]   MRR@10:  0.7216
+2026-06-02 21:33:11,622 [INFO]   NDCG@3:  0.4819
+2026-06-02 21:33:11,622 [INFO]   NDCG@10: 0.4208
+2026-06-02 21:33:11,622 [INFO] --- h=8192 | nprobe=8 ---
+2026-06-02 21:33:15,749 [INFO]   centroid_ms (C->C0, total):      639.2
+2026-06-02 21:33:15,749 [INFO]   refine_ms   (C0->nprobe, total): 1243.6
+2026-06-02 21:33:15,750 [INFO]   scan_ms     (posting, total):    1782.5
+2026-06-02 21:33:15,750 [INFO]   avg_query_time_ms:               7.65
+2026-06-02 21:33:15,750 [INFO]   MRR@10:  0.7576
+2026-06-02 21:33:15,750 [INFO]   NDCG@3:  0.5026
+2026-06-02 21:33:15,750 [INFO]   NDCG@10: 0.4410
+2026-06-02 21:33:15,751 [INFO] --- h=8192 | nprobe=16 ---
+2026-06-02 21:33:21,378 [INFO]   centroid_ms (C->C0, total):      611.9
+2026-06-02 21:33:21,379 [INFO]   refine_ms   (C0->nprobe, total): 1206.2
+2026-06-02 21:33:21,379 [INFO]   scan_ms     (posting, total):    3345.8
+2026-06-02 21:33:21,379 [INFO]   avg_query_time_ms:               10.78
+2026-06-02 21:33:21,379 [INFO]   MRR@10:  0.7629
+2026-06-02 21:33:21,379 [INFO]   NDCG@3:  0.5074
+2026-06-02 21:33:21,380 [INFO]   NDCG@10: 0.4463
+2026-06-02 21:33:21,380 [INFO] --- h=8192 | nprobe=32 ---
+2026-06-02 21:33:30,020 [INFO]   centroid_ms (C->C0, total):      606.5
+2026-06-02 21:33:30,020 [INFO]   refine_ms   (C0->nprobe, total): 1214.1
+2026-06-02 21:33:30,020 [INFO]   scan_ms     (posting, total):    6357.7
+2026-06-02 21:33:30,021 [INFO]   avg_query_time_ms:               17.07
+2026-06-02 21:33:30,021 [INFO]   MRR@10:  0.7839
+2026-06-02 21:33:30,021 [INFO]   NDCG@3:  0.5259
+2026-06-02 21:33:30,021 [INFO]   NDCG@10: 0.4638
+2026-06-02 21:33:30,021 [INFO] --- h=8192 | nprobe=64 ---
+2026-06-02 21:33:44,150 [INFO]   centroid_ms (C->C0, total):      592.1
+2026-06-02 21:33:44,150 [INFO]   refine_ms   (C0->nprobe, total): 1159.7
+2026-06-02 21:33:44,151 [INFO]   scan_ms     (posting, total):    11915.6
+2026-06-02 21:33:44,151 [INFO]   avg_query_time_ms:               28.53
+2026-06-02 21:33:44,151 [INFO]   MRR@10:  0.7796
+2026-06-02 21:33:44,151 [INFO]   NDCG@3:  0.5348
+2026-06-02 21:33:44,152 [INFO]   NDCG@10: 0.4748
+2026-06-02 21:33:44,152 [INFO] --- h=8192 | nprobe=128 ---
+2026-06-02 21:34:09,420 [INFO]   centroid_ms (C->C0, total):      592.4
+2026-06-02 21:34:09,421 [INFO]   refine_ms   (C0->nprobe, total): 1202.3
+2026-06-02 21:34:09,421 [INFO]   scan_ms     (posting, total):    23013.7
+2026-06-02 21:34:09,421 [INFO]   avg_query_time_ms:               51.79
+2026-06-02 21:34:09,422 [INFO]   MRR@10:  0.7882
+2026-06-02 21:34:09,422 [INFO]   NDCG@3:  0.5412
+2026-06-02 21:34:09,422 [INFO]   NDCG@10: 0.4836
+2026-06-02 21:34:09,422 [INFO] --- h=8192 | nprobe=256 ---
+2026-06-02 21:34:56,440 [INFO]   centroid_ms (C->C0, total):      593.5
+2026-06-02 21:34:56,440 [INFO]   refine_ms   (C0->nprobe, total): 1178.0
+2026-06-02 21:34:56,441 [INFO]   scan_ms     (posting, total):    44779.8
+2026-06-02 21:34:56,441 [INFO]   avg_query_time_ms:               97.18
+2026-06-02 21:34:56,441 [INFO]   MRR@10:  0.7990
+2026-06-02 21:34:56,441 [INFO]   NDCG@3:  0.5424
+2026-06-02 21:34:56,442 [INFO]   NDCG@10: 0.4892
+2026-06-02 21:34:56,442 [INFO] --- h=8192 | nprobe=512 ---
+2026-06-02 21:36:27,166 [INFO]   centroid_ms (C->C0, total):      594.4
+2026-06-02 21:36:27,167 [INFO]   refine_ms   (C0->nprobe, total): 1230.5
+2026-06-02 21:36:27,167 [INFO]   scan_ms     (posting, total):    88426.1
+2026-06-02 21:36:27,167 [INFO]   avg_query_time_ms:               188.42
+2026-06-02 21:36:27,167 [INFO]   MRR@10:  0.8134
+2026-06-02 21:36:27,167 [INFO]   NDCG@3:  0.5525
+2026-06-02 21:36:27,168 [INFO]   NDCG@10: 0.4999
+2026-06-02 21:36:27,168 [INFO] --- h=8192 | nprobe=1024 ---
+2026-06-02 21:39:22,944 [INFO]   centroid_ms (C->C0, total):      596.4
+2026-06-02 21:39:22,944 [INFO]   refine_ms   (C0->nprobe, total): 1185.4
+2026-06-02 21:39:22,944 [INFO]   scan_ms     (posting, total):    173529.2
+2026-06-02 21:39:22,944 [INFO]   avg_query_time_ms:               365.99
+2026-06-02 21:39:22,945 [INFO]   MRR@10:  0.8171
+2026-06-02 21:39:22,945 [INFO]   NDCG@3:  0.5530
+2026-06-02 21:39:22,945 [INFO]   NDCG@10: 0.5000
+2026-06-02 21:39:22,945 [INFO] --- h=8192 | nprobe=2048 ---
+2026-06-02 21:45:05,733 [INFO]   centroid_ms (C->C0, total):      592.9
+2026-06-02 21:45:05,733 [INFO]   refine_ms   (C0->nprobe, total): 1303.1
+2026-06-02 21:45:05,733 [INFO]   scan_ms     (posting, total):    340414.9
+2026-06-02 21:45:05,733 [INFO]   avg_query_time_ms:               714.64
+2026-06-02 21:45:05,734 [INFO]   MRR@10:  0.8171
+2026-06-02 21:45:05,734 [INFO]   NDCG@3:  0.5526
+2026-06-02 21:45:05,734 [INFO]   NDCG@10: 0.5019
+2026-06-02 21:45:05,734 [INFO] --- h=8192 | nprobe=4096 ---
+2026-06-02 21:56:23,508 [INFO]   centroid_ms (C->C0, total):      598.9
+2026-06-02 21:56:23,508 [INFO]   refine_ms   (C0->nprobe, total): 1304.9
+2026-06-02 21:56:23,508 [INFO]   scan_ms     (posting, total):    675400.2
+2026-06-02 21:56:23,508 [INFO]   avg_query_time_ms:               1414.00
+2026-06-02 21:56:23,509 [INFO]   MRR@10:  0.8170
+2026-06-02 21:56:23,509 [INFO]   NDCG@3:  0.5526
+2026-06-02 21:56:23,509 [INFO]   NDCG@10: 0.5015
+2026-06-02 21:56:23,604 [INFO] Grid search complete. Results saved to /home/toploc1/Datasets/toploc1/indexes/metrics_toploc_ivf_grid.json

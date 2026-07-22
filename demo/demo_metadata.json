@@ -1,0 +1,21 @@
+{
+  "num_docs": 26102,
+  "embedding_dim": 1024,
+  "relevant_pool_size": 13051,
+  "noise_pool_size": 13051,
+  "top_k_build": 100,
+  "nprobe_full_search": 64,
+  "random_seed": 42,
+  "embeddings_dir": "/home/toploc1/Datasets/conversational/CAST2019/snowflake_embeddings",
+  "collection_tsv": "/home/toploc1/Datasets/conversational/CAST2019/CAST2019collection.tsv",
+  "demo_texts_path": "/home/toploc1/Datasets/toploc1/demo/demo_texts.parquet",
+  "demo_embeddings_path": "/home/toploc1/Datasets/toploc1/demo/demo_embeddings.parquet",
+  "ivf_nlist": 161,
+  "ivf_nprobe_demo": 8,
+  "hnsw_M": 32,
+  "hnsw_ef_construction": 200,
+  "demo_ids_path": "/home/toploc1/Datasets/toploc1/demo/demo_ids.npy",
+  "flat_index_path": "/home/toploc1/Datasets/toploc1/demo/demo_flat.index",
+  "ivf_index_path": "/home/toploc1/Datasets/toploc1/demo/demo_ivf.index",
+  "hnsw_index_path": "/home/toploc1/Datasets/toploc1/demo/demo_hnsw.index"
+}
