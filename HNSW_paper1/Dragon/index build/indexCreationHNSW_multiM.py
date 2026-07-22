@@ -13,15 +13,15 @@ import logging
 DATA_GLOB  = "/home/toploc1/Datasets/conversational/CAST2019/dragon_embeddings/**/*.parquet"
 OUTPUT_DIR = "/home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW"
 LOG_OUTPUT_PATH = "/home/toploc1/Datasets/toploc1/HNSW_paper1/Dragon/index build/logs"
-# Build one HNSW index per M value. Add 64 here if you want it too.
-M_LIST          = [16, 64]
-EF_CONSTRUCTION = 500  # build quality: higher = better graph, slower build
-EF_SEARCH       = 64   # query-time accuracy/speed tradeoff (grid overrides this later)
-SAVE_EVERY      = 50   # checkpoint every N files
-RAW_DIM         = 768  # Dragon embedding dimension (index will be RAW_DIM + 1)
 
-# max_norm is a property of the COLLECTION, not of M -- computed once,
-# shared by every M index.
+# Build one HNSW index per M value.
+M_LIST          = [16, 32, 64]
+EF_CONSTRUCTION = 500  # 
+EF_SEARCH       = 64   # 
+SAVE_EVERY      = 50   
+RAW_DIM         = 768  # 
+
+
 MAXNORM_PATH = os.path.join(OUTPUT_DIR, "dragon_mips_maxnorm.json")
 LOG_PATH     = os.path.join(LOG_OUTPUT_PATH, "indexCreationHNSW_dragon_multiM.log")
 
@@ -46,16 +46,6 @@ def paths_for_m(m):
         "checkpoint": os.path.join(OUTPUT_DIR, f"hnsw_checkpoint_M{m}_dragon_mips.json"),
     }
 
-# -----------------------
-# MIPS -> L2 transformation (Bachrach et al., RecSys'14; used by
-# Muntean et al. SIGIR'25 for Dragon):
-#   docs   : phi(x) = [x, sqrt(Mmax^2 - ||x||^2)]   (all norms == Mmax)
-#   queries: q'     = [q, 0]
-# Then  ||q' - phi(x)||^2 = ||q||^2 + Mmax^2 - 2<q, x>,
-# so L2 ranking on the transformed vectors == inner-product ranking
-# on the raw vectors. DO NOT normalize anything.
-# The transform is IDENTICAL for every M -- only the graph parameter M differs.
-# -----------------------
 
 # -----------------------
 # 1. File discovery

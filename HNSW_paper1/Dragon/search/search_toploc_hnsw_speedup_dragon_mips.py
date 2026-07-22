@@ -30,15 +30,12 @@ BATCH_SIZE    = 50
 
 # --- Timing methodology -------------------------------------------------
 # Each config is executed TIMING_REPS times and the reported time is the
-# aggregate below. "median" is robust to scheduler jitter on a shared node;
-# "min" is the classic micro-benchmark choice (best case, least noise).
+# aggregate below.
 TIMING_REPS = 5
 TIMING_AGG  = "median"          # "median" or "min"
 
-# Oversubscribing OpenMP on tiny batches (50 q0 / 429 followup queries)
-# measures fork/join overhead, not search work. FAISS does NOT adapt the
-# thread count to the batch size -- the OpenMP default is simply all
-# visible cores -- so we cap it explicitly.
+
+
 MAX_MULTI_THREADS = 32
 THREAD_CONFIGS = {
     "multi":  os.cpu_count(),

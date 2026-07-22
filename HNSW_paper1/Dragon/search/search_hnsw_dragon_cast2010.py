@@ -19,8 +19,8 @@ QUERY_EMB_PATH = "/home/toploc1/Datasets/toploc1/Data Exploration/topics_dragon_
 QRELS_PATH     = "/home/toploc1/Datasets/toploc1/Data Exploration/cast2020_qrels.qrel"
 OUTPUT_DIR     = "/home/toploc1/Datasets/toploc1/HNSW_paper1/Dragon/search/results"
 
-# Run the whole grid once per M value. Indexes are loaded ONE AT A TIME
-# (each ~119 GB) and freed before the next M loads -- never two in RAM.
+# Run the whole grid once per M value. 
+
 M_LIST = [16, 64]
 
 
@@ -59,7 +59,7 @@ RUN_PERCONV = False
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-# Base logging: stdout always; a per-M FileHandler is attached inside run_for_m.
+#  a per-M FileHandler is attached inside run_for_m.
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -129,11 +129,8 @@ def evaluate(run, qrels):
     return {"aggregate": aggregate, "per_query": per_query}
 
 
-# -----------------------
-# Load queries ONCE (M-independent). Dragon MIPS query transform: q -> [q, 0].
-# DO NOT normalize -- the index stores phi(x) = [x, sqrt(Mmax^2 - ||x||^2)],
-# and L2 search on ([q,0], phi(x)) ranks exactly by the raw inner product.
-# -----------------------
+
+
 q_table = pq.read_table(QUERY_EMB_PATH)
 q_ids   = q_table["id"].to_pylist()
 q_emb_raw = np.array(q_table["embedding"].to_pylist(), dtype=np.float32)
@@ -158,6 +155,7 @@ log.info(f"Conversations: {len(conversations)} | "
          f"turns/conv min={min(len(v) for v in conversations.values())} "
          f"max={max(len(v) for v in conversations.values())}")
 
+
 # Precompute the flat followup layout once; identical for every (ef, up, M).
 CONVS = list(conversations.values())
 FU_ROWS, FU_CONV, FU_QIDS = [], [], []
@@ -171,6 +169,7 @@ FU_CONV  = np.array(FU_CONV, dtype=np.int64)
 FU_BATCH = np.ascontiguousarray(q_emb[FU_ROWS])
 N_FU     = len(FU_ROWS)
 log.info(f"Followup queries: {N_FU} (single batched level-0 call per config)")
+
 
 # qrels loaded once
 qrels = parse_qrels(QRELS_PATH)

@@ -26,3 +26,5 @@ __pycache__/
 .ir_datasets/
 mein_env*/
 /HNSW/
+
+!HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/
