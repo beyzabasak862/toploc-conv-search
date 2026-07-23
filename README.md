@@ -43,8 +43,8 @@ effectiveness. Full details, file map, and the results table:
 
 ### Paper 2 — HNSW QLR (Query-Log Routing)
 
-Paper: *HNSW Graph Meets Query Logs: Accelerating Dense Retrieval with
-Historical Information.
+> Paper: *HNSW Graph Meets Query Logs: Accelerating Dense Retrieval with
+> Historical Information.
 * Introduces the **Query Log Router (QLR)**, a
 lightweight auxiliary ANN index built over a sample of historical query vectors
 plus a lookup table mapping each to its precomputed nearest neighbors. At query
