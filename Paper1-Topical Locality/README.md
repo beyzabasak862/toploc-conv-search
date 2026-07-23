@@ -397,6 +397,6 @@ A self-contained retrieval demo over a small sampled collection.
 
 ## Authors
 
-- **IVF / TopLoc IVF / TopLoc IVF+**, Dragon indexing, hardware & threading
+- **IVF / TopLoc IVF / TopLoc IVF+**, Dragon indexing, hardware & threading: *Ali Efe Bal*
   diagnostics: *[your name]*
-- **HNSW / TopLoc HNSW**, results analysis: *[teammate's name]*
+- **HNSW / TopLoc HNSW / Exact Search**, result analysis, indexing  : *Beyza Basak*
