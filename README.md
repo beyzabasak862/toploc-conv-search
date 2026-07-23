@@ -9,7 +9,7 @@ share indexes, embeddings, and baselines.
 
 | | Paper 1 — Topical Locality | Paper 2 — HNSW QLR |
 |---|---|---|
-| **Idea** | Cache the "hot" region of the index found by a conversation's first query, then restrict follow-up queries to it | Route a query to a good HNSW entry point using a query log, instead of the graph's default entry node |
+| **Idea** | Cache the "hot" region of the index found by a conversation's first query, then restrict follow-up queries to it | Seed HNSW's ground-level beam search from the cached results of similar *historical* queries, instead of the graph's fixed entry point |
 | **Indexes** | FAISS IVF + HNSW | HNSW (FAISS "hybrid" + native C++) |
 | **Where** | [`Paper1-Topical Locality/`](Paper1-Topical%20Locality/README.md) | [`Paper2-HNSW_QLR/`](Paper2-HNSW_QLR/README.md) |
 
@@ -43,13 +43,24 @@ effectiveness. Full details, file map, and the results table:
 
 ### Paper 2 — HNSW QLR (Query-Log Routing)
 
-Evaluates a **query-log-routed (QLR)** HNSW search: instead of starting the
-greedy graph descent from HNSW's fixed entry point, a query is seeded from a
-good entry point learned from a query log, then searched with a reduced `ef`.
-The replication is packaged as **eight benchmark workflows** across three
+Paper: *HNSW Graph Meets Query Logs: Accelerating Dense Retrieval with
+Historical Information.* Introduces the **Query Log Router (QLR)**, a
+lightweight auxiliary ANN index built over a sample of historical query vectors
+plus a lookup table mapping each to its precomputed nearest neighbors. At query
+time, QLR finds past queries similar to the incoming one and uses their cached
+neighbors to seed HNSW's ground-level beam search — where most of the cost lies
+— from an already-close position; when no sufficiently similar query is found
+(similarity `< th`) it falls back to standard HNSW with minimal overhead. An
+**adaptive** mechanism lowers `ef_search` when the routing decision is
+confident, and **PCA** shrinks the query-log index so its lookup adds little
+latency. The paper reports speedups of up to **1.8× (MS MARCO-v1)**, **2.6×
+(MS MARCO-v2)**, and **2.3×** with a real-world MSN query log, at equal
+Accuracy@10.
+
+Our replication is packaged as **eight benchmark workflows** across three
 implementation tracks — hybrid FAISS on the full TREC-CAsT index, a native C++
 implementation on a 500k MS MARCO-v1 export, and a faithful adaptive
-search-depth variant (Paper 2, Algorithm 1). Full details, run scripts, and
+search-depth variant (Algorithm 1). Full details, run scripts, and
 per-benchmark reports:
 **[`Paper2-HNSW_QLR/README.md`](Paper2-HNSW_QLR/README.md)**.
 
@@ -110,12 +121,3 @@ the shared server (visible as physically inconsistent latencies, e.g. a smaller
   [`Paper1-Topical Locality/README.md`](Paper1-Topical%20Locality/README.md)
 - **Paper 2 benchmarks, run scripts, and reports:**
   [`Paper2-HNSW_QLR/README.md`](Paper2-HNSW_QLR/README.md)
-
----
-
-## Authors
-
-- **Paper 1** — IVF / TopLoc IVF / TopLoc IVF+, Dragon indexing, hardware &
-  threading diagnostics: *[your name]*; HNSW / TopLoc HNSW, results analysis:
-  *[teammate's name]*
-- **Paper 2** — HNSW QLR replication: *[author name(s)]*
