@@ -44,7 +44,8 @@ effectiveness. Full details, file map, and the results table:
 ### Paper 2 — HNSW QLR (Query-Log Routing)
 
 Paper: *HNSW Graph Meets Query Logs: Accelerating Dense Retrieval with
-Historical Information.* Introduces the **Query Log Router (QLR)**, a
+Historical Information.
+* Introduces the **Query Log Router (QLR)**, a
 lightweight auxiliary ANN index built over a sample of historical query vectors
 plus a lookup table mapping each to its precomputed nearest neighbors. At query
 time, QLR finds past queries similar to the incoming one and uses their cached
@@ -65,26 +66,6 @@ per-benchmark reports:
 **[`Paper2-HNSW_QLR/README.md`](Paper2-HNSW_QLR/README.md)**.
 
 ---
-
-## Repository layout (top level)
-
-```
-toploc1/
-├── Paper1-Topical Locality/   # Paper 1 replication — TopLoc IVF / IVF+ / HNSW  (has its own README)
-├── Paper2-HNSW_QLR/           # Paper 2 replication — HNSW query-log routing     (has its own README)
-│
-├── indexes/                   # Shared prebuilt indexes (Dragon / Snowflake IVF, HNSW, Flat)
-├── models/                    # Local embedding models (Snowflake Arctic-Embed L / L-v2.0)
-├── HNSW/                      # Working area for the Paper 2 QLR development (MS MARCO, PCA, artifacts)
-│
-├── faiss/                     # FAISS source checkout
-└── faiss_install/             # Locally built FAISS install (include / lib / share)
-```
-
-Because both papers use the same encoders and datasets, `indexes/` and
-`models/` are shared across them. The `Dragon` and `Snowflake` embedding
-models and the CAsT collections are the common substrate; each paper directory
-then holds only its own scripts, results, and analysis.
 
 ---
 
