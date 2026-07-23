@@ -1,5 +1,286 @@
 # toploc_paper_2
 
+# Benchmark Overview
+
+This package contains eight benchmark workflows. They are not independent experiments; several evaluate the same implementation under different operating points or evaluation protocols.
+
+The benchmarks are grouped into three categories:
+
+- **Hybrid FAISS (Benchmarks 1, 5, 6, 8)** — evaluates the FAISS-based QLR implementation on the full TREC-CAsT document index.
+- **Native HNSW (Benchmarks 2, 3, 4)** — evaluates the native C++ implementation on the faithful 500k MS MARCO-v1 export.
+- **Faithful Adaptive Search (Benchmark 7)** — reproduces the adaptive search-depth strategy described in Paper 2 (Algorithm 1).
+
+---
+
+## Benchmark 1 — Safe Hybrid
+
+**Purpose**
+
+Evaluates the hybrid FAISS implementation on the full TREC-CAsT document index using all 6,980 MS MARCO dev.small queries.
+
+This benchmark compares:
+
+- Baseline HNSW (`ef = 64`)
+- Safe QLR (`SEEDED_EF = 32`)
+
+The selected configuration maintains nearly identical retrieval quality while reducing retrieval latency.
+
+**Run**
+
+```bash
+./benchmarks/01_safe_hybrid/RUN.sh
+```
+
+---
+
+## Benchmark 2 — Cache-Warmed Best (Native)
+
+**Purpose**
+
+Evaluates the native C++ implementation using the cache-warmed protocol
+
+```
+Baseline → Q_A → Q_B
+```
+
+where
+
+- **Baseline** is ordinary HNSW,
+- **Q_A** is the first routed query,
+- **Q_B** is executed immediately afterwards using an already warmed cache.
+
+This benchmark measures the best-case latency behaviour of the native implementation.
+
+**Important**
+
+The reported **Q_B latency is a cache-warmed observation** and **must not be interpreted or reported as an independent speedup.**
+
+**Run**
+
+```bash
+./benchmarks/02_cachewarmed_best/RUN.sh
+```
+
+---
+
+## Benchmark 3 — Native Equal Accuracy
+
+**Purpose**
+
+Runs parameter sweeps for both baseline HNSW and QLR and compares them at matching Accuracy@10 operating points.
+
+Instead of comparing identical `ef` values, this benchmark asks:
+
+> How much faster is QLR when both methods achieve approximately the same retrieval accuracy?
+
+This benchmark produces the representative equal-accuracy comparisons (≈93%, ≈95%, ≈96%, etc.) used throughout the project.
+
+**Run**
+
+```bash
+./benchmarks/03_native_equal_accuracy/RUN.sh
+```
+
+---
+
+## Benchmark 4 — Native Canonical v3
+
+**Purpose**
+
+Produces the canonical native implementation results.
+
+The benchmark executes the v3 backend three times and averages all runs to report
+
+- latency,
+- accuracy,
+- speedup.
+
+This benchmark is intended to reduce run-to-run variance and produce the representative native results.
+
+**Run**
+
+```bash
+./benchmarks/04_native_canonical_v3/RUN.sh
+```
+
+---
+
+## Benchmark 5 — Aggressive Hybrid
+
+**Purpose**
+
+Uses the same execution as Benchmark 1 but reports the aggressive operating point
+
+```
+SEEDED_EF = 16
+```
+
+This configuration sacrifices retrieval quality in exchange for lower latency.
+
+Benchmark 5 is **not executed independently**—its results are extracted directly from Benchmark 1.
+
+**Run**
+
+```bash
+./benchmarks/05_aggressive_hybrid/RUN.sh
+```
+
+---
+
+## Benchmark 6 — Stage-2 Pareto Search
+
+**Purpose**
+
+Performs the bounded Stage-2 hyperparameter search.
+
+The benchmark evaluates 24 configurations across
+
+- cached seed strategy,
+- number of cached entry-point seeds,
+- seeded beam-search width,
+
+and produces the Pareto frontier used to select the final hybrid FAISS configuration.
+
+**Run**
+
+```bash
+./benchmarks/06_stage2_bounded_pareto/RUN.sh
+```
+
+---
+
+## Benchmark 7 — Faithful Adaptive Depth
+
+**Purpose**
+
+Implements the paper-faithful Algorithm 1 from Paper 2.
+
+Unlike the fixed-`ef` benchmarks above, this implementation dynamically adjusts the HNSW search depth (`ef`) according to the similarity between the current query and its nearest historical query.
+
+The benchmark performs
+
+- calibration,
+- hold-out validation,
+- full evaluation
+
+using the complete TREC-CAsT document index and all 6,980 dev.small queries.
+
+This benchmark reproduces the adaptive search algorithm itself rather than the cache-warmed evaluation protocol.
+
+**Run**
+
+```bash
+./benchmarks/07_faithful_adaptive_depth/RUN.sh
+```
+
+---
+
+## Benchmark 8 — Cache-Warmed TREC-CAsT
+
+**Purpose**
+
+Hybrid FAISS analogue of Benchmark 2.
+
+Benchmark 8 applies
+
+- the cache-warmed **Baseline → Q_A → Q_B** protocol from Benchmark 2
+
+to
+
+- the full TREC-CAsT document corpus,
+- the hybrid FAISS backend,
+- together with the adaptive-search implementation from Benchmark 7.
+
+Conceptually,
+
+```
+Benchmark 8
+    = Benchmark 2 evaluation protocol
+    + Benchmark 7 adaptive-search implementation
+    + Full TREC-CAsT corpus
+```
+
+This benchmark should not be confused with
+
+- Benchmark 2 (native backend),
+- Benchmark 7 (adaptive search evaluation),
+- Benchmark 1 (safe hybrid),
+- or Benchmark 6 (parameter search).
+
+**Run**
+
+```bash
+./benchmarks/08_cachewarmed_treccast/RUN.sh
+```
+
+---
+
+# Configuration (`config/paths.env`)
+
+All dataset locations, generated artifacts, Python interpreters, and runtime settings are configured through `config/paths.env`.
+
+The benchmark scripts do **not** contain hard-coded dataset paths. Instead, every `RUN.sh` script loads `config/load_config.sh`, which reads `config/paths.env` and exports the required environment variables before executing the benchmark.
+
+The configuration file specifies:
+
+- Python interpreters for the hybrid, native, and reporting environments.
+- Locations of the document indexes.
+- Query embeddings and PCA/router artifacts.
+- Native benchmark export.
+- Generated preprocessing artifacts.
+- CPU affinity (`CORE`) used for latency measurements.
+- Optional output directory overrides.
+
+To run the package on another machine, simply copy
+
+```
+config/paths.env.example
+```
+
+to
+
+```
+config/paths.env
+```
+
+and replace every path with the corresponding local path.
+
+---
+
+# Generating the Required Artifacts (`preprocessing/`)
+
+The repository contains the code required to regenerate all preprocessing artifacts used by the benchmarks. These scripts are located under
+
+```
+preprocessing/
+```
+
+and currently include
+
+- `build_index`
+- `build_query_log_pca`
+- `build_ep_table`
+- `flat_index_search_acc`
+
+Their purposes are:
+
+| Script | Purpose |
+|---------|---------|
+| `build_index` | Builds the FAISS HNSW document index from document embeddings. |
+| `build_query_log_pca` | Builds the PCA projection model and query-log router index used by QLR. |
+| `build_ep_table` | Generates the historical entry-point lookup table used during routing. |
+| `flat_index_search_acc` | Computes the exact nearest-neighbour ground truth using a Flat index for accuracy evaluation. |
+
+The preprocessing pipeline assumes that document and query embeddings are already available.
+
+**Embedding generation is intentionally not duplicated in this repository.** The same embedding generation pipeline used for **Paper 1** should be used to produce the document and query embeddings required here.
+
+Likewise, the **TREC-CAsT document index** used throughout the hybrid benchmarks is built using the indexing pipeline from **Paper 1**. The scripts included in `preprocessing/` operate on those generated embeddings and indexes to produce the additional artifacts required by QLR (router index, PCA model, entry-point table, and exact ground truth).
+
+After all preprocessing artifacts have been generated, update the corresponding paths in `config/paths.env`, and the benchmark scripts can be executed without further modification.
+
+--------------------------------------------------------------------------------
+
 Portable code-only reproduction package for the QLR/HNSW work. Contains every
 producer script, native source file, build recipe, wrapper, small helper, and
 the preprocessing / artifact-generation code required to run **eight** benchmark

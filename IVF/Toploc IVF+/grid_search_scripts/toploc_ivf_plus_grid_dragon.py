@@ -15,7 +15,8 @@ from collections import defaultdict
 # C0 (built from reference query q_ref, initially q_0):
 #     I0 = top_np(q_j, C0)  INTERSECT  top_np(q_ref, C0)
 # If |I0| < alpha * np, a topic shift is assumed and the cache is
-# REFRESHED: C0 <- top_h(q_j, C), q_ref <- q_j. Turn j is then searched
+# REFRESHED: C0 <- top_h(q_j, 
+#C), q_ref <- q_j. Turn j is then searched
 # with the NEW cache (effectiveness-preserving interpretation).
 #
 # Measurement design:
@@ -312,7 +313,7 @@ assert len(all_ids) == index.ntotal
 q_table = pq.read_table(QUERY_EMB_PATH)
 q_ids   = q_table["id"].to_pylist()
 q_emb   = np.array(q_table["embedding"].to_pylist(), dtype=np.float32)
-faiss.normalize_L2(q_emb)
+# faiss.normalize_L2(q_emb)
 log.info(f"Queries: {len(q_ids)} | dim={q_emb.shape[1]}")
 
 qrels = parse_qrels(QRELS_PATH)

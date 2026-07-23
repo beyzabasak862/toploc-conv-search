@@ -1,0 +1,156 @@
+nohup: ignoring input
+2026-07-23 15:40:36,272 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/Dragon_indexes/treccast_dragon_ivf_2e18.index (mmap=True)
+2026-07-23 15:41:02,895 [INFO] Index loaded: 38,636,446 vectors, nlist=262144
+2026-07-23 15:41:03,034 [INFO] Centroid matrix: (262144, 768)
+2026-07-23 15:41:27,165 [INFO] Queries: 479 | dim=768
+2026-07-23 15:41:27,191 [INFO] Loaded qrels: 173 queries
+2026-07-23 15:41:27,192 [INFO] Conversations: 50 | follow-up queries: 429 | avg follow-ups/conv: 8.58
+2026-07-23 15:41:27,337 [INFO] [h=512] initial caches built: 2.90 ms/conv (outside timers, charged to first turn as in v11)
+2026-07-23 15:41:30,759 [INFO]   h=  512 a=0.0  nprobe=   1 | fu ms/q: k10= 0.091 k1000= 0.144 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.200 | NDCG@10=0.2410
+2026-07-23 15:41:38,144 [INFO]   h=  512 a=0.0  nprobe=   2 | fu ms/q: k10= 0.261 k1000= 0.361 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.226 | NDCG@10=0.3023
+2026-07-23 15:41:47,297 [INFO]   h=  512 a=0.0  nprobe=   4 | fu ms/q: k10= 0.304 k1000= 0.420 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.268 | NDCG@10=0.3580
+2026-07-23 15:42:00,460 [INFO]   h=  512 a=0.0  nprobe=   8 | fu ms/q: k10= 0.360 k1000= 0.529 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.310 | NDCG@10=0.3953
+2026-07-23 15:42:18,769 [INFO]   h=  512 a=0.0  nprobe=  16 | fu ms/q: k10= 0.423 k1000= 0.614 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.343 | NDCG@10=0.4183
+2026-07-23 15:42:46,210 [INFO]   h=  512 a=0.0  nprobe=  32 | fu ms/q: k10= 0.509 k1000= 0.763 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.372 | NDCG@10=0.4215
+2026-07-23 15:43:25,461 [INFO]   h=  512 a=0.0  nprobe=  64 | fu ms/q: k10= 1.027 k1000= 0.945 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.403 | NDCG@10=0.4247
+2026-07-23 15:44:16,502 [INFO]   h=  512 a=0.0  nprobe= 128 | fu ms/q: k10= 1.472 k1000= 1.741 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.457 | NDCG@10=0.4361
+2026-07-23 15:45:09,475 [INFO]   h=  512 a=0.0  nprobe= 256 | fu ms/q: k10= 2.731 k1000= 3.071 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.604 | NDCG@10=0.4350
+2026-07-23 15:46:03,011 [INFO]   h=  512 a=0.05 nprobe=   1 | fu ms/q: k10= 8.905 k1000= 9.870 | refreshes=301 (70.2% of turns) mean|I0|/np=0.298 | NDCG@10=0.2435
+2026-07-23 15:46:43,235 [INFO]   h=  512 a=0.05 nprobe=   2 | fu ms/q: k10= 6.454 k1000= 7.066 | refreshes=209 (48.7% of turns) mean|I0|/np=0.330 | NDCG@10=0.3006
+2026-07-23 15:47:14,378 [INFO]   h=  512 a=0.05 nprobe=   4 | fu ms/q: k10= 5.518 k1000= 5.119 | refreshes=135 (31.5% of turns) mean|I0|/np=0.328 | NDCG@10=0.3757
+2026-07-23 15:47:32,027 [INFO]   h=  512 a=0.05 nprobe=   8 | fu ms/q: k10= 2.592 k1000= 3.001 | refreshes= 64 (14.9% of turns) mean|I0|/np=0.355 | NDCG@10=0.3905
+2026-07-23 15:47:47,004 [INFO]   h=  512 a=0.05 nprobe=  16 | fu ms/q: k10= 2.011 k1000= 2.086 | refreshes= 33 ( 7.7% of turns) mean|I0|/np=0.369 | NDCG@10=0.4044
+2026-07-23 15:47:59,259 [INFO]   h=  512 a=0.05 nprobe=  32 | fu ms/q: k10= 1.279 k1000= 2.500 | refreshes= 17 ( 4.0% of turns) mean|I0|/np=0.377 | NDCG@10=0.4134
+2026-07-23 15:48:08,249 [INFO]   h=  512 a=0.05 nprobe=  64 | fu ms/q: k10= 1.057 k1000= 1.815 | refreshes=  3 ( 0.7% of turns) mean|I0|/np=0.404 | NDCG@10=0.4247
+2026-07-23 15:48:16,114 [INFO]   h=  512 a=0.05 nprobe= 128 | fu ms/q: k10= 0.969 k1000= 1.389 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.457 | NDCG@10=0.4361
+2026-07-23 15:48:33,253 [INFO]   h=  512 a=0.05 nprobe= 256 | fu ms/q: k10= 2.723 k1000= 2.976 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.604 | NDCG@10=0.4350
+2026-07-23 15:49:25,500 [INFO]   h=  512 a=0.1  nprobe=   1 | fu ms/q: k10= 8.326 k1000= 9.544 | refreshes=301 (70.2% of turns) mean|I0|/np=0.298 | NDCG@10=0.2435
+2026-07-23 15:50:05,381 [INFO]   h=  512 a=0.1  nprobe=   2 | fu ms/q: k10= 6.588 k1000= 7.399 | refreshes=209 (48.7% of turns) mean|I0|/np=0.330 | NDCG@10=0.3006
+2026-07-23 15:50:37,692 [INFO]   h=  512 a=0.1  nprobe=   4 | fu ms/q: k10= 5.443 k1000= 5.027 | refreshes=135 (31.5% of turns) mean|I0|/np=0.328 | NDCG@10=0.3757
+2026-07-23 15:50:55,042 [INFO]   h=  512 a=0.1  nprobe=   8 | fu ms/q: k10= 2.280 k1000= 2.695 | refreshes= 64 (14.9% of turns) mean|I0|/np=0.355 | NDCG@10=0.3905
+2026-07-23 15:51:16,364 [INFO]   h=  512 a=0.1  nprobe=  16 | fu ms/q: k10= 2.899 k1000= 3.137 | refreshes= 64 (14.9% of turns) mean|I0|/np=0.386 | NDCG@10=0.4322
+2026-07-23 15:51:32,451 [INFO]   h=  512 a=0.1  nprobe=  32 | fu ms/q: k10= 2.675 k1000= 2.482 | refreshes= 41 ( 9.6% of turns) mean|I0|/np=0.398 | NDCG@10=0.4332
+2026-07-23 15:51:42,048 [INFO]   h=  512 a=0.1  nprobe=  64 | fu ms/q: k10= 0.876 k1000= 1.183 | refreshes=  9 ( 2.1% of turns) mean|I0|/np=0.402 | NDCG@10=0.4276
+2026-07-23 15:51:51,185 [INFO]   h=  512 a=0.1  nprobe= 128 | fu ms/q: k10= 0.993 k1000= 2.331 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.457 | NDCG@10=0.4361
+2026-07-23 15:52:08,311 [INFO]   h=  512 a=0.1  nprobe= 256 | fu ms/q: k10= 2.710 k1000= 3.115 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.604 | NDCG@10=0.4350
+2026-07-23 15:53:00,393 [INFO]   h=  512 a=0.2  nprobe=   1 | fu ms/q: k10= 9.218 k1000= 8.981 | refreshes=301 (70.2% of turns) mean|I0|/np=0.298 | NDCG@10=0.2435
+2026-07-23 15:53:40,775 [INFO]   h=  512 a=0.2  nprobe=   2 | fu ms/q: k10= 7.390 k1000= 7.020 | refreshes=209 (48.7% of turns) mean|I0|/np=0.330 | NDCG@10=0.3006
+2026-07-23 15:54:07,112 [INFO]   h=  512 a=0.2  nprobe=   4 | fu ms/q: k10= 4.534 k1000= 4.735 | refreshes=135 (31.5% of turns) mean|I0|/np=0.328 | NDCG@10=0.3757
+2026-07-23 15:54:32,108 [INFO]   h=  512 a=0.2  nprobe=   8 | fu ms/q: k10= 3.724 k1000= 4.635 | refreshes=115 (26.8% of turns) mean|I0|/np=0.378 | NDCG@10=0.4032
+2026-07-23 15:54:55,125 [INFO]   h=  512 a=0.2  nprobe=  16 | fu ms/q: k10= 3.707 k1000= 3.546 | refreshes= 98 (22.8% of turns) mean|I0|/np=0.402 | NDCG@10=0.4338
+2026-07-23 15:55:17,745 [INFO]   h=  512 a=0.2  nprobe=  32 | fu ms/q: k10= 2.829 k1000= 3.122 | refreshes= 71 (16.6% of turns) mean|I0|/np=0.412 | NDCG@10=0.4346
+2026-07-23 15:55:36,815 [INFO]   h=  512 a=0.2  nprobe=  64 | fu ms/q: k10= 1.991 k1000= 1.798 | refreshes= 33 ( 7.7% of turns) mean|I0|/np=0.422 | NDCG@10=0.4421
+2026-07-23 15:55:49,401 [INFO]   h=  512 a=0.2  nprobe= 128 | fu ms/q: k10= 1.413 k1000= 2.086 | refreshes=  4 ( 0.9% of turns) mean|I0|/np=0.461 | NDCG@10=0.4361
+2026-07-23 15:56:05,581 [INFO]   h=  512 a=0.2  nprobe= 256 | fu ms/q: k10= 2.491 k1000= 3.499 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.604 | NDCG@10=0.4350
+2026-07-23 15:56:05,685 [INFO] [h=1024] initial caches built: 1.95 ms/conv (outside timers, charged to first turn as in v11)
+2026-07-23 15:56:06,725 [INFO]   h= 1024 a=0.0  nprobe=   1 | fu ms/q: k10= 0.134 k1000= 0.190 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.193 | NDCG@10=0.2463
+2026-07-23 15:56:09,782 [INFO]   h= 1024 a=0.0  nprobe=   2 | fu ms/q: k10= 0.328 k1000= 0.825 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.221 | NDCG@10=0.3115
+2026-07-23 15:56:14,291 [INFO]   h= 1024 a=0.0  nprobe=   4 | fu ms/q: k10= 0.381 k1000= 0.977 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.255 | NDCG@10=0.3695
+2026-07-23 15:56:18,766 [INFO]   h= 1024 a=0.0  nprobe=   8 | fu ms/q: k10= 0.403 k1000= 0.579 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.296 | NDCG@10=0.4057
+2026-07-23 15:56:25,734 [INFO]   h= 1024 a=0.0  nprobe=  16 | fu ms/q: k10= 0.472 k1000= 0.698 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.322 | NDCG@10=0.4366
+2026-07-23 15:56:37,375 [INFO]   h= 1024 a=0.0  nprobe=  32 | fu ms/q: k10= 1.065 k1000= 0.802 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.340 | NDCG@10=0.4409
+2026-07-23 15:56:57,255 [INFO]   h= 1024 a=0.0  nprobe=  64 | fu ms/q: k10= 0.677 k1000= 0.984 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.357 | NDCG@10=0.4459
+2026-07-23 15:57:30,141 [INFO]   h= 1024 a=0.0  nprobe= 128 | fu ms/q: k10= 1.112 k1000= 1.382 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.379 | NDCG@10=0.4553
+2026-07-23 15:58:21,830 [INFO]   h= 1024 a=0.0  nprobe= 256 | fu ms/q: k10= 2.456 k1000= 2.892 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.447 | NDCG@10=0.4550
+2026-07-23 15:59:18,117 [INFO]   h= 1024 a=0.05 nprobe=   1 | fu ms/q: k10= 9.343 k1000=10.321 | refreshes=301 (70.2% of turns) mean|I0|/np=0.298 | NDCG@10=0.2435
+2026-07-23 16:00:54,565 [INFO]   h= 1024 a=0.05 nprobe=   2 | fu ms/q: k10= 7.398 k1000=21.865 | refreshes=212 (49.4% of turns) mean|I0|/np=0.326 | NDCG@10=0.3038
+2026-07-23 16:02:08,045 [INFO]   h= 1024 a=0.05 nprobe=   4 | fu ms/q: k10=13.464 k1000=14.487 | refreshes=140 (32.6% of turns) mean|I0|/np=0.330 | NDCG@10=0.3776
+2026-07-23 16:03:43,998 [INFO]   h= 1024 a=0.05 nprobe=   8 | fu ms/q: k10= 8.764 k1000=38.428 | refreshes= 72 (16.8% of turns) mean|I0|/np=0.350 | NDCG@10=0.3970
+2026-07-23 16:05:13,195 [INFO]   h= 1024 a=0.05 nprobe=  16 | fu ms/q: k10=26.463 k1000= 7.396 | refreshes= 43 (10.0% of turns) mean|I0|/np=0.360 | NDCG@10=0.4278
+2026-07-23 16:05:58,213 [INFO]   h= 1024 a=0.05 nprobe=  32 | fu ms/q: k10= 5.917 k1000= 7.419 | refreshes= 29 ( 6.8% of turns) mean|I0|/np=0.347 | NDCG@10=0.4358
+2026-07-23 16:06:21,776 [INFO]   h= 1024 a=0.05 nprobe=  64 | fu ms/q: k10= 2.725 k1000= 3.345 | refreshes= 11 ( 2.6% of turns) mean|I0|/np=0.361 | NDCG@10=0.4416
+2026-07-23 16:07:04,521 [INFO]   h= 1024 a=0.05 nprobe= 128 | fu ms/q: k10= 5.219 k1000= 5.796 | refreshes=  2 ( 0.5% of turns) mean|I0|/np=0.380 | NDCG@10=0.4510
+2026-07-23 16:07:53,238 [INFO]   h= 1024 a=0.05 nprobe= 256 | fu ms/q: k10= 7.697 k1000= 8.089 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.447 | NDCG@10=0.4550
+2026-07-23 16:09:32,052 [INFO]   h= 1024 a=0.1  nprobe=   1 | fu ms/q: k10=18.091 k1000=17.453 | refreshes=301 (70.2% of turns) mean|I0|/np=0.298 | NDCG@10=0.2435
+2026-07-23 16:11:09,592 [INFO]   h= 1024 a=0.1  nprobe=   2 | fu ms/q: k10=16.807 k1000=16.438 | refreshes=212 (49.4% of turns) mean|I0|/np=0.326 | NDCG@10=0.3038
+2026-07-23 16:12:30,204 [INFO]   h= 1024 a=0.1  nprobe=   4 | fu ms/q: k10=16.873 k1000=13.317 | refreshes=140 (32.6% of turns) mean|I0|/np=0.330 | NDCG@10=0.3776
+2026-07-23 16:13:23,849 [INFO]   h= 1024 a=0.1  nprobe=   8 | fu ms/q: k10= 9.933 k1000= 8.626 | refreshes= 72 (16.8% of turns) mean|I0|/np=0.350 | NDCG@10=0.3970
+2026-07-23 16:14:12,543 [INFO]   h= 1024 a=0.1  nprobe=  16 | fu ms/q: k10= 9.953 k1000= 9.171 | refreshes= 75 (17.5% of turns) mean|I0|/np=0.376 | NDCG@10=0.4380
+2026-07-23 16:15:00,223 [INFO]   h= 1024 a=0.1  nprobe=  32 | fu ms/q: k10= 5.195 k1000= 8.333 | refreshes= 59 (13.8% of turns) mean|I0|/np=0.374 | NDCG@10=0.4414
+2026-07-23 16:15:33,529 [INFO]   h= 1024 a=0.1  nprobe=  64 | fu ms/q: k10= 3.854 k1000= 9.063 | refreshes= 26 ( 6.1% of turns) mean|I0|/np=0.363 | NDCG@10=0.4453
+2026-07-23 16:16:10,930 [INFO]   h= 1024 a=0.1  nprobe= 128 | fu ms/q: k10= 5.152 k1000=10.174 | refreshes=  7 ( 1.6% of turns) mean|I0|/np=0.378 | NDCG@10=0.4510
+2026-07-23 16:16:48,412 [INFO]   h= 1024 a=0.1  nprobe= 256 | fu ms/q: k10= 6.636 k1000= 6.259 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.447 | NDCG@10=0.4550
+2026-07-23 16:18:22,474 [INFO]   h= 1024 a=0.2  nprobe=   1 | fu ms/q: k10=17.822 k1000=16.809 | refreshes=301 (70.2% of turns) mean|I0|/np=0.298 | NDCG@10=0.2435
+2026-07-23 16:20:00,326 [INFO]   h= 1024 a=0.2  nprobe=   2 | fu ms/q: k10=19.256 k1000=17.439 | refreshes=212 (49.4% of turns) mean|I0|/np=0.326 | NDCG@10=0.3038
+2026-07-23 16:21:13,382 [INFO]   h= 1024 a=0.2  nprobe=   4 | fu ms/q: k10=12.580 k1000=13.265 | refreshes=140 (32.6% of turns) mean|I0|/np=0.330 | NDCG@10=0.3776
+2026-07-23 16:22:31,478 [INFO]   h= 1024 a=0.2  nprobe=   8 | fu ms/q: k10=11.482 k1000=13.010 | refreshes=128 (29.8% of turns) mean|I0|/np=0.370 | NDCG@10=0.4023
+2026-07-23 16:23:44,864 [INFO]   h= 1024 a=0.2  nprobe=  16 | fu ms/q: k10=11.421 k1000=14.934 | refreshes=111 (25.9% of turns) mean|I0|/np=0.383 | NDCG@10=0.4407
+2026-07-23 16:24:40,418 [INFO]   h= 1024 a=0.2  nprobe=  32 | fu ms/q: k10= 8.325 k1000= 9.120 | refreshes= 96 (22.4% of turns) mean|I0|/np=0.382 | NDCG@10=0.4401
+2026-07-23 16:25:52,175 [INFO]   h= 1024 a=0.2  nprobe=  64 | fu ms/q: k10= 8.524 k1000=12.640 | refreshes= 63 (14.7% of turns) mean|I0|/np=0.384 | NDCG@10=0.4556
+2026-07-23 16:26:59,047 [INFO]   h= 1024 a=0.2  nprobe= 128 | fu ms/q: k10=11.594 k1000= 7.907 | refreshes= 36 ( 8.4% of turns) mean|I0|/np=0.394 | NDCG@10=0.4493
+2026-07-23 16:27:43,146 [INFO]   h= 1024 a=0.2  nprobe= 256 | fu ms/q: k10= 9.010 k1000= 7.153 | refreshes=  1 ( 0.2% of turns) mean|I0|/np=0.449 | NDCG@10=0.4550
+2026-07-23 16:27:43,821 [INFO] [h=4096] initial caches built: 12.50 ms/conv (outside timers, charged to first turn as in v11)
+2026-07-23 16:27:47,160 [INFO]   h= 4096 a=0.0  nprobe=   1 | fu ms/q: k10= 0.550 k1000= 0.607 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.189 | NDCG@10=0.2469
+2026-07-23 16:28:03,477 [INFO]   h= 4096 a=0.0  nprobe=   2 | fu ms/q: k10= 1.158 k1000= 2.047 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.212 | NDCG@10=0.3187
+2026-07-23 16:28:20,614 [INFO]   h= 4096 a=0.0  nprobe=   4 | fu ms/q: k10= 2.808 k1000= 3.036 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.241 | NDCG@10=0.3795
+2026-07-23 16:28:41,326 [INFO]   h= 4096 a=0.0  nprobe=   8 | fu ms/q: k10= 2.290 k1000= 1.937 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.279 | NDCG@10=0.4204
+2026-07-23 16:29:06,536 [INFO]   h= 4096 a=0.0  nprobe=  16 | fu ms/q: k10= 2.298 k1000= 3.619 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.293 | NDCG@10=0.4460
+2026-07-23 16:29:35,808 [INFO]   h= 4096 a=0.0  nprobe=  32 | fu ms/q: k10= 3.454 k1000= 5.392 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.305 | NDCG@10=0.4590
+2026-07-23 16:30:20,128 [INFO]   h= 4096 a=0.0  nprobe=  64 | fu ms/q: k10= 3.637 k1000= 5.776 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.304 | NDCG@10=0.4655
+2026-07-23 16:31:33,197 [INFO]   h= 4096 a=0.0  nprobe= 128 | fu ms/q: k10= 6.096 k1000= 7.212 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.301 | NDCG@10=0.4783
+2026-07-23 16:33:28,209 [INFO]   h= 4096 a=0.0  nprobe= 256 | fu ms/q: k10=11.531 k1000= 8.258 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.319 | NDCG@10=0.4796
+2026-07-23 16:35:33,903 [INFO]   h= 4096 a=0.05 nprobe=   1 | fu ms/q: k10=22.455 k1000=22.810 | refreshes=305 (71.1% of turns) mean|I0|/np=0.289 | NDCG@10=0.2463
+2026-07-23 16:39:46,224 [INFO]   h= 4096 a=0.05 nprobe=   2 | fu ms/q: k10=49.620 k1000=49.233 | refreshes=221 (51.5% of turns) mean|I0|/np=0.315 | NDCG@10=0.3085
+2026-07-23 16:43:46,936 [INFO]   h= 4096 a=0.05 nprobe=   4 | fu ms/q: k10=43.067 k1000=43.192 | refreshes=147 (34.3% of turns) mean|I0|/np=0.314 | NDCG@10=0.3731
+2026-07-23 16:47:20,164 [INFO]   h= 4096 a=0.05 nprobe=   8 | fu ms/q: k10=38.191 k1000=38.228 | refreshes= 85 (19.8% of turns) mean|I0|/np=0.331 | NDCG@10=0.4026
+2026-07-23 16:48:57,669 [INFO]   h= 4096 a=0.05 nprobe=  16 | fu ms/q: k10=35.824 k1000= 4.671 | refreshes= 56 (13.1% of turns) mean|I0|/np=0.331 | NDCG@10=0.4297
+2026-07-23 16:49:22,259 [INFO]   h= 4096 a=0.05 nprobe=  32 | fu ms/q: k10= 3.997 k1000= 4.631 | refreshes= 52 (12.1% of turns) mean|I0|/np=0.326 | NDCG@10=0.4532
+2026-07-23 16:49:46,280 [INFO]   h= 4096 a=0.05 nprobe=  64 | fu ms/q: k10= 4.130 k1000= 3.924 | refreshes= 40 ( 9.3% of turns) mean|I0|/np=0.315 | NDCG@10=0.4648
+2026-07-23 16:50:07,943 [INFO]   h= 4096 a=0.05 nprobe= 128 | fu ms/q: k10= 3.177 k1000= 3.479 | refreshes= 21 ( 4.9% of turns) mean|I0|/np=0.305 | NDCG@10=0.4732
+2026-07-23 16:50:32,149 [INFO]   h= 4096 a=0.05 nprobe= 256 | fu ms/q: k10= 2.974 k1000= 3.763 | refreshes=  4 ( 0.9% of turns) mean|I0|/np=0.321 | NDCG@10=0.4768
+2026-07-23 16:52:01,993 [INFO]   h= 4096 a=0.1  nprobe=   1 | fu ms/q: k10=16.240 k1000=15.741 | refreshes=305 (71.1% of turns) mean|I0|/np=0.289 | NDCG@10=0.2463
+2026-07-23 16:53:12,570 [INFO]   h= 4096 a=0.1  nprobe=   2 | fu ms/q: k10=12.375 k1000=12.802 | refreshes=221 (51.5% of turns) mean|I0|/np=0.315 | NDCG@10=0.3085
+2026-07-23 16:54:02,735 [INFO]   h= 4096 a=0.1  nprobe=   4 | fu ms/q: k10= 8.859 k1000= 9.143 | refreshes=147 (34.3% of turns) mean|I0|/np=0.314 | NDCG@10=0.3731
+2026-07-23 16:54:35,825 [INFO]   h= 4096 a=0.1  nprobe=   8 | fu ms/q: k10= 5.788 k1000= 6.437 | refreshes= 85 (19.8% of turns) mean|I0|/np=0.331 | NDCG@10=0.4026
+2026-07-23 16:55:10,913 [INFO]   h= 4096 a=0.1  nprobe=  16 | fu ms/q: k10= 6.366 k1000= 6.098 | refreshes= 87 (20.3% of turns) mean|I0|/np=0.347 | NDCG@10=0.4405
+2026-07-23 16:55:45,045 [INFO]   h= 4096 a=0.1  nprobe=  32 | fu ms/q: k10= 5.655 k1000= 6.768 | refreshes= 85 (19.8% of turns) mean|I0|/np=0.343 | NDCG@10=0.4455
+2026-07-23 16:56:15,530 [INFO]   h= 4096 a=0.1  nprobe=  64 | fu ms/q: k10= 4.821 k1000= 5.189 | refreshes= 64 (14.9% of turns) mean|I0|/np=0.328 | NDCG@10=0.4632
+2026-07-23 16:56:47,454 [INFO]   h= 4096 a=0.1  nprobe= 128 | fu ms/q: k10= 4.233 k1000= 4.538 | refreshes= 46 (10.7% of turns) mean|I0|/np=0.319 | NDCG@10=0.4684
+2026-07-23 16:57:22,891 [INFO]   h= 4096 a=0.1  nprobe= 256 | fu ms/q: k10= 3.965 k1000= 4.996 | refreshes= 26 ( 6.1% of turns) mean|I0|/np=0.324 | NDCG@10=0.4786
+2026-07-23 16:58:51,844 [INFO]   h= 4096 a=0.2  nprobe=   1 | fu ms/q: k10=15.725 k1000=16.224 | refreshes=305 (71.1% of turns) mean|I0|/np=0.289 | NDCG@10=0.2463
+2026-07-23 17:00:04,232 [INFO]   h= 4096 a=0.2  nprobe=   2 | fu ms/q: k10=12.745 k1000=12.773 | refreshes=221 (51.5% of turns) mean|I0|/np=0.315 | NDCG@10=0.3085
+2026-07-23 17:01:29,686 [INFO]   h= 4096 a=0.2  nprobe=   4 | fu ms/q: k10=17.373 k1000=16.047 | refreshes=147 (34.3% of turns) mean|I0|/np=0.314 | NDCG@10=0.3731
+2026-07-23 17:03:01,764 [INFO]   h= 4096 a=0.2  nprobe=   8 | fu ms/q: k10=26.790 k1000= 8.478 | refreshes=138 (32.2% of turns) mean|I0|/np=0.348 | NDCG@10=0.4074
+2026-07-23 17:03:48,427 [INFO]   h= 4096 a=0.2  nprobe=  16 | fu ms/q: k10= 8.006 k1000= 8.421 | refreshes=134 (31.2% of turns) mean|I0|/np=0.350 | NDCG@10=0.4412
+2026-07-23 17:04:34,935 [INFO]   h= 4096 a=0.2  nprobe=  32 | fu ms/q: k10= 7.903 k1000= 8.593 | refreshes=120 (28.0% of turns) mean|I0|/np=0.351 | NDCG@10=0.4482
+2026-07-23 17:05:20,510 [INFO]   h= 4096 a=0.2  nprobe=  64 | fu ms/q: k10= 7.443 k1000= 8.013 | refreshes=110 (25.6% of turns) mean|I0|/np=0.342 | NDCG@10=0.4541
+2026-07-23 17:06:10,227 [INFO]   h= 4096 a=0.2  nprobe= 128 | fu ms/q: k10= 6.971 k1000= 7.837 | refreshes= 95 (22.1% of turns) mean|I0|/np=0.334 | NDCG@10=0.4698
+2026-07-23 17:07:17,037 [INFO]   h= 4096 a=0.2  nprobe= 256 | fu ms/q: k10= 7.691 k1000= 7.762 | refreshes= 84 (19.6% of turns) mean|I0|/np=0.343 | NDCG@10=0.4789
+2026-07-23 17:07:17,580 [INFO] [h=8192] initial caches built: 10.63 ms/conv (outside timers, charged to first turn as in v11)
+2026-07-23 17:07:25,441 [INFO]   h= 8192 a=0.0  nprobe=   1 | fu ms/q: k10= 1.390 k1000= 1.420 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.182 | NDCG@10=0.2384
+2026-07-23 17:07:37,450 [INFO]   h= 8192 a=0.0  nprobe=   2 | fu ms/q: k10= 2.023 k1000= 1.876 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.205 | NDCG@10=0.3081
+2026-07-23 17:07:50,343 [INFO]   h= 8192 a=0.0  nprobe=   4 | fu ms/q: k10= 2.304 k1000= 1.970 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.233 | NDCG@10=0.3765
+2026-07-23 17:08:03,895 [INFO]   h= 8192 a=0.0  nprobe=   8 | fu ms/q: k10= 2.165 k1000= 2.696 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.273 | NDCG@10=0.4121
+2026-07-23 17:08:18,871 [INFO]   h= 8192 a=0.0  nprobe=  16 | fu ms/q: k10= 2.386 k1000= 2.387 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.283 | NDCG@10=0.4446
+2026-07-23 17:08:34,366 [INFO]   h= 8192 a=0.0  nprobe=  32 | fu ms/q: k10= 2.483 k1000= 2.619 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.292 | NDCG@10=0.4545
+2026-07-23 17:08:55,205 [INFO]   h= 8192 a=0.0  nprobe=  64 | fu ms/q: k10= 2.679 k1000= 2.960 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.287 | NDCG@10=0.4681
+2026-07-23 17:09:24,094 [INFO]   h= 8192 a=0.0  nprobe= 128 | fu ms/q: k10= 2.783 k1000= 3.288 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.281 | NDCG@10=0.4741
+2026-07-23 17:10:36,892 [INFO]   h= 8192 a=0.0  nprobe= 256 | fu ms/q: k10= 3.890 k1000= 8.331 | refreshes=  0 ( 0.0% of turns) mean|I0|/np=0.288 | NDCG@10=0.4827
+2026-07-23 17:13:01,742 [INFO]   h= 8192 a=0.05 nprobe=   1 | fu ms/q: k10=26.721 k1000=21.730 | refreshes=310 (72.3% of turns) mean|I0|/np=0.277 | NDCG@10=0.2454
+2026-07-23 17:14:53,116 [INFO]   h= 8192 a=0.05 nprobe=   2 | fu ms/q: k10=19.676 k1000=19.621 | refreshes=226 (52.7% of turns) mean|I0|/np=0.308 | NDCG@10=0.3077
+2026-07-23 17:16:13,563 [INFO]   h= 8192 a=0.05 nprobe=   4 | fu ms/q: k10=13.690 k1000=15.621 | refreshes=148 (34.5% of turns) mean|I0|/np=0.311 | NDCG@10=0.3725
+2026-07-23 17:17:40,391 [INFO]   h= 8192 a=0.05 nprobe=   8 | fu ms/q: k10= 9.847 k1000=20.657 | refreshes= 88 (20.5% of turns) mean|I0|/np=0.325 | NDCG@10=0.4039
+2026-07-23 17:21:07,134 [INFO]   h= 8192 a=0.05 nprobe=  16 | fu ms/q: k10=36.999 k1000=37.014 | refreshes= 64 (14.9% of turns) mean|I0|/np=0.317 | NDCG@10=0.4285
+2026-07-23 17:24:29,137 [INFO]   h= 8192 a=0.05 nprobe=  32 | fu ms/q: k10=36.272 k1000=36.072 | refreshes= 56 (13.1% of turns) mean|I0|/np=0.320 | NDCG@10=0.4473
+2026-07-23 17:27:47,066 [INFO]   h= 8192 a=0.05 nprobe=  64 | fu ms/q: k10=35.412 k1000=35.522 | refreshes= 47 (11.0% of turns) mean|I0|/np=0.300 | NDCG@10=0.4637
+2026-07-23 17:30:36,317 [INFO]   h= 8192 a=0.05 nprobe= 128 | fu ms/q: k10=34.136 k1000= 9.398 | refreshes= 31 ( 7.2% of turns) mean|I0|/np=0.295 | NDCG@10=0.4801
+2026-07-23 17:31:12,963 [INFO]   h= 8192 a=0.05 nprobe= 256 | fu ms/q: k10= 5.288 k1000= 5.989 | refreshes= 20 ( 4.7% of turns) mean|I0|/np=0.298 | NDCG@10=0.4865
+2026-07-23 17:33:13,546 [INFO]   h= 8192 a=0.1  nprobe=   1 | fu ms/q: k10=21.618 k1000=21.678 | refreshes=310 (72.3% of turns) mean|I0|/np=0.277 | NDCG@10=0.2454
+2026-07-23 17:35:05,978 [INFO]   h= 8192 a=0.1  nprobe=   2 | fu ms/q: k10=19.670 k1000=21.115 | refreshes=226 (52.7% of turns) mean|I0|/np=0.308 | NDCG@10=0.3077
+2026-07-23 17:36:25,519 [INFO]   h= 8192 a=0.1  nprobe=   4 | fu ms/q: k10=14.820 k1000=14.431 | refreshes=148 (34.5% of turns) mean|I0|/np=0.311 | NDCG@10=0.3725
+2026-07-23 17:37:19,790 [INFO]   h= 8192 a=0.1  nprobe=   8 | fu ms/q: k10= 9.388 k1000= 9.934 | refreshes= 88 (20.5% of turns) mean|I0|/np=0.325 | NDCG@10=0.4039
+2026-07-23 17:38:17,393 [INFO]   h= 8192 a=0.1  nprobe=  16 | fu ms/q: k10=10.424 k1000=10.776 | refreshes= 96 (22.4% of turns) mean|I0|/np=0.332 | NDCG@10=0.4380
+2026-07-23 17:39:13,705 [INFO]   h= 8192 a=0.1  nprobe=  32 | fu ms/q: k10= 9.203 k1000=10.138 | refreshes= 94 (21.9% of turns) mean|I0|/np=0.330 | NDCG@10=0.4464
+2026-07-23 17:40:06,439 [INFO]   h= 8192 a=0.1  nprobe=  64 | fu ms/q: k10= 9.398 k1000= 9.927 | refreshes= 79 (18.4% of turns) mean|I0|/np=0.318 | NDCG@10=0.4697
+2026-07-23 17:41:00,196 [INFO]   h= 8192 a=0.1  nprobe= 128 | fu ms/q: k10= 8.580 k1000= 9.818 | refreshes= 58 (13.5% of turns) mean|I0|/np=0.303 | NDCG@10=0.4799
+2026-07-23 17:43:11,727 [INFO]   h= 8192 a=0.1  nprobe= 256 | fu ms/q: k10=22.867 k1000=20.925 | refreshes= 45 (10.5% of turns) mean|I0|/np=0.309 | NDCG@10=0.4809
+2026-07-23 17:45:49,184 [INFO]   h= 8192 a=0.2  nprobe=   1 | fu ms/q: k10=27.324 k1000=26.763 | refreshes=310 (72.3% of turns) mean|I0|/np=0.277 | NDCG@10=0.2454
+2026-07-23 17:48:59,395 [INFO]   h= 8192 a=0.2  nprobe=   2 | fu ms/q: k10=31.412 k1000=34.472 | refreshes=226 (52.7% of turns) mean|I0|/np=0.308 | NDCG@10=0.3077
+2026-07-23 17:51:29,030 [INFO]   h= 8192 a=0.2  nprobe=   4 | fu ms/q: k10=26.130 k1000=25.409 | refreshes=148 (34.5% of turns) mean|I0|/np=0.311 | NDCG@10=0.3725
+2026-07-23 17:53:59,495 [INFO]   h= 8192 a=0.2  nprobe=   8 | fu ms/q: k10=25.065 k1000=28.845 | refreshes=143 (33.3% of turns) mean|I0|/np=0.339 | NDCG@10=0.4019
+2026-07-23 17:56:20,747 [INFO]   h= 8192 a=0.2  nprobe=  16 | fu ms/q: k10=25.304 k1000=26.301 | refreshes=142 (33.1% of turns) mean|I0|/np=0.337 | NDCG@10=0.4378
+2026-07-23 17:58:36,454 [INFO]   h= 8192 a=0.2  nprobe=  32 | fu ms/q: k10=23.630 k1000=22.893 | refreshes=133 (31.0% of turns) mean|I0|/np=0.336 | NDCG@10=0.4492
+2026-07-23 18:00:43,569 [INFO]   h= 8192 a=0.2  nprobe=  64 | fu ms/q: k10=26.560 k1000=21.043 | refreshes=126 (29.4% of turns) mean|I0|/np=0.329 | NDCG@10=0.4668
+2026-07-23 18:03:25,934 [INFO]   h= 8192 a=0.2  nprobe= 128 | fu ms/q: k10=30.403 k1000=26.477 | refreshes=117 (27.3% of turns) mean|I0|/np=0.314 | NDCG@10=0.4734
+2026-07-23 18:05:51,842 [INFO]   h= 8192 a=0.2  nprobe= 256 | fu ms/q: k10=24.257 k1000=24.002 | refreshes=111 (25.9% of turns) mean|I0|/np=0.315 | NDCG@10=0.4823
+2026-07-23 18:05:51,954 [INFO] Done. Results saved to /home/toploc1/Datasets/toploc1/IVF+/grid_search_results_dragon/toploc_ivf_plus_grid.json

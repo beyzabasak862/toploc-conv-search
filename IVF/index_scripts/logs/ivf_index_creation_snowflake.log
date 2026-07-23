@@ -1,0 +1,38 @@
+2026-05-12 22:21:51,810 [INFO] Total files found: 194
+2026-05-12 22:23:28,135 [INFO] Vector dimension: 1024
+2026-05-12 22:23:28,136 [INFO] Selecting 10 random files for training...
+2026-05-12 22:49:50,638 [INFO] Training on 2,000,000 vectors (need >= 1,277,952)...
+2026-05-13 07:18:32,842 [INFO] Index training complete.
+2026-05-13 08:39:22,802 [INFO] [10/194] Indexed: 2,000,000 vectors
+2026-05-13 09:49:06,118 [INFO] [20/194] Indexed: 4,000,000 vectors
+2026-05-13 11:03:00,283 [INFO] [30/194] Indexed: 6,000,000 vectors
+2026-05-13 12:23:46,666 [INFO] [40/194] Indexed: 8,000,000 vectors
+2026-05-13 13:45:23,947 [INFO] [50/194] Indexed: 10,000,000 vectors
+2026-05-13 13:45:23,947 [INFO] Saving checkpoint at file 50...
+2026-05-13 13:55:54,933 [INFO] Checkpoint saved.
+2026-05-13 15:04:56,787 [INFO] [60/194] Indexed: 12,000,000 vectors
+2026-05-14 01:55:58,966 [INFO] Total files found: 194
+2026-05-14 01:57:22,229 [INFO] Total files found: 194
+2026-05-14 02:05:57,498 [INFO] Resuming from file 50/194, index has 10,000,000 vectors
+2026-05-14 02:44:07,858 [INFO] [60/194] Indexed: 12,000,000 vectors
+2026-05-14 03:22:12,969 [INFO] [70/194] Indexed: 14,000,000 vectors
+2026-05-14 04:00:30,974 [INFO] [80/194] Indexed: 16,000,000 vectors
+2026-05-14 04:38:45,600 [INFO] [90/194] Indexed: 18,000,000 vectors
+2026-05-14 05:17:07,977 [INFO] [100/194] Indexed: 20,000,000 vectors
+2026-05-14 05:17:07,978 [INFO] Saving checkpoint at file 100...
+2026-05-14 05:29:08,793 [INFO] Checkpoint saved.
+2026-05-14 06:04:48,065 [INFO] [110/194] Indexed: 21,845,725 vectors
+2026-05-14 06:43:10,388 [INFO] [120/194] Indexed: 23,845,725 vectors
+2026-05-14 07:21:47,107 [INFO] [130/194] Indexed: 25,845,725 vectors
+2026-05-14 07:59:58,925 [INFO] [140/194] Indexed: 27,845,725 vectors
+2026-05-14 08:38:19,831 [INFO] [150/194] Indexed: 29,845,725 vectors
+2026-05-14 08:38:19,832 [INFO] Saving checkpoint at file 150...
+2026-05-14 08:56:12,983 [INFO] Checkpoint saved.
+2026-05-14 09:34:51,055 [INFO] [160/194] Indexed: 31,845,725 vectors
+2026-05-14 10:13:10,089 [INFO] [170/194] Indexed: 33,845,725 vectors
+2026-05-14 10:51:15,050 [INFO] [180/194] Indexed: 35,845,725 vectors
+2026-05-14 11:29:41,178 [INFO] [190/194] Indexed: 37,845,725 vectors
+2026-05-14 11:44:55,079 [INFO] Saving final index and ID map...
+2026-05-14 12:08:06,347 [INFO] Pipeline complete. Total vectors indexed: 38,636,446
+2026-05-14 12:08:06,347 [INFO] Index saved to:  /home/toploc1/Datasets/toploc1/indexes/treccast_34M_ivf.index
+2026-05-14 12:08:06,348 [INFO] IDs saved to:    /home/toploc1/Datasets/toploc1/indexes/treccast_34M_ivf_ids.npy

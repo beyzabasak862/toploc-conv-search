@@ -15,7 +15,7 @@ import time
 # Expect ~160 GB peak usage during the build.
  
 # Training 2^18 centroids is compute-bound BLAS work: give it real threads.
-N_THREADS = min(32, os.cpu_count())
+N_THREADS = 64
 faiss.omp_set_num_threads(N_THREADS)
  
 # -----------------------
@@ -41,14 +41,14 @@ NORMALIZE     = False
  
 # k-means wants >= 39 points per centroid or FAISS warns and centroid
 # quality degrades. 39 * 2^18 ~= 10.2M training vectors ~= 29 GB fp32.
-TRAIN_TARGET  = 39 * NLIST
-KMEANS_NITER  = 20         # lower than you might like, but each iteration at
+TRAIN_TARGET  = 20 * NLIST
+KMEANS_NITER  = 15         # lower than you might like, but each iteration at
                            # this scale is expensive; 15-25 is a sane range
 SEED          = 42
  
 # Each checkpoint rewrites the WHOLE index file (grows to ~119 GB by the
 # end), which takes minutes of pure I/O. Save rarely, not every 40 files.
-SAVE_EVERY    = 200
+SAVE_EVERY    = 20
  
 os.makedirs(OUTPUT_DIR, exist_ok=True)
  
