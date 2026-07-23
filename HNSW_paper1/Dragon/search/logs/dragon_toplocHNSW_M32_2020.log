@@ -1,0 +1,176 @@
+2026-07-23 12:44:54,062 [INFO] ##################  M = 32  ##################
+2026-07-23 12:44:54,062 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/Dragon/HNSW/treccast_hnsw_M32_dragon_mips.index (~119 GB, be patient)
+2026-07-23 13:21:59,480 [INFO] [M=32] Index: 38,636,446 vectors | entry_point=118295 | max_level=4 | metric=L2
+2026-07-23 13:22:25,262 [INFO] [M=32] Timing: 5 reps per config, reporting median
+2026-07-23 13:22:25,263 [INFO] ##### [M=32] THREAD MODE: multi (omp_set_num_threads=28) #####
+2026-07-23 13:22:25,263 [INFO] Warmup pass ...
+2026-07-23 13:22:25,373 [INFO] === [M=32] BASELINE HNSW [multi] ===
+2026-07-23 13:22:26,033 [INFO] [M=32/multi] ef=1     avg=  0.043ms (± 0.025) MRR@10=0.2079 NDCG@3=0.1151 NDCG@10=0.0960
+2026-07-23 13:22:26,159 [INFO] [M=32/multi] ef=2     avg=  0.102ms (± 0.045) MRR@10=0.3345 NDCG@3=0.2053 NDCG@10=0.1876
+2026-07-23 13:22:26,296 [INFO] [M=32/multi] ef=4     avg=  0.083ms (± 0.039) MRR@10=0.4595 NDCG@3=0.2875 NDCG@10=0.2712
+2026-07-23 13:22:26,440 [INFO] [M=32/multi] ef=8     avg=  0.113ms (± 0.039) MRR@10=0.5891 NDCG@3=0.3659 NDCG@10=0.3466
+2026-07-23 13:22:26,609 [INFO] [M=32/multi] ef=16    avg=  0.140ms (± 0.038) MRR@10=0.6473 NDCG@3=0.3960 NDCG@10=0.3834
+2026-07-23 13:22:26,790 [INFO] [M=32/multi] ef=32    avg=  0.150ms (± 0.036) MRR@10=0.7138 NDCG@3=0.4385 NDCG@10=0.4256
+2026-07-23 13:22:27,056 [INFO] [M=32/multi] ef=64    avg=  0.232ms (± 0.015) MRR@10=0.7257 NDCG@3=0.4465 NDCG@10=0.4348
+2026-07-23 13:22:27,429 [INFO] [M=32/multi] ef=128   avg=  0.341ms (± 0.017) MRR@10=0.7577 NDCG@3=0.4705 NDCG@10=0.4606
+2026-07-23 13:22:28,039 [INFO] [M=32/multi] ef=256   avg=  0.557ms (± 0.019) MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4624
+2026-07-23 13:22:29,096 [INFO] [M=32/multi] ef=512   avg=  1.005ms (± 0.054) MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4650
+2026-07-23 13:22:31,263 [INFO] [M=32/multi] ef=1024  avg=  2.061ms (± 0.031) MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:22:37,047 [INFO] [M=32/multi] ef=2048  avg=  5.538ms (± 0.102) MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:22:57,432 [INFO] [M=32/multi] ef=4096  avg= 19.694ms (± 0.493) MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:22:57,432 [INFO] === [M=32] TopLoc HNSW (batched) [multi] ===
+2026-07-23 13:22:57,520 [INFO] [M=32/multi/batched] up=1  ef=1     avg=  0.052ms (q0=  0.182 sub/query=  0.034) speedup=0.831x fu_speedup=1.264x MRR@10=0.2860 NDCG@3=0.1596 NDCG@10=0.1384
+2026-07-23 13:22:57,621 [INFO] [M=32/multi/batched] up=1  ef=2     avg=  0.063ms (q0=  0.192 sub/query=  0.045) speedup=1.635x fu_speedup=2.280x MRR@10=0.4882 NDCG@3=0.2849 NDCG@10=0.2634
+2026-07-23 13:22:57,723 [INFO] [M=32/multi/batched] up=1  ef=4     avg=  0.070ms (q0=  0.199 sub/query=  0.052) speedup=1.185x fu_speedup=1.587x MRR@10=0.5849 NDCG@3=0.3706 NDCG@10=0.3438
+2026-07-23 13:22:57,847 [INFO] [M=32/multi/batched] up=1  ef=8     avg=  0.085ms (q0=  0.207 sub/query=  0.068) speedup=1.330x fu_speedup=1.655x MRR@10=0.7003 NDCG@3=0.4303 NDCG@10=0.4128
+2026-07-23 13:22:57,977 [INFO] [M=32/multi/batched] up=1  ef=16    avg=  0.099ms (q0=  0.210 sub/query=  0.084) speedup=1.415x fu_speedup=1.672x MRR@10=0.7380 NDCG@3=0.4583 NDCG@10=0.4421
+2026-07-23 13:22:58,127 [INFO] [M=32/multi/batched] up=1  ef=32    avg=  0.116ms (q0=  0.217 sub/query=  0.102) speedup=1.296x fu_speedup=1.472x MRR@10=0.7420 NDCG@3=0.4599 NDCG@10=0.4497
+2026-07-23 13:22:58,329 [INFO] [M=32/multi/batched] up=1  ef=64    avg=  0.165ms (q0=  0.294 sub/query=  0.148) speedup=1.404x fu_speedup=1.570x MRR@10=0.7509 NDCG@3=0.4657 NDCG@10=0.4539
+2026-07-23 13:22:58,599 [INFO] [M=32/multi/batched] up=1  ef=128   avg=  0.230ms (q0=  0.302 sub/query=  0.220) speedup=1.485x fu_speedup=1.552x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4625
+2026-07-23 13:22:59,090 [INFO] [M=32/multi/batched] up=1  ef=256   avg=  0.439ms (q0=  0.540 sub/query=  0.426) speedup=1.266x fu_speedup=1.307x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4627
+2026-07-23 13:22:59,995 [INFO] [M=32/multi/batched] up=1  ef=512   avg=  0.843ms (q0=  0.915 sub/query=  0.833) speedup=1.191x fu_speedup=1.205x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4651
+2026-07-23 13:23:01,776 [INFO] [M=32/multi/batched] up=1  ef=1024  avg=  1.688ms (q0=  1.816 sub/query=  1.670) speedup=1.221x fu_speedup=1.234x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:23:05,583 [INFO] [M=32/multi/batched] up=1  ef=2048  avg=  3.639ms (q0=  5.153 sub/query=  3.432) speedup=1.522x fu_speedup=1.613x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:23:14,105 [INFO] [M=32/multi/batched] up=1  ef=4096  avg=  8.124ms (q0= 16.702 sub/query=  6.952) speedup=2.424x fu_speedup=2.833x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:23:14,146 [INFO] [M=32/multi/batched] up=2  ef=1     avg=  0.013ms (q0=  0.032 sub/query=  0.011) speedup=3.299x fu_speedup=4.100x MRR@10=0.3627 NDCG@3=0.2096 NDCG@10=0.1863
+2026-07-23 13:23:14,198 [INFO] [M=32/multi/batched] up=2  ef=2     avg=  0.019ms (q0=  0.048 sub/query=  0.016) speedup=5.270x fu_speedup=6.591x MRR@10=0.5073 NDCG@3=0.3045 NDCG@10=0.2786
+2026-07-23 13:23:14,330 [INFO] [M=32/multi/batched] up=2  ef=4     avg=  0.025ms (q0=  0.051 sub/query=  0.021) speedup=3.370x fu_speedup=3.953x MRR@10=0.6158 NDCG@3=0.3900 NDCG@10=0.3555
+2026-07-23 13:23:14,394 [INFO] [M=32/multi/batched] up=2  ef=8     avg=  0.035ms (q0=  0.082 sub/query=  0.028) speedup=3.248x fu_speedup=3.981x MRR@10=0.7339 NDCG@3=0.4511 NDCG@10=0.4322
+2026-07-23 13:23:14,477 [INFO] [M=32/multi/batched] up=2  ef=16    avg=  0.054ms (q0=  0.137 sub/query=  0.043) speedup=2.575x fu_speedup=3.247x MRR@10=0.7387 NDCG@3=0.4583 NDCG@10=0.4442
+2026-07-23 13:23:14,590 [INFO] [M=32/multi/batched] up=2  ef=32    avg=  0.084ms (q0=  0.194 sub/query=  0.069) speedup=1.792x fu_speedup=2.185x MRR@10=0.7420 NDCG@3=0.4604 NDCG@10=0.4516
+2026-07-23 13:23:14,757 [INFO] [M=32/multi/batched] up=2  ef=64    avg=  0.134ms (q0=  0.277 sub/query=  0.115) speedup=1.726x fu_speedup=2.020x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4573
+2026-07-23 13:23:15,047 [INFO] [M=32/multi/batched] up=2  ef=128   avg=  0.251ms (q0=  0.480 sub/query=  0.220) speedup=1.358x fu_speedup=1.551x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:23:15,593 [INFO] [M=32/multi/batched] up=2  ef=256   avg=  0.488ms (q0=  0.917 sub/query=  0.429) speedup=1.141x fu_speedup=1.297x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4627
+2026-07-23 13:23:16,617 [INFO] [M=32/multi/batched] up=2  ef=512   avg=  0.962ms (q0=  1.819 sub/query=  0.844) speedup=1.045x fu_speedup=1.190x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:23:18,809 [INFO] [M=32/multi/batched] up=2  ef=1024  avg=  2.086ms (q0=  5.088 sub/query=  1.676) speedup=0.988x fu_speedup=1.230x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:23:24,111 [INFO] [M=32/multi/batched] up=2  ef=2048  avg=  5.060ms (q0= 17.041 sub/query=  3.423) speedup=1.094x fu_speedup=1.618x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:23:39,109 [INFO] [M=32/multi/batched] up=2  ef=4096  avg= 14.415ms (q0= 68.728 sub/query=  6.995) speedup=1.366x fu_speedup=2.816x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:23:39,151 [INFO] [M=32/multi/batched] up=4  ef=1     avg=  0.014ms (q0=  0.037 sub/query=  0.011) speedup=3.107x fu_speedup=4.029x MRR@10=0.4202 NDCG@3=0.2403 NDCG@10=0.2107
+2026-07-23 13:23:39,201 [INFO] [M=32/multi/batched] up=4  ef=2     avg=  0.023ms (q0=  0.076 sub/query=  0.016) speedup=4.440x fu_speedup=6.452x MRR@10=0.5545 NDCG@3=0.3337 NDCG@10=0.2977
+2026-07-23 13:23:39,255 [INFO] [M=32/multi/batched] up=4  ef=4     avg=  0.025ms (q0=  0.069 sub/query=  0.019) speedup=3.257x fu_speedup=4.243x MRR@10=0.6870 NDCG@3=0.4282 NDCG@10=0.3934
+2026-07-23 13:23:39,325 [INFO] [M=32/multi/batched] up=4  ef=8     avg=  0.042ms (q0=  0.141 sub/query=  0.028) speedup=2.689x fu_speedup=3.971x MRR@10=0.7395 NDCG@3=0.4533 NDCG@10=0.4365
+2026-07-23 13:23:39,415 [INFO] [M=32/multi/batched] up=4  ef=16    avg=  0.061ms (q0=  0.194 sub/query=  0.043) speedup=2.294x fu_speedup=3.265x MRR@10=0.7387 NDCG@3=0.4598 NDCG@10=0.4465
+2026-07-23 13:23:39,544 [INFO] [M=32/multi/batched] up=4  ef=32    avg=  0.096ms (q0=  0.277 sub/query=  0.072) speedup=1.556x fu_speedup=2.092x MRR@10=0.7517 NDCG@3=0.4676 NDCG@10=0.4586
+2026-07-23 13:23:39,743 [INFO] [M=32/multi/batched] up=4  ef=64    avg=  0.165ms (q0=  0.510 sub/query=  0.118) speedup=1.406x fu_speedup=1.968x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4579
+2026-07-23 13:23:40,092 [INFO] [M=32/multi/batched] up=4  ef=128   avg=  0.309ms (q0=  0.958 sub/query=  0.220) speedup=1.103x fu_speedup=1.547x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:23:40,741 [INFO] [M=32/multi/batched] up=4  ef=256   avg=  0.597ms (q0=  1.821 sub/query=  0.430) speedup=0.932x fu_speedup=1.295x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4628
+2026-07-23 13:23:42,181 [INFO] [M=32/multi/batched] up=4  ef=512   avg=  1.353ms (q0=  5.226 sub/query=  0.823) speedup=0.743x fu_speedup=1.220x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:23:45,904 [INFO] [M=32/multi/batched] up=4  ef=1024  avg=  3.544ms (q0= 17.221 sub/query=  1.676) speedup=0.582x fu_speedup=1.230x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:23:57,775 [INFO] [M=32/multi/batched] up=4  ef=2048  avg= 11.372ms (q0= 69.674 sub/query=  3.407) speedup=0.487x fu_speedup=1.625x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:24:49,871 [INFO] [M=32/multi/batched] up=4  ef=4096  avg= 49.974ms (q0=364.213 sub/query=  7.046) speedup=0.394x fu_speedup=2.795x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:24:49,914 [INFO] [M=32/multi/batched] up=8  ef=1     avg=  0.015ms (q0=  0.051 sub/query=  0.010) speedup=2.869x fu_speedup=4.242x MRR@10=0.4452 NDCG@3=0.2580 NDCG@10=0.2140
+2026-07-23 13:24:49,963 [INFO] [M=32/multi/batched] up=8  ef=2     avg=  0.022ms (q0=  0.069 sub/query=  0.015) speedup=4.712x fu_speedup=6.682x MRR@10=0.6235 NDCG@3=0.3671 NDCG@10=0.3311
+2026-07-23 13:24:50,024 [INFO] [M=32/multi/batched] up=8  ef=4     avg=  0.033ms (q0=  0.125 sub/query=  0.020) speedup=2.512x fu_speedup=4.076x MRR@10=0.6935 NDCG@3=0.4305 NDCG@10=0.3980
+2026-07-23 13:24:50,100 [INFO] [M=32/multi/batched] up=8  ef=8     avg=  0.048ms (q0=  0.176 sub/query=  0.030) speedup=2.376x fu_speedup=3.760x MRR@10=0.7419 NDCG@3=0.4570 NDCG@10=0.4416
+2026-07-23 13:24:50,199 [INFO] [M=32/multi/batched] up=8  ef=16    avg=  0.071ms (q0=  0.279 sub/query=  0.042) speedup=1.977x fu_speedup=3.304x MRR@10=0.7491 NDCG@3=0.4670 NDCG@10=0.4544
+2026-07-23 13:24:50,355 [INFO] [M=32/multi/batched] up=8  ef=32    avg=  0.126ms (q0=  0.535 sub/query=  0.070) speedup=1.192x fu_speedup=2.146x MRR@10=0.7517 NDCG@3=0.4676 NDCG@10=0.4592
+2026-07-23 13:24:50,604 [INFO] [M=32/multi/batched] up=8  ef=64    avg=  0.214ms (q0=  0.925 sub/query=  0.117) speedup=1.083x fu_speedup=1.980x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4579
+2026-07-23 13:24:51,060 [INFO] [M=32/multi/batched] up=8  ef=128   avg=  0.412ms (q0=  1.800 sub/query=  0.222) speedup=0.828x fu_speedup=1.535x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:24:52,120 [INFO] [M=32/multi/batched] up=8  ef=256   avg=  0.990ms (q0=  5.144 sub/query=  0.422) speedup=0.562x fu_speedup=1.318x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4628
+2026-07-23 13:24:55,066 [INFO] [M=32/multi/batched] up=8  ef=512   avg=  2.803ms (q0= 17.163 sub/query=  0.841) speedup=0.358x fu_speedup=1.194x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:25:05,329 [INFO] [M=32/multi/batched] up=8  ef=1024  avg=  9.848ms (q0= 69.544 sub/query=  1.693) speedup=0.209x fu_speedup=1.217x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:25:53,475 [INFO] [M=32/multi/batched] up=8  ef=2048  avg= 46.331ms (q0=360.432 sub/query=  3.420) speedup=0.120x fu_speedup=1.619x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:28:10,951 [INFO] [M=32/multi/batched] up=8  ef=4096  avg=132.173ms (q0=1048.495 sub/query=  6.992) speedup=0.149x fu_speedup=2.817x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:28:10,997 [INFO] [M=32/multi/batched] up=16 ef=1     avg=  0.018ms (q0=  0.067 sub/query=  0.011) speedup=2.463x fu_speedup=4.005x MRR@10=0.5227 NDCG@3=0.2980 NDCG@10=0.2509
+2026-07-23 13:28:11,054 [INFO] [M=32/multi/batched] up=16 ef=2     avg=  0.028ms (q0=  0.123 sub/query=  0.015) speedup=3.640x fu_speedup=6.775x MRR@10=0.6295 NDCG@3=0.3693 NDCG@10=0.3361
+2026-07-23 13:28:11,123 [INFO] [M=32/multi/batched] up=16 ef=4     avg=  0.039ms (q0=  0.175 sub/query=  0.021) speedup=2.092x fu_speedup=3.944x MRR@10=0.6886 NDCG@3=0.4296 NDCG@10=0.4002
+2026-07-23 13:28:11,210 [INFO] [M=32/multi/batched] up=16 ef=8     avg=  0.059ms (q0=  0.277 sub/query=  0.029) speedup=1.909x fu_speedup=3.840x MRR@10=0.7523 NDCG@3=0.4642 NDCG@10=0.4495
+2026-07-23 13:28:11,339 [INFO] [M=32/multi/batched] up=16 ef=16    avg=  0.097ms (q0=  0.493 sub/query=  0.043) speedup=1.440x fu_speedup=3.242x MRR@10=0.7491 NDCG@3=0.4670 NDCG@10=0.4549
+2026-07-23 13:28:11,546 [INFO] [M=32/multi/batched] up=16 ef=32    avg=  0.172ms (q0=  0.915 sub/query=  0.070) speedup=0.871x fu_speedup=2.128x MRR@10=0.7517 NDCG@3=0.4676 NDCG@10=0.4592
+2026-07-23 13:28:11,905 [INFO] [M=32/multi/batched] up=16 ef=64    avg=  0.319ms (q0=  1.783 sub/query=  0.118) speedup=0.728x fu_speedup=1.959x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4580
+2026-07-23 13:28:12,772 [INFO] [M=32/multi/batched] up=16 ef=128   avg=  0.808ms (q0=  5.081 sub/query=  0.224) speedup=0.422x fu_speedup=1.520x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:28:15,367 [INFO] [M=32/multi/batched] up=16 ef=256   avg=  2.488ms (q0= 17.547 sub/query=  0.431) speedup=0.224x fu_speedup=1.292x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4628
+2026-07-23 13:28:24,854 [INFO] [M=32/multi/batched] up=16 ef=512   avg=  9.152ms (q0= 69.932 sub/query=  0.849) speedup=0.110x fu_speedup=1.183x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:29:11,296 [INFO] [M=32/multi/batched] up=16 ef=1024  avg= 44.624ms (q0=358.892 sub/query=  1.691) speedup=0.046x fu_speedup=1.219x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:31:25,477 [INFO] [M=32/multi/batched] up=16 ef=2048  avg=129.000ms (q0=1048.226 sub/query=  3.422) speedup=0.043x fu_speedup=1.618x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:38:17,797 [INFO] [M=32/multi/batched] up=16 ef=4096  avg=396.505ms (q0=3248.119 sub/query=  6.940) speedup=0.050x fu_speedup=2.838x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:38:17,797 [INFO] ##### [M=32] THREAD MODE: single (omp_set_num_threads=1) #####
+2026-07-23 13:38:17,797 [INFO] Warmup pass ...
+2026-07-23 13:38:18,217 [INFO] === [M=32] BASELINE HNSW [single] ===
+2026-07-23 13:38:18,341 [INFO] [M=32/single] ef=1     avg=  0.099ms (± 0.001) MRR@10=0.2079 NDCG@3=0.1151 NDCG@10=0.0960
+2026-07-23 13:38:18,526 [INFO] [M=32/single] ef=2     avg=  0.157ms (± 0.001) MRR@10=0.3345 NDCG@3=0.2053 NDCG@10=0.1876
+2026-07-23 13:38:18,786 [INFO] [M=32/single] ef=4     avg=  0.229ms (± 0.002) MRR@10=0.4595 NDCG@3=0.2875 NDCG@10=0.2712
+2026-07-23 13:38:19,138 [INFO] [M=32/single] ef=8     avg=  0.318ms (± 0.001) MRR@10=0.5891 NDCG@3=0.3659 NDCG@10=0.3466
+2026-07-23 13:38:19,628 [INFO] [M=32/single] ef=16    avg=  0.450ms (± 0.001) MRR@10=0.6473 NDCG@3=0.3960 NDCG@10=0.3834
+2026-07-23 13:38:20,363 [INFO] [M=32/single] ef=32    avg=  0.685ms (± 0.002) MRR@10=0.7138 NDCG@3=0.4385 NDCG@10=0.4256
+2026-07-23 13:38:21,517 [INFO] [M=32/single] ef=64    avg=  1.085ms (± 0.009) MRR@10=0.7257 NDCG@3=0.4465 NDCG@10=0.4348
+2026-07-23 13:38:23,492 [INFO] [M=32/single] ef=128   avg=  1.878ms (± 0.004) MRR@10=0.7577 NDCG@3=0.4705 NDCG@10=0.4606
+2026-07-23 13:38:27,186 [INFO] [M=32/single] ef=256   avg=  3.530ms (± 0.003) MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4624
+2026-07-23 13:38:34,508 [INFO] [M=32/single] ef=512   avg=  7.016ms (± 0.009) MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4650
+2026-07-23 13:38:49,205 [INFO] [M=32/single] ef=1024  avg= 14.112ms (± 0.004) MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:39:19,016 [INFO] [M=32/single] ef=2048  avg= 28.643ms (± 0.020) MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:40:22,708 [INFO] [M=32/single] ef=4096  avg= 61.197ms (± 0.096) MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:40:22,708 [INFO] === [M=32] TopLoc HNSW (batched) [single] ===
+2026-07-23 13:40:22,809 [INFO] [M=32/single/batched] up=1  ef=1     avg=  0.076ms (q0=  0.094 sub/query=  0.074) speedup=1.299x fu_speedup=1.343x MRR@10=0.2860 NDCG@3=0.1596 NDCG@10=0.1384
+2026-07-23 13:40:22,949 [INFO] [M=32/single/batched] up=1  ef=2     avg=  0.113ms (q0=  0.159 sub/query=  0.106) speedup=1.393x fu_speedup=1.477x MRR@10=0.4882 NDCG@3=0.2849 NDCG@10=0.2634
+2026-07-23 13:40:23,137 [INFO] [M=32/single/batched] up=1  ef=4     avg=  0.159ms (q0=  0.229 sub/query=  0.150) speedup=1.438x fu_speedup=1.530x MRR@10=0.5849 NDCG@3=0.3706 NDCG@10=0.3438
+2026-07-23 13:40:23,406 [INFO] [M=32/single/batched] up=1  ef=8     avg=  0.236ms (q0=  0.321 sub/query=  0.224) speedup=1.350x fu_speedup=1.420x MRR@10=0.7003 NDCG@3=0.4303 NDCG@10=0.4128
+2026-07-23 13:40:23,770 [INFO] [M=32/single/batched] up=1  ef=16    avg=  0.327ms (q0=  0.457 sub/query=  0.309) speedup=1.377x fu_speedup=1.456x MRR@10=0.7380 NDCG@3=0.4583 NDCG@10=0.4421
+2026-07-23 13:40:24,341 [INFO] [M=32/single/batched] up=1  ef=32    avg=  0.526ms (q0=  0.709 sub/query=  0.501) speedup=1.303x fu_speedup=1.368x MRR@10=0.7420 NDCG@3=0.4599 NDCG@10=0.4497
+2026-07-23 13:40:25,324 [INFO] [M=32/single/batched] up=1  ef=64    avg=  0.923ms (q0=  1.150 sub/query=  0.892) speedup=1.175x fu_speedup=1.215x MRR@10=0.7509 NDCG@3=0.4657 NDCG@10=0.4539
+2026-07-23 13:40:27,104 [INFO] [M=32/single/batched] up=1  ef=128   avg=  1.691ms (q0=  2.037 sub/query=  1.643) speedup=1.111x fu_speedup=1.143x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4625
+2026-07-23 13:40:30,607 [INFO] [M=32/single/batched] up=1  ef=256   avg=  3.345ms (q0=  3.768 sub/query=  3.287) speedup=1.055x fu_speedup=1.074x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4627
+2026-07-23 13:40:37,752 [INFO] [M=32/single/batched] up=1  ef=512   avg=  6.850ms (q0=  7.215 sub/query=  6.800) speedup=1.024x fu_speedup=1.032x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4651
+2026-07-23 13:40:52,262 [INFO] [M=32/single/batched] up=1  ef=1024  avg= 13.934ms (q0= 14.203 sub/query= 13.898) speedup=1.013x fu_speedup=1.015x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:41:21,879 [INFO] [M=32/single/batched] up=1  ef=2048  avg= 28.452ms (q0= 28.469 sub/query= 28.449) speedup=1.007x fu_speedup=1.007x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:42:25,133 [INFO] [M=32/single/batched] up=1  ef=4096  avg= 60.866ms (q0= 60.482 sub/query= 60.918) speedup=1.005x fu_speedup=1.005x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:42:25,241 [INFO] [M=32/single/batched] up=2  ef=1     avg=  0.082ms (q0=  0.156 sub/query=  0.072) speedup=1.207x fu_speedup=1.377x MRR@10=0.3627 NDCG@3=0.2096 NDCG@10=0.1863
+2026-07-23 13:42:25,382 [INFO] [M=32/single/batched] up=2  ef=2     avg=  0.115ms (q0=  0.227 sub/query=  0.100) speedup=1.367x fu_speedup=1.576x MRR@10=0.5073 NDCG@3=0.3045 NDCG@10=0.2786
+2026-07-23 13:42:25,582 [INFO] [M=32/single/batched] up=2  ef=4     avg=  0.170ms (q0=  0.321 sub/query=  0.150) speedup=1.345x fu_speedup=1.530x MRR@10=0.6158 NDCG@3=0.3900 NDCG@10=0.3555
+2026-07-23 13:42:25,846 [INFO] [M=32/single/batched] up=2  ef=8     avg=  0.233ms (q0=  0.457 sub/query=  0.203) speedup=1.365x fu_speedup=1.571x MRR@10=0.7339 NDCG@3=0.4511 NDCG@10=0.4322
+2026-07-23 13:42:26,232 [INFO] [M=32/single/batched] up=2  ef=16    avg=  0.349ms (q0=  0.708 sub/query=  0.300) speedup=1.290x fu_speedup=1.500x MRR@10=0.7387 NDCG@3=0.4583 NDCG@10=0.4442
+2026-07-23 13:42:26,855 [INFO] [M=32/single/batched] up=2  ef=32    avg=  0.577ms (q0=  1.141 sub/query=  0.500) speedup=1.188x fu_speedup=1.372x MRR@10=0.7420 NDCG@3=0.4604 NDCG@10=0.4516
+2026-07-23 13:42:27,929 [INFO] [M=32/single/batched] up=2  ef=64    avg=  1.011ms (q0=  2.019 sub/query=  0.873) speedup=1.073x fu_speedup=1.242x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4573
+2026-07-23 13:42:29,916 [INFO] [M=32/single/batched] up=2  ef=128   avg=  1.889ms (q0=  3.744 sub/query=  1.636) speedup=0.994x fu_speedup=1.148x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:42:33,815 [INFO] [M=32/single/batched] up=2  ef=256   avg=  3.728ms (q0=  7.158 sub/query=  3.259) speedup=0.947x fu_speedup=1.083x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4627
+2026-07-23 13:42:41,819 [INFO] [M=32/single/batched] up=2  ef=512   avg=  7.625ms (q0= 14.094 sub/query=  6.741) speedup=0.920x fu_speedup=1.041x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:42:58,031 [INFO] [M=32/single/batched] up=2  ef=1024  avg= 15.552ms (q0= 28.323 sub/query= 13.808) speedup=0.907x fu_speedup=1.022x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:43:31,425 [INFO] [M=32/single/batched] up=2  ef=2048  avg= 32.076ms (q0= 60.068 sub/query= 28.252) speedup=0.893x fu_speedup=1.014x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:44:44,373 [INFO] [M=32/single/batched] up=2  ef=4096  avg= 70.042ms (q0=138.551 sub/query= 60.683) speedup=0.874x fu_speedup=1.008x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:44:44,487 [INFO] [M=32/single/batched] up=4  ef=1     avg=  0.088ms (q0=  0.225 sub/query=  0.070) speedup=1.117x fu_speedup=1.416x MRR@10=0.4202 NDCG@3=0.2403 NDCG@10=0.2107
+2026-07-23 13:44:44,642 [INFO] [M=32/single/batched] up=4  ef=2     avg=  0.127ms (q0=  0.319 sub/query=  0.101) speedup=1.233x fu_speedup=1.553x MRR@10=0.5545 NDCG@3=0.3337 NDCG@10=0.2977
+2026-07-23 13:44:44,848 [INFO] [M=32/single/batched] up=4  ef=4     avg=  0.177ms (q0=  0.458 sub/query=  0.138) speedup=1.296x fu_speedup=1.658x MRR@10=0.6870 NDCG@3=0.4282 NDCG@10=0.3934
+2026-07-23 13:44:45,142 [INFO] [M=32/single/batched] up=4  ef=8     avg=  0.261ms (q0=  0.709 sub/query=  0.199) speedup=1.222x fu_speedup=1.598x MRR@10=0.7395 NDCG@3=0.4533 NDCG@10=0.4365
+2026-07-23 13:44:45,584 [INFO] [M=32/single/batched] up=4  ef=16    avg=  0.402ms (q0=  1.140 sub/query=  0.301) speedup=1.120x fu_speedup=1.494x MRR@10=0.7387 NDCG@3=0.4598 NDCG@10=0.4465
+2026-07-23 13:44:46,308 [INFO] [M=32/single/batched] up=4  ef=32    avg=  0.673ms (q0=  2.024 sub/query=  0.489) speedup=1.018x fu_speedup=1.402x MRR@10=0.7517 NDCG@3=0.4676 NDCG@10=0.4586
+2026-07-23 13:44:47,596 [INFO] [M=32/single/batched] up=4  ef=64    avg=  1.216ms (q0=  3.736 sub/query=  0.872) speedup=0.892x fu_speedup=1.244x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4579
+2026-07-23 13:44:50,007 [INFO] [M=32/single/batched] up=4  ef=128   avg=  2.295ms (q0=  7.169 sub/query=  1.629) speedup=0.818x fu_speedup=1.153x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:44:54,780 [INFO] [M=32/single/batched] up=4  ef=256   avg=  4.563ms (q0= 14.097 sub/query=  3.261) speedup=0.774x fu_speedup=1.082x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4628
+2026-07-23 13:45:04,513 [INFO] [M=32/single/batched] up=4  ef=512   avg=  9.331ms (q0= 28.298 sub/query=  6.740) speedup=0.752x fu_speedup=1.041x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:45:24,690 [INFO] [M=32/single/batched] up=4  ef=1024  avg= 19.351ms (q0= 60.039 sub/query= 13.792) speedup=0.729x fu_speedup=1.023x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:46:08,214 [INFO] [M=32/single/batched] up=4  ef=2048  avg= 41.801ms (q0=139.293 sub/query= 28.482) speedup=0.685x fu_speedup=1.006x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:47:48,610 [INFO] [M=32/single/batched] up=4  ef=4096  avg= 96.549ms (q0=358.058 sub/query= 60.823) speedup=0.634x fu_speedup=1.006x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:47:48,733 [INFO] [M=32/single/batched] up=8  ef=1     avg=  0.097ms (q0=  0.316 sub/query=  0.067) speedup=1.022x fu_speedup=1.479x MRR@10=0.4452 NDCG@3=0.2580 NDCG@10=0.2140
+2026-07-23 13:47:48,902 [INFO] [M=32/single/batched] up=8  ef=2     avg=  0.140ms (q0=  0.456 sub/query=  0.097) speedup=1.122x fu_speedup=1.623x MRR@10=0.6235 NDCG@3=0.3671 NDCG@10=0.3311
+2026-07-23 13:47:49,140 [INFO] [M=32/single/batched] up=8  ef=4     avg=  0.207ms (q0=  0.706 sub/query=  0.139) speedup=1.107x fu_speedup=1.652x MRR@10=0.6935 NDCG@3=0.4305 NDCG@10=0.3980
+2026-07-23 13:47:49,491 [INFO] [M=32/single/batched] up=8  ef=8     avg=  0.316ms (q0=  1.151 sub/query=  0.202) speedup=1.009x fu_speedup=1.580x MRR@10=0.7419 NDCG@3=0.4570 NDCG@10=0.4416
+2026-07-23 13:47:50,036 [INFO] [M=32/single/batched] up=8  ef=16    avg=  0.503ms (q0=  2.031 sub/query=  0.294) speedup=0.896x fu_speedup=1.531x MRR@10=0.7491 NDCG@3=0.4670 NDCG@10=0.4544
+2026-07-23 13:47:50,972 [INFO] [M=32/single/batched] up=8  ef=32    avg=  0.878ms (q0=  3.734 sub/query=  0.487) speedup=0.781x fu_speedup=1.406x MRR@10=0.7517 NDCG@3=0.4676 NDCG@10=0.4592
+2026-07-23 13:47:52,694 [INFO] [M=32/single/batched] up=8  ef=64    avg=  1.626ms (q0=  7.157 sub/query=  0.870) speedup=0.667x fu_speedup=1.246x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4579
+2026-07-23 13:47:55,971 [INFO] [M=32/single/batched] up=8  ef=128   avg=  3.129ms (q0= 14.096 sub/query=  1.631) speedup=0.600x fu_speedup=1.152x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:48:02,515 [INFO] [M=32/single/batched] up=8  ef=256   avg=  6.269ms (q0= 28.325 sub/query=  3.256) speedup=0.563x fu_speedup=1.084x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4628
+2026-07-23 13:48:16,211 [INFO] [M=32/single/batched] up=8  ef=512   avg= 13.147ms (q0= 60.082 sub/query=  6.735) speedup=0.534x fu_speedup=1.042x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:48:46,234 [INFO] [M=32/single/batched] up=8  ef=1024  avg= 28.806ms (q0=138.591 sub/query= 13.808) speedup=0.490x fu_speedup=1.022x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:49:56,895 [INFO] [M=32/single/batched] up=8  ef=2048  avg= 67.940ms (q0=358.155 sub/query= 28.293) speedup=0.422x fu_speedup=1.012x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:53:01,763 [INFO] [M=32/single/batched] up=8  ef=4096  avg=178.017ms (q0=1034.471 sub/query= 61.016) speedup=0.344x fu_speedup=1.003x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 13:53:01,903 [INFO] [M=32/single/batched] up=16 ef=1     avg=  0.113ms (q0=  0.457 sub/query=  0.066) speedup=0.871x fu_speedup=1.487x MRR@10=0.5227 NDCG@3=0.2980 NDCG@10=0.2509
+2026-07-23 13:53:02,105 [INFO] [M=32/single/batched] up=16 ef=2     avg=  0.172ms (q0=  0.714 sub/query=  0.098) speedup=0.911x fu_speedup=1.596x MRR@10=0.6295 NDCG@3=0.3693 NDCG@10=0.3361
+2026-07-23 13:53:02,400 [INFO] [M=32/single/batched] up=16 ef=4     avg=  0.262ms (q0=  1.156 sub/query=  0.140) speedup=0.874x fu_speedup=1.639x MRR@10=0.6886 NDCG@3=0.4296 NDCG@10=0.4002
+2026-07-23 13:53:02,858 [INFO] [M=32/single/batched] up=16 ef=8     avg=  0.419ms (q0=  2.045 sub/query=  0.197) speedup=0.759x fu_speedup=1.614x MRR@10=0.7523 NDCG@3=0.4642 NDCG@10=0.4495
+2026-07-23 13:53:03,624 [INFO] [M=32/single/batched] up=16 ef=16    avg=  0.714ms (q0=  3.767 sub/query=  0.297) speedup=0.630x fu_speedup=1.514x MRR@10=0.7491 NDCG@3=0.4670 NDCG@10=0.4549
+2026-07-23 13:53:05,000 [INFO] [M=32/single/batched] up=16 ef=32    avg=  1.301ms (q0=  7.210 sub/query=  0.494) speedup=0.527x fu_speedup=1.388x MRR@10=0.7517 NDCG@3=0.4676 NDCG@10=0.4592
+2026-07-23 13:53:07,601 [INFO] [M=32/single/batched] up=16 ef=64    avg=  2.480ms (q0= 14.203 sub/query=  0.878) speedup=0.437x fu_speedup=1.235x MRR@10=0.7558 NDCG@3=0.4681 NDCG@10=0.4580
+2026-07-23 13:53:12,694 [INFO] [M=32/single/batched] up=16 ef=128   avg=  4.873ms (q0= 28.514 sub/query=  1.643) speedup=0.385x fu_speedup=1.143x MRR@10=0.7625 NDCG@3=0.4741 NDCG@10=0.4631
+2026-07-23 13:53:23,303 [INFO] [M=32/single/batched] up=16 ef=256   avg= 10.174ms (q0= 60.624 sub/query=  3.282) speedup=0.347x fu_speedup=1.076x MRR@10=0.7611 NDCG@3=0.4740 NDCG@10=0.4628
+2026-07-23 13:53:46,951 [INFO] [M=32/single/batched] up=16 ef=512   avg= 22.722ms (q0=139.376 sub/query=  6.785) speedup=0.309x fu_speedup=1.034x MRR@10=0.7652 NDCG@3=0.4753 NDCG@10=0.4652
+2026-07-23 13:54:44,572 [INFO] [M=32/single/batched] up=16 ef=1024  avg= 55.371ms (q0=358.906 sub/query= 13.904) speedup=0.255x fu_speedup=1.015x MRR@10=0.7652 NDCG@3=0.4752 NDCG@10=0.4647
+2026-07-23 13:57:19,928 [INFO] [M=32/single/batched] up=16 ef=2048  avg=149.465ms (q0=1035.239 sub/query= 28.457) speedup=0.192x fu_speedup=1.007x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 14:05:01,111 [INFO] [M=32/single/batched] up=16 ef=4096  avg=443.442ms (q0=3243.966 sub/query= 60.857) speedup=0.138x fu_speedup=1.006x MRR@10=0.7651 NDCG@3=0.4752 NDCG@10=0.4643
+2026-07-23 14:05:01,111 [INFO] === [M=32] Speedup summary ===
+2026-07-23 14:05:01,112 [INFO] [M=32/multi/batched] best speedup (incl. q0): 5.270x  (config=toploc_batched_ef2_up2_multi)
+2026-07-23 14:05:01,112 [INFO] [M=32/multi/batched] best fu_speedup (followups only): 6.775x  (config=toploc_batched_ef2_up16_multi)
+2026-07-23 14:05:01,112 [INFO] [M=32/single/batched] best speedup (incl. q0): 1.438x  (config=toploc_batched_ef4_up1_single)
+2026-07-23 14:05:01,112 [INFO] [M=32/single/batched] best fu_speedup (followups only): 1.658x  (config=toploc_batched_ef4_up4_single)
+2026-07-23 14:05:01,219 [INFO] [M=32] Grid search complete. Results saved to /home/toploc1/Datasets/toploc1/HNSW_paper1/Dragon/search/results/dragon_toplocHNSW_metrics_M32_2020.json
+2026-07-23 14:05:01,424 [INFO] [M=32] Summary table -> /home/toploc1/Datasets/toploc1/HNSW_paper1/Dragon/search/results/dragon_toplocHNSW_M32_2020.parquet
+2026-07-23 14:05:02,098 [INFO] [M=32] index released.
