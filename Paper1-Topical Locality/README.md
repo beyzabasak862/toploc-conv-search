@@ -187,7 +187,27 @@ recall exactly — a built-in consistency check on every run.
 
 **Outputs.** `grid_search_results/metrics_toploc_ivf_plus_grid_{snowflake,dragon}.json`.
 
-### 1.4 Known limitation — undertrained Dragon IVF index
+### 1.4 Results — TREC CAsT 2019 (IVF)
+
+### Snowflake
+
+| Search | MRR@10 | NDCG@3 | NDCG@10 | Time (ms) |
+|---|---|---|---|---|
+| Exact | 0.816 | 0.550 | 0.502 | – |
+| IVF | 0.795 | 0.541 | 0.484 | 10.7 (–) |
+| TopLoc_IVF | 0.783 | 0.525 | 0.476 | 4.5 (2.4×) |
+| TopLoc_IVF+ | 0.783 | 0.525 | 0.476 | 5.8 (1.8×) |
+
+### Dragon
+
+| Search | MRR@10 | NDCG@3 | NDCG@10 | Time (ms) |
+|---|---|---|---|---|
+| Exact | 0.808 | 0.528 | 0.492 | – |
+| IVF | 0.794 | 0.519 | 0.484 | 12.54 (–) |
+| TopLoc_IVF | 0.720 | 0.440 | 0.403 | 6.93 (1.81×) |
+| TopLoc_IVF+ | 0.802 | 0.521 | 0.482 | 4.82 (2.6×) |
+
+### 1.5 Known limitation — undertrained Dragon IVF index
 
 The reduced training budget in §1.1 leaves the Dragon IVF centroids
 undertrained. A dedicated diagnostic (comparing exhaustive brute-force search
