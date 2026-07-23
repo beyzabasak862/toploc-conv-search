@@ -82,17 +82,6 @@ secondary machine (**big-dama-3**) used for parallel/overflow workloads
 | NUMA nodes | 4 | **1** |
 | Isolation method | `numactl --cpunodebind` | not applicable — single NUMA node |
 
-**Divergence from the papers' protocol.** The original work runs retrieval
-under `numactl`, confining execution to a single CPU socket and its local
-memory. Pegasus has only **one NUMA node**, so this isolation technique does
-not apply (there is no second socket to isolate against). This most affects the
-IVF timing methodology in Paper 1 — see its README.
-
-**Practical note for reproducing a run:** launch long-running search scripts
-with `python3 -u` (unbuffered stdout) under `nohup`, and check `uptime` /
-`htop` beforehand — several early runs were contaminated by co-tenant load on
-the shared server (visible as physically inconsistent latencies, e.g. a smaller
-`k` reporting higher latency than a larger `k`).
 
 ---
 
