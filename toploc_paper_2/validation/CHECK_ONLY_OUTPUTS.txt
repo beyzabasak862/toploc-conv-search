@@ -1,0 +1,15 @@
+# CHECK_ONLY_OUTPUTS.txt
+# Excerpt of the final PASS/FAIL summary line for each CHECK_ONLY invocation:
+
+PASS 01_safe_hybrid
+PASS 02_cachewarmed_best
+PASS 03_native_equal_accuracy
+PASS 04_native_canonical_v3
+PASS 05_aggressive_hybrid
+PASS 06_stage2_bounded_pareto
+PASS 07_faithful_adaptive_depth
+PASS RUN_ALL.sh
+
+-- external-copy PASS lines --
+PASS external 01_safe_hybrid
+PASS external 07_faithful_adaptive_depth

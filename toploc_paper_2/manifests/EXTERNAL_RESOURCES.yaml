@@ -1,0 +1,315 @@
+version: 3
+package: toploc_paper_2
+
+# Benchmark 08 (08_cachewarmed_treccast) introduces NO new external resource:
+# it reuses HYBRID_DOC_INDEX, DEV_QUERY_DIR, PCA_QL_DIR (PCA_MODEL + ROUTER_INDEX),
+# QLR_ARTIFACT_DIR and EXACT_DIR — all declared below.
+#
+# The preprocessing/ producers add the PREPROC_* inputs declared at the end of
+# this file. The benchmarks themselves never read the PREPROC_* variables.
+
+resources:
+
+  - logical_name: hybrid_python_interpreter
+    config_variable: HYBRID_PYTHON
+    expected_format: executable
+    approx_size: n/a
+    mandatory_for: [01_safe_hybrid, 05_aggressive_hybrid, 06_stage2_bounded_pareto]
+    consumed_by: benchmarks/{01,05,06}/RUN.sh
+    example_path: /home/user/miniforge3/envs/toploc-cpp/bin/python
+    notes: >
+      Python 3.11 + FAISS 1.9. See requirements.txt for the exact pin set.
+
+  - logical_name: native_python_interpreter
+    config_variable: NATIVE_PYTHON
+    expected_format: executable
+    approx_size: n/a
+    mandatory_for: [02_cachewarmed_best, 03_native_equal_accuracy, 04_native_canonical_v3]
+    consumed_by: benchmarks/{02,03,04}/RUN.sh + build/BUILD_NATIVE.sh
+    example_path: /home/user/anaconda3/envs/zeroec/bin/python
+    notes: >
+      MUST be CPython 3.10 x86-64 to use native/prebuilt/*.cpython-310-x86_64-linux-gnu.so
+      as-is. Any other ABI needs build/BUILD_NATIVE.sh.
+
+  - logical_name: report_python_interpreter
+    config_variable: REPORT_PYTHON
+    expected_format: executable
+    approx_size: n/a
+    mandatory_for: [all]
+    consumed_by: every RUN.sh (wrapper metadata JSON emission)
+    example_path: /usr/bin/python3
+    notes: >
+      Any Python 3.x with numpy suffices. Not a benchmark interpreter.
+
+  - logical_name: dev_query_parquet_dir
+    config_variable: DEV_QUERY_DIR
+    expected_format: directory of *.parquet files with columns [id, embedding]
+    expected_dimensions: N x 1024 (6980 rows across all shards)
+    approx_size: 43 MB
+    mandatory_for: [01_safe_hybrid, 05_aggressive_hybrid, 06_stage2_bounded_pareto]
+    consumed_by: src.data_loading.load_embeddings_from_parquets
+    example_path: /path/to/HNSW/msmarco_snowflake/dev_query
+
+  - logical_name: hybrid_doc_index
+    config_variable: HYBRID_DOC_INDEX
+    expected_format: FAISS index file (IndexHNSWFlat, M=32, IP metric)
+    expected_dimensions: 1024-d, ntotal ~156M
+    approx_size: 158 GB
+    mandatory_for: [01_safe_hybrid, 05_aggressive_hybrid, 06_stage2_bounded_pareto]
+    consumed_by: src.indexing.load_index -> faiss.read_index
+    example_path: /path/to/indexes/HNSW_indexes/treccast_hnsw_M32.index
+
+  - logical_name: pca_ql_dir
+    config_variable: PCA_QL_DIR
+    expected_format: directory
+    approx_size: 1.8 GB (dominated by train_query_pca256_hnsw.faiss)
+    mandatory_for: [01_safe_hybrid, 05_aggressive_hybrid, 06_stage2_bounded_pareto]
+    consumed_by: joblib.load + faiss.read_index + np.load in producers
+    example_path: /path/to/HNSW/querylog_pca256
+    contents:
+      - pca_1024_to_256.joblib             # ~1 MB  sklearn.decomposition.PCA
+      - train_query_pca256_hnsw.faiss      # ~1 GB  FAISS HNSW over PCA-projected queries
+      - qmax_pca256.npy                    # 132 B  scalar float (Stage-2 only)
+      - train_query_pca256_ids.npy         # ~7 MB  int64 (unused by producers; catalogued)
+      - train_query_pca256.npy             # ~830 MB float32 (unused by producers; catalogued)
+
+  - logical_name: pca_model_override
+    config_variable: PCA_MODEL
+    expected_format: sklearn PCA object serialized with joblib.dump
+    approx_size: ~1 MB
+    mandatory_for: []
+    consumed_by: joblib.load in hybrid producers
+    example_path: ${PCA_QL_DIR}/pca_1024_to_256.joblib
+    notes: >
+      Optional; falls back to PCA_QL_DIR/pca_1024_to_256.joblib when unset.
+      Requires scikit-learn to be importable in HYBRID_PYTHON so the pickle
+      can reconstruct the PCA class.
+
+  - logical_name: router_index_override
+    config_variable: ROUTER_INDEX
+    expected_format: FAISS HNSW index over PCA-projected queries
+    expected_dimensions: 256-d, ntotal ~ N_train
+    approx_size: 1 GB
+    mandatory_for: []
+    consumed_by: faiss.read_index in hybrid producers
+    example_path: ${PCA_QL_DIR}/train_query_pca256_hnsw.faiss
+    notes: Optional; falls back to PCA_QL_DIR/train_query_pca256_hnsw.faiss when unset.
+
+  - logical_name: pca_qmax_override
+    config_variable: PCA_QMAX
+    expected_format: numpy scalar float32
+    approx_size: 132 B
+    mandatory_for: [06_stage2_bounded_pareto]
+    consumed_by: np.load in rescue_stage2_accuracy.py
+    example_path: ${PCA_QL_DIR}/qmax_pca256.npy
+    notes: Optional; falls back to PCA_QL_DIR/qmax_pca256.npy when unset.
+
+  - logical_name: qlr_artifact_dir
+    config_variable: QLR_ARTIFACT_DIR
+    expected_format: directory
+    approx_size: 69 MB
+    mandatory_for: [01_safe_hybrid, 05_aggressive_hybrid, 06_stage2_bounded_pareto]
+    consumed_by: np.load in hybrid producers
+    example_path: /path/to/HNSW/qlr_artifacts_full
+    contents:
+      - ep_indices.npy      # ~32 MB int32 (n_train, K) — EP top-K doc indices per train query
+      - ep_distances.npy    # ~32 MB float32 (n_train, K) — cached historical distances
+      - train_query_ids.npy # ~7 MB int64 (catalogued; not read by producers)
+      - qmax_p75.npy        # 132 B (catalogued)
+
+  - logical_name: exact_dir
+    config_variable: EXACT_DIR
+    expected_format: directory with exact top-10 arrays
+    approx_size: 896 KB
+    mandatory_for: [01_safe_hybrid, 05_aggressive_hybrid, 06_stage2_bounded_pareto]
+    consumed_by: np.load(exact_indices.npy) in hybrid producers
+    example_path: /path/to/HNSW/exact_results_full
+    contents:
+      - exact_indices.npy  # 546 KB int32 (6980, 10) — ground-truth top-10 doc ids
+
+  - logical_name: faith_root
+    config_variable: FAITH_ROOT
+    expected_format: directory containing ground_truth/ and ep_table/
+    approx_size: 239 MB (28 MB queries + 279 KB GT + 207 MB EP scores)
+    mandatory_for: [02_cachewarmed_best, 03_native_equal_accuracy, 04_native_canonical_v3]
+    consumed_by: np.load in native producers
+    example_path: /path/to/faithful_msmarco_v1_20260719_042528
+    contents:
+      - ground_truth/dev_small_query_embs.npy      # ~28 MB  float32 (N, 1024)
+      - ground_truth/dev_small_exact_top10_ids.npy # ~279 KB int32   (N, 10)
+      - ep_table/ep_scores.npy                     # ~207 MB float32 (n_train, K) — s_max source
+
+  - logical_name: native_module_dir
+    config_variable: NATIVE_MODULE_DIR
+    expected_format: directory containing native_qlr*.cpython-310-x86_64-linux-gnu.so
+    approx_size: ~1 MB
+    mandatory_for: [02_cachewarmed_best, 03_native_equal_accuracy, 04_native_canonical_v3]
+    consumed_by: sys.path.insert(0, NATIVE_MODULE_DIR) inside native producers
+    example_path: ${SUBMISSION_CODE_PKG_ROOT}/native/prebuilt
+    notes: >
+      Use native/prebuilt to consume the shipped binaries (cpython-310 x86-64
+      ABI, AMD Zen 2 -march for v2/v3). Otherwise point at native/build/
+      after running build/BUILD_NATIVE.sh.
+
+  - logical_name: native_export_dir
+    config_variable: NATIVE_EXPORT_DIR
+    expected_format: flat binary export directory produced by the faithful pipeline
+    approx_size: 4.2 GB
+    mandatory_for: [02_cachewarmed_best, 03_native_equal_accuracy, 04_native_canonical_v3]
+    consumed_by: NativeQLR(EXPORT_DIR) constructor inside native/*.so
+    example_path: /path/to/native_export
+    contents:
+      - doc_vecs.f32               # 2.0 GB  float32 (ntotal, 1024) doc vectors
+      - iq_vecs.f32                # 830 MB  float32 (n_iq, 1024)   internal-query vectors
+      - iq_vecs.f16                # 415 MB  float16 (n_iq, 1024)   fp16 alias used by v3
+      - doc_level0_neighbors.i32   #  87 MB  int32   HNSW L0 neighbours
+      - doc_level0_offsets.u64     # 4 MB    uint64  L0 offsets
+      - doc_levels.i32             # 2 MB    int32   per-doc HNSW levels
+      - iq_level0_neighbors.i32    # 138 MB  int32
+      - iq_level0_offsets.u64      # 6 MB    uint64
+      - iq_levels.i32              # 3 MB    int32
+      - doc_entry_point.i32        # 4 B     int32   entry-point id
+      - iq_entry_point.i32         # 4 B     int32
+      - ep_ids.i32                 #  32 MB  int32   EP top-K doc ids per iq
+      - pca_mean.f32               # 4 KB    float32 (1024,)
+      - pca_components.f32         # 1 MB    float32 (1024, 256)
+      - pca_components_T.f32       # 1 MB    float32 (256, 1024)
+      - train_pca256.f32           # 830 MB  float32 (n_train, 256)
+      - dev_embs.f32               # 28 MB   float32 (N, 1024)
+      - dev_gt_top10.i32           # 279 KB  int32   (N, 10)
+      - manifest.json              # 4 KB    tuple metadata
+
+  # ----- Experiment 7 (07_faithful_adaptive_depth) additional resources -----
+  # Experiment 7 also depends on DEV_QUERY_DIR, HYBRID_DOC_INDEX, PCA_QL_DIR
+  # (only ROUTER_INDEX from it), QLR_ARTIFACT_DIR, and EXACT_DIR — every one of
+  # which is already declared above.  The additional / extended resources are:
+
+  - logical_name: exact_scores
+    config_variable: EXACT_DIR
+    expected_format: numpy float32 array
+    expected_dimensions: (6980, 10)
+    approx_size: 546 KB
+    mandatory_for: [07_faithful_adaptive_depth]
+    consumed_by: np.load(exact_scores.npy) in python/faithful/runner.py
+    example_path: /path/to/HNSW/exact_results_full/exact_scores.npy
+    notes: >
+      Assertion only inside the runner (never compared to results). Experiments
+      1/5/6 do not load exact_scores.npy, so this file is documented separately.
+
+  - logical_name: faithful_pca_dir
+    config_variable: FAITHFUL_PCA_DIR
+    expected_format: directory
+    approx_size: ~1 MB
+    mandatory_for: [07_faithful_adaptive_depth]
+    consumed_by: np.load in python/faithful/runner.py
+    example_path: /path/to/faithful_pca_extracted
+    contents:
+      - pca_mean_1024.npy            # ~4 KB   float32 (1024,)
+      - pca_components_256x1024.npy  # ~1 MB   float32 (256, 1024)
+    notes: >
+      Extracted PCA arrays used by the paper-faithful implementation. The
+      hybrid track uses the pickled sklearn PCA object under
+      PCA_QL_DIR/pca_1024_to_256.joblib; the faithful implementation instead
+      reads the arrays directly (no sklearn dependency at run time).
+
+  - logical_name: faithful_pca_mean_override
+    config_variable: FAITHFUL_PCA_MEAN
+    expected_format: numpy float32 array
+    expected_dimensions: (1024,)
+    approx_size: ~4 KB
+    mandatory_for: []
+    consumed_by: np.load in python/faithful/runner.py
+    example_path: ${FAITHFUL_PCA_DIR}/pca_mean_1024.npy
+    notes: Optional; falls back to FAITHFUL_PCA_DIR/pca_mean_1024.npy when unset.
+
+  - logical_name: faithful_pca_components_override
+    config_variable: FAITHFUL_PCA_COMPONENTS
+    expected_format: numpy float32 array
+    expected_dimensions: (256, 1024)
+    approx_size: ~1 MB
+    mandatory_for: []
+    consumed_by: np.load in python/faithful/runner.py
+    example_path: ${FAITHFUL_PCA_DIR}/pca_components_256x1024.npy
+    notes: Optional; falls back to FAITHFUL_PCA_DIR/pca_components_256x1024.npy when unset.
+
+  - logical_name: faithful_doc_index_shm_override
+    config_variable: FAITHFUL_DOC_INDEX_SHM
+    expected_format: FAISS index file (IndexHNSWFlat, M=32, IP metric)
+    approx_size: 158 GB
+    mandatory_for: []
+    consumed_by: faiss.read_index(..., IO_FLAG_MMAP) in python/faithful/runner.py
+    example_path: /dev/shm/qlr_indexes/treccast_hnsw_M32.index
+    notes: >
+      Optional /dev/shm (tmpfs) fast path. Preferred over HYBRID_DOC_INDEX only
+      when the file exists at run time (mmap-loaded); otherwise the runner
+      transparently falls back to HYBRID_DOC_INDEX. The wrapper does NOT create
+      the file — populate the tmpfs path yourself if you want this fast path.
+
+  - logical_name: faithful_query_index_shm_override
+    config_variable: FAITHFUL_QUERY_INDEX_SHM
+    expected_format: FAISS HNSW index over PCA-projected queries
+    approx_size: 1 GB
+    mandatory_for: []
+    consumed_by: faiss.read_index in python/faithful/runner.py
+    example_path: /dev/shm/qlr_indexes/train_query_pca256_hnsw.faiss
+    notes: >
+      Optional /dev/shm fast path. Preferred over ROUTER_INDEX only when the
+      file exists at run time; otherwise the runner falls back to
+      ROUTER_INDEX (or PCA_QL_DIR/train_query_pca256_hnsw.faiss).
+
+  - logical_name: output_root
+    config_variable: OUTPUT_ROOT
+    expected_format: writable directory
+    approx_size: grows with each run
+    mandatory_for: [none — defaults to package outputs/]
+    consumed_by: every RUN.sh (writes timestamped subdir under it)
+    example_path: ${SUBMISSION_CODE_PKG_ROOT}/outputs
+
+  - logical_name: taskset_core
+    config_variable: CORE
+    expected_format: integer CPU index
+    approx_size: n/a
+    mandatory_for: [all]
+    consumed_by: taskset -c $CORE in every RUN.sh
+    example_path: "21"
+    notes: >
+      The frozen reference measurements were taken on core 21. Changing it
+      alters timing distributions; leave as 21 unless you have a specific
+      reason to move.
+
+  # ----- Preprocessing / artifact-generation inputs (preprocessing/) --------
+  # Only needed to REGENERATE artifacts. The benchmarks never read these.
+
+  - logical_name: preproc_output_root
+    config_variable: PREPROC_OUTPUT_ROOT
+    expected_format: writable directory
+    approx_size: grows with generated artifacts (index ~158 GB, router ~1.8 GB, EP ~69 MB)
+    mandatory_for: [none — defaults to preprocessing/_generated/]
+    consumed_by: all preprocessing/scripts/*.py (per-artifact subdirs)
+    example_path: ${SUBMISSION_CODE_PKG_ROOT}/preprocessing/_generated
+
+  - logical_name: preproc_doc_emb_dir
+    config_variable: PREPROC_DOC_EMB_DIR
+    expected_format: directory of *.parquet with columns [id, embedding]
+    approx_size: large (full document corpus embeddings)
+    mandatory_for: [preprocessing/scripts/build_index.py]
+    consumed_by: src.data_loading.load_embeddings_from_parquets
+    example_path: /path/to/document_embeddings/snowflake
+
+  - logical_name: preproc_train_query_dir
+    config_variable: PREPROC_TRAIN_QUERY_DIR
+    expected_format: directory of *.parquet with columns [id, embedding]
+    approx_size: large (full query-log embeddings)
+    mandatory_for: [preprocessing/scripts/build_query_log_pca.py, preprocessing/scripts/build_ep_table.py]
+    consumed_by: src.data_loading.load_embeddings_from_parquets
+    example_path: /path/to/train_query_embeddings/snowflake
+
+  - logical_name: preproc_flat_index
+    config_variable: PREPROC_FLAT_INDEX
+    expected_format: FAISS flat index file (exact search over the document corpus)
+    approx_size: large (flat = all document vectors)
+    mandatory_for: [preprocessing/scripts/flat_index_search_acc.py]
+    consumed_by: src.indexing.load_index -> faiss.read_index
+    example_path: /path/to/Exact_Search/treccast_flat.index
+    notes: >
+      MISSING AUTHORITATIVE PRODUCER — no bundled script builds this flat index.

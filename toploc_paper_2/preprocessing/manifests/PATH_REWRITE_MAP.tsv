@@ -1,0 +1,12 @@
+file	original_symbol_or_pattern	replacement	kind
+preprocessing/scripts/build_index.py	TRAIN_CONTEXT_DIR = Path("/home/.../conversational/msmarco/snowflake")	os.environ["PREPROC_DOC_EMB_DIR"]	external input path
+preprocessing/scripts/build_index.py	OUTPUT_DIR = Path("/home/.../HNSW/index_artifacts")	${PREPROC_OUTPUT_ROOT}/index_artifacts	output root
+preprocessing/scripts/build_query_log_pca.py	TRAIN_QUERY_DIR = Path("/home/.../conversational/msmarco/snowflake")	os.environ["PREPROC_TRAIN_QUERY_DIR"]	external input path
+preprocessing/scripts/build_query_log_pca.py	OUTPUT_DIR = Path("/home/.../HNSW/querylog_pca256")	${PREPROC_OUTPUT_ROOT}/querylog_pca256	output root
+preprocessing/scripts/build_ep_table.py	TRAIN_QUERY_DIR = Path("/home/.../conversational/msmarco/snowflake")	os.environ["PREPROC_TRAIN_QUERY_DIR"]	external input path
+preprocessing/scripts/build_ep_table.py	DOC_INDEX_DIR = Path("/home/.../indexes/HNSW_indexes"); load_index(DOC_INDEX_DIR / "treccast_hnsw_M32.index")	os.environ["HYBRID_DOC_INDEX"] (reused; full file path)	external input path
+preprocessing/scripts/build_ep_table.py	OUTPUT_DIR = Path("/home/.../HNSW/qlr_artifacts_full")	${PREPROC_OUTPUT_ROOT}/qlr_artifacts_full	output root
+preprocessing/scripts/flat_index_search_acc.py	DEV_QUERY_DIR = Path("/home/.../HNSW/msmarco_snowflake/dev_query")	os.environ["DEV_QUERY_DIR"] (reused hybrid var)	external input path
+preprocessing/scripts/flat_index_search_acc.py	FLAT_INDEX_PATH = Path("/home/.../Exact_Search/treccast_flat.index")	os.environ["PREPROC_FLAT_INDEX"]	external input path
+preprocessing/scripts/flat_index_search_acc.py	OUTPUT_DIR = Path("/home/.../HNSW/exact_results_full")	${PREPROC_OUTPUT_ROOT}/exact_results_full	output root
+preprocessing/scripts/*.py	PROJECT_ROOT = Path(__file__).resolve().parents[1]; from src... import	UNCHANGED — already derives from __file__ and resolves to preprocessing/src/	(no change)

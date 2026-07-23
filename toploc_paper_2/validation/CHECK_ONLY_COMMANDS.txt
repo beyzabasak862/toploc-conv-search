@@ -1,0 +1,11 @@
+# CHECK_ONLY_COMMANDS.txt
+
+Commands verified in step 8:
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/01_safe_hybrid/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/02_cachewarmed_best/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/03_native_equal_accuracy/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/04_native_canonical_v3/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/05_aggressive_hybrid/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/06_stage2_bounded_pareto/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/benchmarks/07_faithful_adaptive_depth/RUN.sh
+  CHECK_ONLY=1 bash $SUBMISSION_CODE_PKG_ROOT/RUN_ALL.sh

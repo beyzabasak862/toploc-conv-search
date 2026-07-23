@@ -1,0 +1,272 @@
+# PATH_ONLY_DIFFS.patch (preprocessing)
+# Unified diffs between the original preprocessing producers and the
+# path-only-rewritten copies bundled in preprocessing/scripts/.
+# Every hunk is a path/import/output-root change; NO change to FAISS index
+# type, HNSW M, efConstruction, efSearch, PCA dims, normalization, random
+# seed, top-k, batching, metric, document order or output schema.
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/build_index.py -> /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/build_index.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/build_index.py	2026-07-07 11:41:16.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/build_index.py	2026-07-23 12:45:28.000000000 +0200
+@@ -1,4 +1,18 @@
++# ---------------------------------------------------------------------------
++# toploc_paper_2 / preprocessing — path-only portability edits:
++#   * Hardcoded TRAIN_CONTEXT_DIR / OUTPUT_DIR replaced with reads from
++#     environment variables (config/paths.env): PREPROC_DOC_EMB_DIR and
++#     PREPROC_OUTPUT_ROOT (writes to ${PREPROC_OUTPUT_ROOT}/index_artifacts).
++#   * PROJECT_ROOT / sys.path / `from src...` import machinery is unchanged
++#     (it already derives from __file__ and resolves to preprocessing/src/).
++#
++# FAISS index type, HNSW M, efConstruction, efSearch, metric, normalization,
++# document order and output schema are IDENTICAL to the original at
++# msmarco_HNSW/scripts/build_index.py (SHA256 pair in
++# preprocessing/manifests/COPY_MANIFEST.tsv).
++# ---------------------------------------------------------------------------
+ from pathlib import Path
++import os
+ import sys
+ 
+ PROJECT_ROOT = Path(__file__).resolve().parents[1]
+@@ -8,8 +22,28 @@
+ from src.data_loading import load_embeddings_from_parquets, l2_normalize
+ from src.indexing import build_hnsw_index, save_index, save_ids
+ 
+-TRAIN_CONTEXT_DIR = Path("/home/toploc1/Datasets/conversational/msmarco/snowflake")
+-OUTPUT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/index_artifacts")
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[build_index] Required environment variable {var!r} is not set. "
++            f"Source toploc_paper_2/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++# -----------------
++# Config (paths from config/paths.env; algorithm constants unchanged)
++# -----------------
++TRAIN_CONTEXT_DIR = _env_path("PREPROC_DOC_EMB_DIR")
++_OUTPUT_ROOT = _env_path("PREPROC_OUTPUT_ROOT",
++                         default=str(PROJECT_ROOT / "_generated"))
++OUTPUT_DIR = _OUTPUT_ROOT / "index_artifacts"
+ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+ 
+ ID_COL = "id"
+@@ -53,4 +87,4 @@
+     print("IDs path:", OUTPUT_DIR / "train_query_full_ids.npy")
+ 
+ if __name__ == "__main__":
+-    main()
+\ No newline at end of file
++    main()
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/build_query_log_pca.py -> /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/build_query_log_pca.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/build_query_log_pca.py	2026-07-13 18:41:56.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/build_query_log_pca.py	2026-07-23 12:45:51.000000000 +0200
+@@ -1,4 +1,17 @@
++# ---------------------------------------------------------------------------
++# toploc_paper_2 / preprocessing — path-only portability edits:
++#   * Hardcoded TRAIN_QUERY_DIR / OUTPUT_DIR replaced with reads from
++#     environment variables (config/paths.env): PREPROC_TRAIN_QUERY_DIR and
++#     PREPROC_OUTPUT_ROOT (writes to ${PREPROC_OUTPUT_ROOT}/querylog_pca256).
++#   * PROJECT_ROOT / sys.path / `from src...` import machinery is unchanged.
++#
++# PCA dimensions (256), svd_solver, random_state (42), normalization, metric,
++# HNSW M / efConstruction / efSearch, Qmax quantile (0.75) and output schema
++# are IDENTICAL to the original at msmarco_HNSW/scripts/build_query_log_pca.py
++# (SHA256 pair in preprocessing/manifests/COPY_MANIFEST.tsv).
++# ---------------------------------------------------------------------------
+ from pathlib import Path
++import os
+ import sys
+ import json
+ import joblib
+@@ -12,11 +25,28 @@
+ from src.data_loading import load_embeddings_from_parquets, l2_normalize
+ from src.indexing import build_hnsw_index, save_index, save_ids
+ 
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[build_query_log_pca] Required environment variable {var!r} is not set. "
++            f"Source toploc_paper_2/config/paths.env or export {var!r}."
++        )
++    return None
++
++
+ # -----------------
+-# Config
++# Config (paths from config/paths.env; algorithm constants unchanged)
+ # -----------------
+-TRAIN_QUERY_DIR = Path("/home/toploc1/Datasets/conversational/msmarco/snowflake")
+-OUTPUT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/querylog_pca256")
++TRAIN_QUERY_DIR = _env_path("PREPROC_TRAIN_QUERY_DIR")
++_OUTPUT_ROOT = _env_path("PREPROC_OUTPUT_ROOT",
++                         default=str(PROJECT_ROOT / "_generated"))
++OUTPUT_DIR = _OUTPUT_ROOT / "querylog_pca256"
+ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+ 
+ ID_COL = "id"
+@@ -133,4 +163,4 @@
+     print(" ", OUTPUT_DIR / "pca_meta.json")
+ 
+ if __name__ == "__main__":
+-    main()
+\ No newline at end of file
++    main()
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/build_ep_table.py -> /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/build_ep_table.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/build_ep_table.py	2026-07-07 10:47:23.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/build_ep_table.py	2026-07-23 12:46:10.000000000 +0200
+@@ -1,4 +1,20 @@
++# ---------------------------------------------------------------------------
++# toploc_paper_2 / preprocessing — path-only portability edits:
++#   * Hardcoded TRAIN_QUERY_DIR / DOC_INDEX_DIR / OUTPUT_DIR replaced with reads
++#     from environment variables (config/paths.env):
++#       PREPROC_TRAIN_QUERY_DIR  (train query embeddings)
++#       HYBRID_DOC_INDEX         (the 158 GB TREC-CAsT doc index, reused)
++#       PREPROC_OUTPUT_ROOT      (writes ${PREPROC_OUTPUT_ROOT}/qlr_artifacts_full)
++#   * PROJECT_ROOT / sys.path / `from src...` import machinery is unchanged.
++#   * The commented-out `from src.search import hnsw_search_with_latency` line
++#     from the original is preserved as-is (it was already inactive).
++#
++# TOPK_EP (10), normalization, document-ID space and output schema are IDENTICAL
++# to the original at msmarco_HNSW/scripts/build_ep_table.py (SHA256 pair in
++# preprocessing/manifests/COPY_MANIFEST.tsv).
++# ---------------------------------------------------------------------------
+ from pathlib import Path
++import os
+ import sys
+ import numpy as np
+ 
+@@ -10,14 +26,31 @@
+ from src.indexing import load_index
+ #from src.search import hnsw_search_with_latency
+ 
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[build_ep_table] Required environment variable {var!r} is not set. "
++            f"Source toploc_paper_2/config/paths.env or export {var!r}."
++        )
++    return None
++
++
+ # -----------------
+-# Config
++# Config (paths from config/paths.env; algorithm constants unchanged)
+ # -----------------
+-#TRAIN_QUERY_DIR = Path("/home/toploc1/Datasets/conversational/CAST2019/msmarco/msmarco_embeddings/train_query")
+-TRAIN_QUERY_DIR = Path("/home/toploc1/Datasets/conversational/msmarco/snowflake")
+-DOC_INDEX_DIR = Path('/home/toploc1/Datasets/toploc1/indexes/HNSW_indexes')
+-#DOC_INDEX_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/index_artifacts")
+-OUTPUT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/qlr_artifacts_full")
++TRAIN_QUERY_DIR = _env_path("PREPROC_TRAIN_QUERY_DIR")
++# The document HNSW index over which entry points are searched. Reuse the same
++# full TREC-CAsT index the benchmarks consume (HYBRID_DOC_INDEX is the file path).
++DOC_INDEX_PATH = _env_path("HYBRID_DOC_INDEX")
++_OUTPUT_ROOT = _env_path("PREPROC_OUTPUT_ROOT",
++                         default=str(PROJECT_ROOT / "_generated"))
++OUTPUT_DIR = _OUTPUT_ROOT / "qlr_artifacts_full"
+ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+ 
+ ID_COL = "id"
+@@ -41,7 +74,7 @@
+         train_query_embeddings = l2_normalize(train_query_embeddings).astype("float32")
+ 
+     print("Loading document HNSW index...")
+-    doc_index = load_index(DOC_INDEX_DIR / "treccast_hnsw_M32.index")
++    doc_index = load_index(DOC_INDEX_PATH)
+ 
+     # print(f"Searching document index for top-{TOPK_EP} cached entry points...")
+     # ep_distances, ep_indices, latency_us = hnsw_search_with_latency(
+@@ -65,4 +98,4 @@
+     print(" ", OUTPUT_DIR / "train_query_ids.npy")
+ 
+ if __name__ == "__main__":
+-    main()
+\ No newline at end of file
++    main()
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/flat_index_search_acc.py -> /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/flat_index_search_acc.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/scripts/flat_index_search_acc.py	2026-07-07 17:43:10.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/toploc_paper_2/preprocessing/scripts/flat_index_search_acc.py	2026-07-23 12:46:30.000000000 +0200
+@@ -1,4 +1,18 @@
++# ---------------------------------------------------------------------------
++# toploc_paper_2 / preprocessing — path-only portability edits:
++#   * Hardcoded DEV_QUERY_DIR / FLAT_INDEX_PATH / OUTPUT_DIR replaced with reads
++#     from environment variables (config/paths.env):
++#       DEV_QUERY_DIR       (dev queries — reused from the hybrid benchmark var)
++#       PREPROC_FLAT_INDEX  (exact flat index, e.g. treccast_flat.index)
++#       PREPROC_OUTPUT_ROOT (writes ${PREPROC_OUTPUT_ROOT}/exact_results_full)
++#   * PROJECT_ROOT / sys.path / `from src...` import machinery is unchanged.
++#
++# TOPK (10), BATCH_SIZE (512), normalization, metric and output schema are
++# IDENTICAL to the original at msmarco_HNSW/scripts/flat_index_search_acc.py
++# (SHA256 pair in preprocessing/manifests/COPY_MANIFEST.tsv).
++# ---------------------------------------------------------------------------
+ from pathlib import Path
++import os
+ import sys
+ import numpy as np
+ import pandas as pd
+@@ -10,12 +24,29 @@
+ from src.data_loading import load_embeddings_from_parquets, l2_normalize
+ from src.indexing import load_index
+ 
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[flat_index_search_acc] Required environment variable {var!r} is not set. "
++            f"Source toploc_paper_2/config/paths.env or export {var!r}."
++        )
++    return None
++
++
+ # -----------------
+-# Config
++# Config (paths from config/paths.env; algorithm constants unchanged)
+ # -----------------
+-DEV_QUERY_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_snowflake/dev_query")
+-FLAT_INDEX_PATH = Path("/home/toploc1/Datasets/toploc1/Exact_Search/treccast_flat.index")
+-OUTPUT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/exact_results_full")
++DEV_QUERY_DIR = _env_path("DEV_QUERY_DIR")
++FLAT_INDEX_PATH = _env_path("PREPROC_FLAT_INDEX")
++_OUTPUT_ROOT = _env_path("PREPROC_OUTPUT_ROOT",
++                         default=str(PROJECT_ROOT / "_generated"))
++OUTPUT_DIR = _OUTPUT_ROOT / "exact_results_full"
+ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+ 
+ ID_COL = "id"
+@@ -88,4 +119,4 @@
+     print(" ", OUTPUT_DIR / "exact_meta.csv")
+ 
+ if __name__ == "__main__":
+-    main()
+\ No newline at end of file
++    main()
+

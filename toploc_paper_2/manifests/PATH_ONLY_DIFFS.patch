@@ -1,0 +1,558 @@
+# PATH_ONLY_DIFFS.patch
+# Unified diffs between the original canonical producer scripts and the
+# path-only-rewritten copies bundled in this package. Every hunk is a
+# path/import/output-root change; NO algorithmic, parameter, seed, warmup,
+# reps, threshold, or output-schema change is present.
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/rescue_full_run.py -> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/hybrid/rescue_full_run.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/rescue_full_run.py	2026-07-17 04:30:00.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/hybrid/rescue_full_run.py	2026-07-22 19:44:07.000000000 +0200
+@@ -1,27 +1,20 @@
+-# ==================== CLAUDE IMPROVEMENT START: full 6,980-query rescue run (NEW FILE; scripts/son.py & Paper 1 untouched) ====================
+-# Purpose: measure the Stage-2 WINNING config at full scale on all 6,980 dev.small
+-# queries, same-run against the baseline, to obtain the true mean/median/p95 latency
+-# distribution (Stage-2's mixture-mean composition understates the median).
++# ==================== CLAUDE IMPROVEMENT START: full 6,980-query rescue run =====================
++# ------------------------------------------------------------------
++# SUBMISSION_CODE_PACKAGE — path-only portability edits:
++#   * Absolute hard-coded paths (PROJECT_ROOT, DEV_QUERY_DIR, DOC_INDEX_PATH,
++#     PCA_QL_DIR, QUERY_INDEX_PATH, PCA_MODEL_PATH, QLR_ARTIFACT_DIR, EXACT_DIR)
++#     have been replaced with reads from environment variables (config/paths.env).
++#   * PROJECT_ROOT is no longer prepended to sys.path; instead this package's
++#     python/hybrid directory is prepended so that `from src.data_loading` and
++#     `from src.indexing` resolve to the bundled helper copies.
++#   * OUT_DIR is chosen from OUTPUT_ROOT (if set by RUN.sh) instead of the
++#     original claude_qlr_diagnostics/results/full_<ts>/ inside PROJECT_ROOT.
+ #
+-# Carries forward ALL validated fixes:
+-#   FIX 1 : router efSearch = 16                     (Stage-1 validated)
+-#   FIX 2 : bare-matmul PCA                          (Stage-1 validated, 100% identical routing)
+-#   FIX 3 : PCA cost counted honestly in latency     (Stage-1)
+-#   FIX 4 : recompute current-query squared-L2 seed distances instead of Baran's cached
+-#           historical EP distances                  (Stage-2 winning lever; +0.03 acc@10)
+-#
+-# Config: recompute_l2 seeds, nprobe=3. Two seeded-ef points measured same-run:
+-#   ef=32  -> the acc-safe headline (Stage-2 overall acc@10 0.9566 >= 0.952 gate)
+-#   ef=16  -> the aggressive Pareto endpoint (faster, Stage-2 acc@10 0.9376 < gate)
+-# plus baseline (full HNSW @ ef64). Router decision + PCA + recomputed seeds are computed
+-# ONCE per query and shared by both ef points; the two seeded searches run in randomized
+-# order per query to avoid warm-cache bias.
+-#
+-# Unchanged: search_type stays 1 (8-arg call); RS=0.50; fallback = full search @ ef64.
+-# Safety: READ-ONLY w.r.t. every existing file/artifact; writes ONLY under a NEW timestamped
+-#   dir results/full_<ts>/ (os.makedirs(exist_ok=False)); doc index loaded ONCE; no rebuilds,
+-#   no Paper-1 use. All timed FAISS single-thread; timed PCA under threadpool_limits(1).
+-#   NO equal-accuracy speedup is claimed unless the measured overall acc@10 >= 0.952.
++# Algorithm, benchmark configuration, seeds, warmup, reps, ef sweep, accuracy
++# computation, routing/fallback logic, and output schema are IDENTICAL to the
++# original at claude_qlr_diagnostics/rescue_full_run.py
++# (byte-identical SHA256 recorded in manifests/COPY_MANIFEST.tsv).
++# ------------------------------------------------------------------
+ import os
+ os.environ.setdefault("PYTHONDONTWRITEBYTECODE", "1")
+ import sys
+@@ -37,19 +30,37 @@
+ import joblib
+ from threadpoolctl import threadpool_limits
+ 
+-PROJECT_ROOT = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW")
+-if str(PROJECT_ROOT) not in sys.path:
+-    sys.path.append(str(PROJECT_ROOT))
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[rescue_full_run] Required environment variable {var!r} is not set. "
++            f"Source SUBMISSION_CODE_PACKAGE/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++# --- Package-local imports (bundled copies of src.data_loading and src.indexing) ---
++_PKG_ROOT = _env_path("SUBMISSION_CODE_PKG_ROOT")
++_HYBRID_LIB = str(_PKG_ROOT / "python" / "hybrid")
++if _HYBRID_LIB not in sys.path:
++    sys.path.insert(0, _HYBRID_LIB)
+ from src.data_loading import load_embeddings_from_parquets, l2_normalize
+ from src.indexing import load_index
+ 
+-DEV_QUERY_DIR    = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_snowflake/dev_query")
+-DOC_INDEX_PATH   = Path("/home/toploc1/Datasets/toploc1/indexes/HNSW_indexes/treccast_hnsw_M32.index")
+-PCA_QL_DIR       = Path("/home/toploc1/Datasets/toploc1/HNSW/querylog_pca256")
+-QUERY_INDEX_PATH = PCA_QL_DIR / "train_query_pca256_hnsw.faiss"
+-PCA_MODEL_PATH   = PCA_QL_DIR / "pca_1024_to_256.joblib"
+-QLR_ARTIFACT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/qlr_artifacts_full")
+-EXACT_DIR        = Path("/home/toploc1/Datasets/toploc1/HNSW/exact_results_full")
++# --- External data paths from config/paths.env -------------------------------------
++DEV_QUERY_DIR    = _env_path("DEV_QUERY_DIR")
++DOC_INDEX_PATH   = _env_path("HYBRID_DOC_INDEX")
++PCA_QL_DIR       = _env_path("PCA_QL_DIR")
++QUERY_INDEX_PATH = _env_path("ROUTER_INDEX",   required=False) or (PCA_QL_DIR / "train_query_pca256_hnsw.faiss")
++PCA_MODEL_PATH   = _env_path("PCA_MODEL",      required=False) or (PCA_QL_DIR / "pca_1024_to_256.joblib")
++QLR_ARTIFACT_DIR = _env_path("QLR_ARTIFACT_DIR")
++EXACT_DIR        = _env_path("EXACT_DIR")
+ 
+ ID_COL, EMB_COL = "id", "embedding"
+ NORMALIZE = True
+@@ -65,7 +76,11 @@
+ rng = np.random.default_rng(SEED)
+ 
+ RUN_ID  = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+-OUT_DIR = PROJECT_ROOT / "claude_qlr_diagnostics" / "results" / f"full_{RUN_ID}"
++_OUTPUT_ROOT = os.environ.get("OUTPUT_ROOT")
++if _OUTPUT_ROOT:
++    OUT_DIR = Path(_OUTPUT_ROOT) / f"full_{RUN_ID}"
++else:
++    OUT_DIR = Path.cwd() / "outputs" / "01_safe_hybrid" / f"full_{RUN_ID}"
+ os.makedirs(OUT_DIR, exist_ok=False)
+ 
+ results = {"run_id": RUN_ID, "stage": "full_6980", "seed": SEED,
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/rescue_stage2_accuracy.py -> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/hybrid/rescue_stage2_accuracy.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/rescue_stage2_accuracy.py	2026-07-17 03:54:25.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/hybrid/rescue_stage2_accuracy.py	2026-07-22 19:45:40.000000000 +0200
+@@ -1,34 +1,20 @@
+ # ==================== CLAUDE IMPROVEMENT START: Stage-2 accuracy-recovery grid (NEW FILE; scripts/son.py & Paper 1 untouched) ====================
+-# Purpose: bounded accuracy-recovery search on the SAME 500-query sample as Stage 1,
+-# to find whether QLR can reach baseline acc@10 (0.962, tol 0.01 -> floor 0.952)
+-# while keeping a real speedup. READ-ONLY w.r.t. every existing data file/artifact.
++# ------------------------------------------------------------------
++# SUBMISSION_CODE_PACKAGE — path-only portability edits:
++#   * Absolute hard-coded paths replaced with reads from environment variables
++#     (config/paths.env: DEV_QUERY_DIR, HYBRID_DOC_INDEX, PCA_QL_DIR,
++#     ROUTER_INDEX, PCA_MODEL, PCA_QMAX, QLR_ARTIFACT_DIR, EXACT_DIR).
++#   * PROJECT_ROOT is no longer prepended to sys.path; instead this package's
++#     python/hybrid directory is prepended so that `from src.data_loading` and
++#     `from src.indexing` resolve to the bundled helper copies.
++#   * OUT_DIR is chosen from OUTPUT_ROOT (if set by RUN.sh).
+ #
+-# Carries forward the three VALIDATED Stage-1 fixes as the common substrate:
+-#   FIX 1 : query-log router efSearch = 16     (validated: 1.4% decision flip vs ef64)
+-#   FIX 2 : bare-matmul PCA (x - mean_) @ Cᵀ   (validated: 100% identical routing)
+-#   FIX 3 : PCA cost counted honestly in the end-to-end latency budget
+-#
+-# Stage-2 accuracy levers explored on the ROUTED subset (fallback path is unchanged):
+-#   SEED DISTANCE MODE : "cached"       = Baran's cached historical EP distances (son.py default)
+-#                        "recompute_l2" = current-query squared-L2 to each reconstructed seed vec
+-#   NPROBE             : 3, 5, 10       (how many cached doc neighbors become seeds)
+-#   SEEDED EF          : 16, 32, 64, 128 (layer-0 beam width from those seeds)
+-#   -> 2 x 3 x 4 = 24 configs, each measured for acc@10 AND full single-thread latency budget.
+-#
+-# Deliberately UNCHANGED (kept in scope): search_type stays 1 (8-arg search_level_0);
+-#   RS=0.50 routing threshold; fallback = full HNSW search @ ef64. search_type=2 is NOT
+-#   introduced here (out of the user's Stage-2 scope) and is flagged as a follow-up lever
+-#   only if the 0.952 gate is not reached.
+-#
+-# DIAGNOSTIC (the scientific heart): per-routed-query overlap between the EP seeds and the
+-#   current query's EXACT top-10. If seeds rarely fall in the true top-10, no ef/nprobe can
+-#   recover accuracy and the honest conclusion is that EP-seed routing caps below the gate.
+-#
+-# Safety: writes ONLY under a NEW timestamped dir claude_qlr_diagnostics/results/stage2_<ts>/
+-#   (os.makedirs(exist_ok=False) -> fails rather than overwrite). Doc index loaded ONCE.
+-#   Bounded: 500 queries, no rebuilds, no Paper-1 use, no full-corpus run. All timed FAISS
+-#   single-thread; timed PCA under threadpool_limits(1). NO speedup is claimed unless a
+-#   config's measured overall acc@10 >= 0.952.
++# Algorithm, benchmark configuration (N_MAIN=500, SEED=20260717, N_REPS=3,
++# N_WARMUP=50, RS=0.50, EF_DEFAULT=64, ROUTER_EF=16, SEED_MODES, NPROBES,
++# SEEDED_EFS, 24-config grid, mixture-mean speedup, output schema) are IDENTICAL
++# to the original at claude_qlr_diagnostics/rescue_stage2_accuracy.py
++# (byte-identical SHA256 recorded in manifests/COPY_MANIFEST.tsv).
++# ------------------------------------------------------------------
+ import os
+ os.environ.setdefault("PYTHONDONTWRITEBYTECODE", "1")
+ import sys
+@@ -45,21 +31,38 @@
+ import joblib
+ from threadpoolctl import threadpool_limits
+ 
+-PROJECT_ROOT = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW")
+-if str(PROJECT_ROOT) not in sys.path:
+-    sys.path.append(str(PROJECT_ROOT))
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[rescue_stage2_accuracy] Required environment variable {var!r} is not set. "
++            f"Source SUBMISSION_CODE_PACKAGE/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++# --- Package-local imports (bundled copies of src.data_loading and src.indexing) ---
++_PKG_ROOT = _env_path("SUBMISSION_CODE_PKG_ROOT")
++_HYBRID_LIB = str(_PKG_ROOT / "python" / "hybrid")
++if _HYBRID_LIB not in sys.path:
++    sys.path.insert(0, _HYBRID_LIB)
+ from src.data_loading import load_embeddings_from_parquets, l2_normalize
+ from src.indexing import load_index
+ 
+ # ---- paths: identical to scripts/son.py (read-only) ----
+-DEV_QUERY_DIR    = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_snowflake/dev_query")
+-DOC_INDEX_PATH   = Path("/home/toploc1/Datasets/toploc1/indexes/HNSW_indexes/treccast_hnsw_M32.index")
+-PCA_QL_DIR       = Path("/home/toploc1/Datasets/toploc1/HNSW/querylog_pca256")
+-QUERY_INDEX_PATH = PCA_QL_DIR / "train_query_pca256_hnsw.faiss"
+-PCA_MODEL_PATH   = PCA_QL_DIR / "pca_1024_to_256.joblib"
+-QMAX_PATH        = PCA_QL_DIR / "qmax_pca256.npy"
+-QLR_ARTIFACT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/qlr_artifacts_full")
+-EXACT_DIR        = Path("/home/toploc1/Datasets/toploc1/HNSW/exact_results_full")
++DEV_QUERY_DIR    = _env_path("DEV_QUERY_DIR")
++DOC_INDEX_PATH   = _env_path("HYBRID_DOC_INDEX")
++PCA_QL_DIR       = _env_path("PCA_QL_DIR")
++QUERY_INDEX_PATH = _env_path("ROUTER_INDEX", required=False) or (PCA_QL_DIR / "train_query_pca256_hnsw.faiss")
++PCA_MODEL_PATH   = _env_path("PCA_MODEL",    required=False) or (PCA_QL_DIR / "pca_1024_to_256.joblib")
++QMAX_PATH        = _env_path("PCA_QMAX",     required=False) or (PCA_QL_DIR / "qmax_pca256.npy")
++QLR_ARTIFACT_DIR = _env_path("QLR_ARTIFACT_DIR")
++EXACT_DIR        = _env_path("EXACT_DIR")
+ 
+ # ---- config ----
+ ID_COL, EMB_COL = "id", "embedding"
+@@ -81,7 +84,11 @@
+ rng = np.random.default_rng(SEED)
+ 
+ RUN_ID  = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+-OUT_DIR = PROJECT_ROOT / "claude_qlr_diagnostics" / "results" / f"stage2_{RUN_ID}"
++_OUTPUT_ROOT = os.environ.get("OUTPUT_ROOT")
++if _OUTPUT_ROOT:
++    OUT_DIR = Path(_OUTPUT_ROOT) / f"stage2_{RUN_ID}"
++else:
++    OUT_DIR = Path.cwd() / "outputs" / "06_stage2_bounded_pareto" / f"stage2_{RUN_ID}"
+ os.makedirs(OUT_DIR, exist_ok=False)  # never overwrite
+ 
+ results = {"run_id": RUN_ID, "stage": 2, "seed": SEED,
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528/native_qlr_optimization/20260719_190628/python/benchmark_native.py -> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/native/benchmark_native.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528/native_qlr_optimization/20260719_190628/python/benchmark_native.py	2026-07-19 19:17:12.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/native/benchmark_native.py	2026-07-22 19:46:30.000000000 +0200
+@@ -2,16 +2,46 @@
+ # Correctness + benchmark driver for the native_qlr pybind11 module.
+ # Compares against baseline and existing Python/FAISS QLR reference.
+ # ==================== CLAUDE IMPROVEMENT END ====================
++# ------------------------------------------------------------------
++# SUBMISSION_CODE_PACKAGE — path-only portability edits:
++#   * WS-relative sys.path.insert (str(WS / "build")) is replaced with the
++#     NATIVE_MODULE_DIR environment variable so the .so can live in
++#     native/prebuilt/ or a user-rebuilt directory.
++#   * EXPORT_DIR (native_export) reads from NATIVE_EXPORT_DIR.
++#   * FAITH root reads from FAITH_ROOT.
++#   * --out already CLI-configurable; the caller RUN.sh supplies it.
++#
++# Algorithm, sweeps, warmup, reps, accuracy computation, config grid and
++# output schema are IDENTICAL to the original at
++# $NATIVE_WS/python/benchmark_native.py (byte-identical SHA256 in
++# manifests/COPY_MANIFEST.tsv).
++# ------------------------------------------------------------------
+ import os, sys, time, json, argparse
+ from pathlib import Path
+ import numpy as np
+ 
+-WS = Path(__file__).resolve().parent.parent
+-sys.path.insert(0, str(WS / "build"))
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[benchmark_native] Required environment variable {var!r} is not set. "
++            f"Source SUBMISSION_CODE_PACKAGE/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++NATIVE_MODULE_DIR = _env_path("NATIVE_MODULE_DIR")
++if str(NATIVE_MODULE_DIR) not in sys.path:
++    sys.path.insert(0, str(NATIVE_MODULE_DIR))
+ import native_qlr as nq
+ 
+-EXPORT_DIR = str(WS / "build" / "native_export")
+-FAITH = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528")
++EXPORT_DIR = str(_env_path("NATIVE_EXPORT_DIR"))
++FAITH = _env_path("FAITH_ROOT")
+ 
+ TOPK = 10
+ 
+@@ -24,7 +54,12 @@
+     ap.add_argument("--warmup", type=int, default=100)
+     ap.add_argument("--reps", type=int, default=3)
+     ap.add_argument("--baseline_ef", type=int, nargs='+', default=[10, 20, 30, 40, 50, 64, 80, 100, 130])
+-    ap.add_argument("--out", type=str, default=str(WS / "results" / "native_500k.json"))
++    _default_out = os.environ.get("OUTPUT_ROOT")
++    if _default_out:
++        _default_out = str(Path(_default_out) / "native_500k.json")
++    else:
++        _default_out = str(Path.cwd() / "outputs" / "03_native_equal_accuracy" / "native_500k.json")
++    ap.add_argument("--out", type=str, default=_default_out)
+     args = ap.parse_args()
+ 
+     print(f"[load] native module")
+@@ -160,6 +195,7 @@
+         elif b:
+             print(f"  {k}: base ef={b['ef']} {b['mean_lat_us']:.0f}us / no QLR reaches")
+ 
++    Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+     with open(args.out, "w") as f:
+         json.dump({"n": N, "warmup": args.warmup, "reps": args.reps, "s_max": s_max,
+                    "baseline": base_results, "qlr": qlr_results, "equal": equal}, f, indent=2)
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528/native_qlr_optimization/20260719_190628/python/canonical_final.py -> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/native/canonical_final.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528/native_qlr_optimization/20260719_190628/python/canonical_final.py	2026-07-20 04:29:22.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/native/canonical_final.py	2026-07-22 19:47:07.000000000 +0200
+@@ -1,15 +1,46 @@
+ """Canonical apples-to-apples: same script, same server-load moment, 6 configs.
+ Each measured with isolated per-backend warmup + 3x6980 reps."""
++# ------------------------------------------------------------------
++# SUBMISSION_CODE_PACKAGE — path-only portability edits:
++#   * sys.path.insert to WS/"build" replaced with NATIVE_MODULE_DIR env var.
++#   * FAITH root reads from FAITH_ROOT.
++#   * EXPORT reads from NATIVE_EXPORT_DIR.
++#   * Output path (was hard-coded WS/"results"/"canonical_final.json") now
++#     honours OUTPUT_ROOT if set; otherwise defaults to CWD/outputs/... The
++#     wrapper (04_native_canonical_v3/RUN.sh) sets OUTPUT_ROOT to a
++#     timestamped sandbox.
++#
++# Algorithm, three-run structure, per-backend isolated warmup, 3x6980 reps,
++# baseline/QLR configs (v1/v2/v3), accuracy computation, and summary schema
++# are IDENTICAL to the original at $NATIVE_WS/python/canonical_final.py
++# (byte-identical SHA256 in manifests/COPY_MANIFEST.tsv).
++# ------------------------------------------------------------------
+ import os, sys, json, time
+ import numpy as np
+ from pathlib import Path
+-WS=Path(__file__).resolve().parent.parent
+-sys.path.insert(0, str(WS/"build"))
++
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[canonical_final] Required environment variable {var!r} is not set. "
++            f"Source SUBMISSION_CODE_PACKAGE/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++NATIVE_MODULE_DIR = _env_path("NATIVE_MODULE_DIR")
++sys.path.insert(0, str(NATIVE_MODULE_DIR))
+ import native_qlr as v1
+ import native_qlr_v2 as v2
+ import native_qlr_v3 as v3
+-FAITH=Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528")
+-EXPORT=str(WS/"build"/"native_export")
++FAITH=_env_path("FAITH_ROOT")
++EXPORT=str(_env_path("NATIVE_EXPORT_DIR"))
+ TOPK=10
+ def acc10(ids,gt): return len(set(int(x) for x in ids[:TOPK] if x>=0)&set(int(x) for x in gt[:TOPK]))/TOPK
+ 
+@@ -83,7 +114,13 @@
+     print(f"\nbackend spd (baseline): v2/v1={out['backend_speedup_baseline']['v2_vs_v1']:.3f}x  v3/v1={out['backend_speedup_baseline']['v3_vs_v1']:.3f}x")
+     print(f"compound spd vs v1 baseline: v2_QLR={out['compound_qlr_vs_v1_baseline']['v2_qlr']:.3f}x  v3_QLR={out['compound_qlr_vs_v1_baseline']['v3_qlr']:.3f}x")
+ 
+-    json.dump(out, open(WS/"results"/"canonical_final.json","w"), indent=2)
+-    print("[DONE] wrote results/canonical_final.json")
++    _output_root = os.environ.get("OUTPUT_ROOT")
++    if _output_root:
++        _out_path = Path(_output_root) / "canonical_final.json"
++    else:
++        _out_path = Path.cwd() / "outputs" / "04_native_canonical_v3" / "canonical_final.json"
++    _out_path.parent.mkdir(parents=True, exist_ok=True)
++    json.dump(out, open(_out_path, "w"), indent=2)
++    print(f"[DONE] wrote {_out_path}")
+ 
+ if __name__=="__main__": main()
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528/native_qlr_optimization/20260719_190628/python/final_validate.py -> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/native/final_validate.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528/native_qlr_optimization/20260719_190628/python/final_validate.py	2026-07-20 03:11:23.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/python/native/final_validate.py	2026-07-22 19:47:57.000000000 +0200
+@@ -7,17 +7,46 @@
+ Reports per-repetition means, pooled means, and per-query arrays; writes
+ overnight_final/PER_QUERY_*.npy for full transparency.
+ """
++# ------------------------------------------------------------------
++# SUBMISSION_CODE_PACKAGE — path-only portability edits:
++#   * sys.path.insert to WS/"build" replaced with NATIVE_MODULE_DIR env var.
++#   * FAITH root reads from FAITH_ROOT.
++#   * EXPORT_DIR reads from NATIVE_EXPORT_DIR.
++#   * The --out_dir CLI default now honours OUTPUT_ROOT when the caller did
++#     not pass --out_dir; the wrapper (02_cachewarmed_best/RUN.sh) still
++#     passes --out_dir explicitly.
++#
++# Algorithm, N=6980, warmup=300, reps=3, B-Q_A-Q_B interleaving, baseline
++# backend/ef, per-query arrays, pooled statistics, and output schema are
++# IDENTICAL to the original at $NATIVE_WS/python/final_validate.py
++# (byte-identical SHA256 in manifests/COPY_MANIFEST.tsv).
++# ------------------------------------------------------------------
+ import os, sys, time, json, argparse
+ from pathlib import Path
+ import numpy as np
+ 
+-WS = Path(__file__).resolve().parent.parent
+-sys.path.insert(0, str(WS / "build"))
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[final_validate] Required environment variable {var!r} is not set. "
++            f"Source SUBMISSION_CODE_PACKAGE/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++NATIVE_MODULE_DIR = _env_path("NATIVE_MODULE_DIR")
++sys.path.insert(0, str(NATIVE_MODULE_DIR))
+ import native_qlr as v1
+ import native_qlr_v2 as v2
+ 
+-FAITH = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/faithful_msmarco_v1_20260719_042528")
+-EXPORT_DIR = str(WS / "build" / "native_export")
++FAITH = _env_path("FAITH_ROOT")
++EXPORT_DIR = str(_env_path("NATIVE_EXPORT_DIR"))
+ TOPK = 10
+ 
+ def acc10(ids, gt):
+@@ -44,7 +73,8 @@
+     ap.add_argument("--baseline_backend", type=str, default="v2")
+     ap.add_argument("--cfg_a", type=str, default="kp=20,kep=10,th=0.30,ef=128,ef_min=10,rEF=16,backend=v1")
+     ap.add_argument("--cfg_b", type=str, default="")
+-    ap.add_argument("--out_dir", type=str, default=str(WS / "overnight_final"))
++    _default_out_dir = os.environ.get("OUTPUT_ROOT") or str(Path.cwd() / "outputs" / "02_cachewarmed_best")
++    ap.add_argument("--out_dir", type=str, default=_default_out_dir)
+     ap.add_argument("--core", type=int, default=21)
+     args = ap.parse_args()
+ 
+
+
+==== /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/optimization_search/paper2_faithful_20260718_231400/runner.py -> /home/toploc1/Datasets/toploc1/toploc_paper_2/python/faithful/runner.py ====
+--- /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/optimization_search/paper2_faithful_20260718_231400/runner.py	2026-07-18 23:32:45.000000000 +0200
++++ /home/toploc1/Datasets/toploc1/toploc_paper_2/python/faithful/runner.py	2026-07-23 02:36:20.000000000 +0200
+@@ -23,6 +23,25 @@
+ # Success criterion (paper target): full-6980 QLR acc@10 >= 0.952 AND
+ #   pooled QLR mean latency <= pooled baseline ef=64 mean / 1.40 (>=1.40x speedup).
+ # ==================== CLAUDE IMPROVEMENT END ====================
++# ------------------------------------------------------------------
++# toploc_paper_2 — path-only portability edits:
++#   * Absolute hard-coded paths (PROJECT_ROOT, DEV_QUERY_DIR, DOC_INDEX_*,
++#     QUERY_INDEX_*, PCA_MEAN, PCA_COMPONENTS, QLR_ARTIFACT_DIR, EXACT_DIR) have
++#     been replaced with reads from environment variables (config/paths.env).
++#   * PROJECT_ROOT is no longer prepended to sys.path; instead this package's
++#     python/hybrid directory is prepended so that `from src.data_loading` and
++#     `from src.indexing` resolve to the bundled helper copies.
++#   * SCRIPT_DIR is still added to sys.path so `from faithful_qlr import ...`
++#     resolves to the bundled paper-faithful implementation copy.
++#   * The default output root SCRIPT_DIR/"results" is replaced with OUTPUT_ROOT.
++#
++# Algorithm, benchmark configuration, seeds, warmup, reps, calibration configs,
++# routing/fallback logic, adaptive-ef formula, thresholds, gate criteria, and
++# output schema are IDENTICAL to the original at
++# claude_qlr_diagnostics/paper2_final_track/optimization_search/
++# paper2_faithful_20260718_231400/runner.py
++# (SHA256 pair recorded in manifests/COPY_MANIFEST.tsv).
++# ------------------------------------------------------------------
+ from __future__ import annotations
+ import os
+ os.environ.setdefault("PYTHONDONTWRITEBYTECODE", "1")
+@@ -38,9 +57,26 @@
+ import faiss
+ from threadpoolctl import threadpool_limits
+ 
+-PROJECT_ROOT = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW")
+-if str(PROJECT_ROOT) not in sys.path:
+-    sys.path.append(str(PROJECT_ROOT))
++
++def _env_path(var, required=True, default=None):
++    v = os.environ.get(var)
++    if v:
++        return Path(v)
++    if default is not None:
++        return Path(default)
++    if required:
++        raise RuntimeError(
++            f"[faithful.runner] Required environment variable {var!r} is not set. "
++            f"Source toploc_paper_2/config/paths.env or export {var!r}."
++        )
++    return None
++
++
++# --- Package-local imports (bundled copies of src.data_loading and src.indexing) ---
++_PKG_ROOT = _env_path("SUBMISSION_CODE_PKG_ROOT")
++_HYBRID_LIB = str(_PKG_ROOT / "python" / "hybrid")
++if _HYBRID_LIB not in sys.path:
++    sys.path.insert(0, _HYBRID_LIB)
+ from src.data_loading import load_embeddings_from_parquets, l2_normalize
+ from src.indexing import load_index
+ 
+@@ -48,17 +84,26 @@
+ sys.path.insert(0, str(SCRIPT_DIR))
+ from faithful_qlr import FaithfulQLR, QLRConfig, QLRHandles
+ 
+-# ---------------- paths ----------------
+-DEV_QUERY_DIR    = Path("/home/toploc1/Datasets/toploc1/HNSW/msmarco_snowflake/dev_query")
+-DOC_INDEX_SHM    = Path("/dev/shm/qlr_indexes/treccast_hnsw_M32.index")
+-DOC_INDEX_SSHFS  = Path("/home/toploc1/Datasets/toploc1/indexes/HNSW_indexes/treccast_hnsw_M32.index")
+-QUERY_INDEX_SHM  = Path("/dev/shm/qlr_indexes/train_query_pca256_hnsw.faiss")
+-QUERY_INDEX_SSHFS= Path("/home/toploc1/Datasets/toploc1/HNSW/querylog_pca256/train_query_pca256_hnsw.faiss")
+-PCA_EXTRACTED    = SCRIPT_DIR.parent / "pca_extracted"
+-PCA_MEAN         = PCA_EXTRACTED / "pca_mean_1024.npy"
+-PCA_COMPONENTS   = PCA_EXTRACTED / "pca_components_256x1024.npy"
+-QLR_ARTIFACT_DIR = Path("/home/toploc1/Datasets/toploc1/HNSW/qlr_artifacts_full")
+-EXACT_DIR        = Path("/home/toploc1/Datasets/toploc1/HNSW/exact_results_full")
++# ---------------- paths (all from config/paths.env) ----------------
++DEV_QUERY_DIR    = _env_path("DEV_QUERY_DIR")
++# Doc index: /dev/shm optional fast path preferred, config'd path otherwise.
++DOC_INDEX_SHM    = _env_path("FAITHFUL_DOC_INDEX_SHM", required=False,
++                              default="/dev/shm/qlr_indexes/treccast_hnsw_M32.index")
++DOC_INDEX_SSHFS  = _env_path("HYBRID_DOC_INDEX")
++# Query router (I_Q) index — same PCA-projected HNSW index as the hybrid track.
++QUERY_INDEX_SHM  = _env_path("FAITHFUL_QUERY_INDEX_SHM", required=False,
++                              default="/dev/shm/qlr_indexes/train_query_pca256_hnsw.faiss")
++_PCA_QL_DIR      = _env_path("PCA_QL_DIR")
++QUERY_INDEX_SSHFS = _env_path("ROUTER_INDEX", required=False) \
++                   or (_PCA_QL_DIR / "train_query_pca256_hnsw.faiss")
++# PCA extracted arrays (paper-faithful shape: (1024,) and (256, 1024))
++_FAITHFUL_PCA_DIR = _env_path("FAITHFUL_PCA_DIR")
++PCA_MEAN         = _env_path("FAITHFUL_PCA_MEAN", required=False) \
++                   or (_FAITHFUL_PCA_DIR / "pca_mean_1024.npy")
++PCA_COMPONENTS   = _env_path("FAITHFUL_PCA_COMPONENTS", required=False) \
++                   or (_FAITHFUL_PCA_DIR / "pca_components_256x1024.npy")
++QLR_ARTIFACT_DIR = _env_path("QLR_ARTIFACT_DIR")
++EXACT_DIR        = _env_path("EXACT_DIR")
+ 
+ # ---------------- constants ----------------
+ SEED              = 20260718
+@@ -478,7 +523,13 @@
+ # ---------------- main ----------------
+ def main():
+     run_id = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+-    out_dir = SCRIPT_DIR / "results" / run_id
++    # OUTPUT_ROOT (set by RUN.sh) is where the wrapper wants the run dir; otherwise
++    # fall back to the original SCRIPT_DIR/results/ layout for standalone use.
++    _out_root = os.environ.get("OUTPUT_ROOT")
++    if _out_root:
++        out_dir = Path(_out_root) / f"faithful_{run_id}"
++    else:
++        out_dir = SCRIPT_DIR / "results" / run_id
+     os.makedirs(out_dir, exist_ok=False)
+     print(f"[main] run_id={run_id}", flush=True)
+     print(f"[main] out_dir={out_dir}", flush=True)

@@ -1,0 +1,61 @@
+{
+  "package": "toploc_paper_2/preprocessing",
+  "common_helpers": {
+    "src/data_loading.py": {"symbols": ["load_embeddings_from_parquets", "l2_normalize"], "third_party": ["numpy", "pandas"], "byte_identical": true},
+    "src/indexing.py": {"symbols": ["build_hnsw_index", "save_index", "save_ids", "load_index"], "third_party": ["numpy", "faiss"], "byte_identical": true}
+  },
+  "producers": [
+    {
+      "script": "scripts/build_index.py",
+      "artifact": "full document HNSW index",
+      "inputs": {"PREPROC_DOC_EMB_DIR": "document embedding parquet shards"},
+      "outputs": ["${PREPROC_OUTPUT_ROOT}/index_artifacts/train_query_full_hnsw.faiss", "${PREPROC_OUTPUT_ROOT}/index_artifacts/train_query_full_ids.npy"],
+      "params": {"M": 32, "ef_construction": 500, "ef_search": 64, "metric": "ip", "normalize": true},
+      "local_imports": ["src.data_loading", "src.indexing"],
+      "third_party": ["numpy", "faiss", "pandas"],
+      "consumers": ["HYBRID_DOC_INDEX (Benchmarks 01,05,06,07,08)", "build_ep_table.py"],
+      "cost": "REQUIRED, EXPENSIVE, HIGH-RAM"
+    },
+    {
+      "script": "scripts/build_query_log_pca.py",
+      "artifact": "PCA model + router HNSW index + qmax",
+      "inputs": {"PREPROC_TRAIN_QUERY_DIR": "train/query-log embedding parquets"},
+      "outputs": ["${PREPROC_OUTPUT_ROOT}/querylog_pca256/train_query_pca256.npy", "${PREPROC_OUTPUT_ROOT}/querylog_pca256/train_query_pca256_ids.npy", "${PREPROC_OUTPUT_ROOT}/querylog_pca256/train_query_pca256_hnsw.faiss", "${PREPROC_OUTPUT_ROOT}/querylog_pca256/pca_1024_to_256.joblib", "${PREPROC_OUTPUT_ROOT}/querylog_pca256/qmax_pca256.npy", "${PREPROC_OUTPUT_ROOT}/querylog_pca256/pca_meta.json"],
+      "params": {"n_components": 256, "svd_solver": "randomized", "random_state": 42, "normalize": true, "router_M": 32, "router_ef_construction": 500, "router_ef_search": 64, "router_metric": "ip", "qmax_quantile": 0.75},
+      "local_imports": ["src.data_loading", "src.indexing"],
+      "third_party": ["numpy", "faiss", "pandas", "scikit-learn", "joblib"],
+      "consumers": ["PCA_MODEL + ROUTER_INDEX (Benchmarks 01,05,06,07,08)", "faithful PCA arrays for Benchmark 07"],
+      "cost": "REQUIRED"
+    },
+    {
+      "script": "scripts/build_ep_table.py",
+      "artifact": "EP table (entry points per historical query)",
+      "inputs": {"PREPROC_TRAIN_QUERY_DIR": "train/query-log embedding parquets", "HYBRID_DOC_INDEX": "full TREC-CAsT doc HNSW index (reused var)"},
+      "outputs": ["${PREPROC_OUTPUT_ROOT}/qlr_artifacts_full/ep_indices.npy", "${PREPROC_OUTPUT_ROOT}/qlr_artifacts_full/ep_distances.npy", "${PREPROC_OUTPUT_ROOT}/qlr_artifacts_full/train_query_ids.npy"],
+      "params": {"topk_ep": 10, "normalize": true},
+      "local_imports": ["src.data_loading", "src.indexing"],
+      "third_party": ["numpy", "faiss", "pandas"],
+      "consumers": ["QLR_ARTIFACT_DIR (Benchmarks 01,05,06,07,08); ep_distances.npy is the s_max source"],
+      "cost": "REQUIRED, EXPENSIVE"
+    },
+    {
+      "script": "scripts/flat_index_search_acc.py",
+      "artifact": "exact ground truth (acc@10 reference)",
+      "inputs": {"DEV_QUERY_DIR": "6,980 dev query embeddings (reused var)", "PREPROC_FLAT_INDEX": "exact flat index (treccast_flat.index)"},
+      "outputs": ["${PREPROC_OUTPUT_ROOT}/exact_results_full/exact_scores.npy", "${PREPROC_OUTPUT_ROOT}/exact_results_full/exact_indices.npy", "${PREPROC_OUTPUT_ROOT}/exact_results_full/dev_query_ids.npy", "${PREPROC_OUTPUT_ROOT}/exact_results_full/exact_meta.csv"],
+      "params": {"topk": 10, "batch_size": 512, "normalize": true},
+      "local_imports": ["src.data_loading", "src.indexing"],
+      "third_party": ["numpy", "faiss", "pandas"],
+      "consumers": ["EXACT_DIR (Benchmarks 01,05,06,07,08)"],
+      "cost": "REQUIRED, EXPENSIVE"
+    }
+  ],
+  "recommended_order": ["build_index.py", "build_query_log_pca.py", "build_ep_table.py", "flat_index_search_acc.py"],
+  "independent_branches": ["build_query_log_pca.py and flat_index_search_acc.py are independent of each other", "build_ep_table.py requires build_index.py's doc index (or the deployed HYBRID_DOC_INDEX)"],
+  "missing_authoritative_producers": [
+    {"artifact": "exact flat index (treccast_flat.index)", "reason": "no builder under msmarco_HNSW/scripts/"},
+    {"artifact": "document/query embedding parquet shards", "reason": "produced by an upstream embedding pipeline not present in scripts/"},
+    {"artifact": "extracted faithful PCA arrays (pca_mean_1024.npy, pca_components_256x1024.npy)", "reason": "derived from pca_1024_to_256.joblib; no standalone extraction script"},
+    {"artifact": "native binary export (native_export/)", "reason": "native-track artifact; out of scope for hybrid TREC-CAsT preprocessing"}
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "config": {
+    "nprobe_values": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "h_values": [
+      512,
+      1024,
+      4096,
+      8192
+    ],
+    "k_latency_values": [
+      10,
+      100,
+      1000
+    ],
+    "k_metrics": 1000,
+    "warmup_runs": 1,
+    "timed_runs": 3,
+    "n_conversations": 50,
+    "n_followup_queries": 429,
+    "avg_followups_per_conv": 8.58,
+    "parallel_mode_fused": 0,
+    "parallel_mode_preassigned": 2
+  },
+  "baseline": {
+    "1": {
+      "metrics": {
+        "MRR@10": 0.04691714836223506,
+        "NDCG@3": 0.016727091305220192,
+        "NDCG@10": 0.01374060865189949,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 0.3093543659465817,
+          "firstturn_ms_per_query": 0.27140422025695443,
+          "control_followup_ms_per_query": 2.262670051326567,
+          "control_firstturn_ms_per_query": 0.5343503598123789,
+          "control_vs_fused_followup": 0.13672093541221897
+        },
+        "100": {
+          "followup_ms_per_query": 0.2968202237612926,
+          "firstturn_ms_per_query": 0.26602005993481725,
+          "control_followup_ms_per_query": 2.0034179323605783,
+          "control_firstturn_ms_per_query": 0.33292272011749446,
+          "control_vs_fused_followup": 0.1481569167205949
+        },
+        "1000": {
+          "followup_ms_per_query": 0.3032941072158915,
+          "firstturn_ms_per_query": 0.3170272195711732,
+          "control_followup_ms_per_query": 2.279985193442662,
+          "control_firstturn_ms_per_query": 0.43091254017781466,
+          "control_vs_fused_followup": 0.13302459511060807
+        }
+      }
+    },
+    "2": {
+      "metrics": {
+        "MRR@10": 0.047398843930635835,
+        "NDCG@3": 0.015573286880173091,
+        "NDCG@10": 0.014309786648005317,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 0.32693695801794354,
+          "firstturn_ms_per_query": 0.3627218399196863,
+          "control_followup_ms_per_query": 1.994417496538441,
+          "control_firstturn_ms_per_query": 0.335370380198583,
+          "control_vs_fused_followup": 0.16392603784582876
+        },
+        "100": {
+          "followup_ms_per_query": 0.3066726013587132,
+          "firstturn_ms_per_query": 0.326532720355317,
+          "control_followup_ms_per_query": 1.378640095596929,
+          "control_firstturn_ms_per_query": 1.4568395196693018,
+          "control_vs_fused_followup": 0.2224457291922363
+        },
+        "1000": {
+          "followup_ms_per_query": 0.3535613240017436,
+          "firstturn_ms_per_query": 0.30847956018988043,
+          "control_followup_ms_per_query": 1.9089789184066521,
+          "control_firstturn_ms_per_query": 0.46030765981413424,
+          "control_vs_fused_followup": 0.18520965349206006
+        }
+      }
+    },
+    "4": {
+      "metrics": {
+        "MRR@10": 0.047398843930635835,
+        "NDCG@3": 0.015395707261807522,
+        "NDCG@10": 0.014241674555321122,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 0.4007899184632039,
+          "firstturn_ms_per_query": 0.4520867997780442,
+          "control_followup_ms_per_query": 1.6305435011716938,
+          "control_firstturn_ms_per_query": 0.4129809804726392,
+          "control_vs_fused_followup": 0.24580142644167413
+        },
+        "100": {
+          "followup_ms_per_query": 0.4103087878727413,
+          "firstturn_ms_per_query": 0.3967094997642562,
+          "control_followup_ms_per_query": 1.787563953410274,
+          "control_firstturn_ms_per_query": 0.35916731983888894,
+          "control_vs_fused_followup": 0.2295351654915414
+        },
+        "1000": {
+          "followup_ms_per_query": 0.41409788109440276,
+          "firstturn_ms_per_query": 0.44402393978089094,
+          "control_followup_ms_per_query": 1.5259600442694174,
+          "control_firstturn_ms_per_query": 1.4595873799407855,
+          "control_vs_fused_followup": 0.27136875742553274
+        }
+      }
+    },
+    "8": {
+      "metrics": {
+        "MRR@10": 0.043224149004495824,
+        "NDCG@3": 0.015129826312861007,
+        "NDCG@10": 0.013927007575440206,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 1.2714266363886295,
+          "firstturn_ms_per_query": 1.2546648405259475,
+          "control_followup_ms_per_query": 1.4778843030413842,
+          "control_firstturn_ms_per_query": 1.6234326601261273,
+          "control_vs_fused_followup": 0.8603018746272093
+        },
+        "100": {
+          "followup_ms_per_query": 1.2497302657101816,
+          "firstturn_ms_per_query": 1.2322029599454254,
+          "control_followup_ms_per_query": 1.3503582261031655,
+          "control_firstturn_ms_per_query": 0.38333408010657877,
+          "control_vs_fused_followup": 0.9254805440158099
+        },
+        "1000": {
+          "followup_ms_per_query": 1.269878065259693,
+          "firstturn_ms_per_query": 1.246895199874416,
+          "control_followup_ms_per_query": 2.023248020996446,
+          "control_firstturn_ms_per_query": 0.5652820999966934,
+          "control_vs_fused_followup": 0.6276433003178129
+        }
+      }
+    },
+    "16": {
+      "metrics": {
+        "MRR@10": 0.04226075786769428,
+        "NDCG@3": 0.01503550354514461,
+        "NDCG@10": 0.013873036614818908,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 3.054683585027081,
+          "firstturn_ms_per_query": 2.7470873802667484,
+          "control_followup_ms_per_query": 2.22341856639181,
+          "control_firstturn_ms_per_query": 1.0671219998039305,
+          "control_vs_fused_followup": 1.373867984733193
+        },
+        "100": {
+          "followup_ms_per_query": 3.05094638929457,
+          "firstturn_ms_per_query": 3.0601490603294224,
+          "control_followup_ms_per_query": 1.4276485571296915,
+          "control_firstturn_ms_per_query": 0.43446762021631,
+          "control_vs_fused_followup": 2.137043023689628
+        },
+        "1000": {
+          "followup_ms_per_query": 3.058805221397026,
+          "firstturn_ms_per_query": 3.061403459869325,
+          "control_followup_ms_per_query": 1.9283300932683485,
+          "control_firstturn_ms_per_query": 0.6782817601924762,
+          "control_vs_fused_followup": 1.5862456495778803
+        }
+      }
+    },
+    "32": {
+      "metrics": {
+        "MRR@10": 0.04611432241490045,
+        "NDCG@3": 0.015395707261807522,
+        "NDCG@10": 0.014256673691165594,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 5.9960675920389095,
+          "firstturn_ms_per_query": 6.1317845596931875,
+          "control_followup_ms_per_query": 1.7289996969661217,
+          "control_firstturn_ms_per_query": 1.0940924001624808,
+          "control_vs_fused_followup": 3.467940221481946
+        },
+        "100": {
+          "followup_ms_per_query": 6.021559638696308,
+          "firstturn_ms_per_query": 6.069722099928185,
+          "control_followup_ms_per_query": 1.454191634011952,
+          "control_firstturn_ms_per_query": 0.49426885962020606,
+          "control_vs_fused_followup": 4.140829515078077
+        },
+        "1000": {
+          "followup_ms_per_query": 6.0059545594370665,
+          "firstturn_ms_per_query": 6.041151599492878,
+          "control_followup_ms_per_query": 1.8658512587401808,
+          "control_firstturn_ms_per_query": 0.8175090601434931,
+          "control_vs_fused_followup": 3.218881747032867
+        }
+      }
+    },
+    "64": {
+      "metrics": {
+        "MRR@10": 0.04611432241490045,
+        "NDCG@3": 0.015395707261807522,
+        "NDCG@10": 0.014256673691165594,
+        "num_queries": 173
+      },
+      "latency": {
+        "10": {
+          "followup_ms_per_query": 5.889746177174143,
+          "firstturn_ms_per_query": 5.858969080145471,
+          "control_followup_ms_per_query": 1.8881368368732718,
+          "control_firstturn_ms_per_query": 0.8136525203008205,
+          "control_vs_fused_followup": 3.1193428686701967
+        },
+        "100": {
+          "followup_ms_per_query": 5.851326006929236,
+          "firstturn_ms_per_query": 5.935345079633407,
+          "control_followup_ms_per_query": 1.5216411328424064,
+          "control_firstturn_ms_per_query": 0.6343227601610124,
+          "control_vs_fused_followup": 3.845404728248265
+        },
+        "1000": {
+          "followup_ms_per_query": 5.879155421897656,
+          "firstturn_ms_per_query": 6.031079220119864,
+          "control_followup_ms_per_query": 2.21899510484725,
+          "control_firstturn_ms_per_query": 1.0204320802586153,
+          "control_vs_fused_followup": 2.649467504031453
+        }
+      }
+    }
+  },
+  "toploc": {}
+}

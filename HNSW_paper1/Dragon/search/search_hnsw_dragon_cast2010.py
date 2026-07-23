@@ -21,7 +21,7 @@ OUTPUT_DIR     = "/home/toploc1/Datasets/toploc1/HNSW_paper1/Dragon/search/resul
 
 # Run the whole grid once per M value. 
 
-M_LIST = [16, 64]
+M_LIST = [32]
 
 
 def index_paths(m):

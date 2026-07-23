@@ -1,0 +1,21 @@
+# -----------------------------------------------------------------------------
+# SUBMISSION_CODE_PACKAGE / requirements.txt
+#
+# Two authoritative execution environments — the versions listed here are the
+# ones the reference measurements were produced with. Newer patch versions
+# usually work but the frozen numeric results were produced against these.
+#
+# ---- HYBRID_PYTHON  (Python 3.11 miniforge env — Results 1, 5, 6) -----------
+#      Direct imports in producers + src/data_loading + src/indexing.
+numpy==1.26.4
+faiss-cpu==1.9.0            # `import faiss`; provides IndexHNSWFlat + search_level_0
+joblib==1.5.3               # loads the PCA pickle
+threadpoolctl==3.6.0        # `with threadpool_limits(limits=1):` in timed sections
+pandas==3.0.3               # parquet read in src/data_loading
+scikit-learn==1.9.0         # required only to unpickle pca_1024_to_256.joblib
+pyarrow==24.0.0             # transitive dep of pandas.read_parquet
+# ---- NATIVE_PYTHON  (Python 3.10 conda env — Results 2, 3, 4) ---------------
+#      Only numpy is imported. pybind11 is required only when rebuilding the
+#      three native modules from native/src/*.cpp via build/BUILD_NATIVE.sh.
+# numpy==1.26.4               # already listed above
+# pybind11==3.0.4             # build-time; not needed at runtime once .so exists

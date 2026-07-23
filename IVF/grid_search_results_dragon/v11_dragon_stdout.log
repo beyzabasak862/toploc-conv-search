@@ -1,0 +1,43 @@
+nohup: ignoring input
+2026-07-23 11:53:28,939 [INFO] Loading index from /home/toploc1/Datasets/toploc1/indexes/Dragon_indexes/treccast_dragon_ivf_2e18.index (mmap=True)
+2026-07-23 11:53:38,168 [INFO] Index loaded: 38,636,446 vectors, nlist=262144
+2026-07-23 11:53:38,308 [INFO] Centroid matrix: (262144, 768)
+2026-07-23 11:54:02,001 [INFO] Queries: 479 | dim=768
+2026-07-23 11:54:02,026 [INFO] Loaded qrels: 173 queries
+2026-07-23 11:54:02,027 [INFO] Conversations: 50 | follow-up queries: 429 | avg follow-ups/conv: 8.58
+2026-07-23 11:54:02,027 [INFO] === baseline nprobe=1 ===
+2026-07-23 11:54:10,748 [INFO]   k=  10: fused fu=  0.309 ft=  0.271 | control fu=  2.263 ft=  0.534 | fused/control= 0.14x
+2026-07-23 11:54:14,866 [INFO]   k= 100: fused fu=  0.297 ft=  0.266 | control fu=  2.003 ft=  0.333 | fused/control= 0.15x
+2026-07-23 11:54:19,326 [INFO]   k=1000: fused fu=  0.303 ft=  0.317 | control fu=  2.280 ft=  0.431 | fused/control= 0.13x
+2026-07-23 11:54:19,326 [INFO]   MRR@10=0.0469  NDCG@3=0.0167  NDCG@10=0.0137
+2026-07-23 11:54:19,330 [INFO] === baseline nprobe=2 ===
+2026-07-23 11:54:26,164 [INFO]   k=  10: fused fu=  0.327 ft=  0.363 | control fu=  1.994 ft=  0.335 | fused/control= 0.16x
+2026-07-23 11:54:30,052 [INFO]   k= 100: fused fu=  0.307 ft=  0.327 | control fu=  1.379 ft=  1.457 | fused/control= 0.22x
+2026-07-23 11:54:33,691 [INFO]   k=1000: fused fu=  0.354 ft=  0.308 | control fu=  1.909 ft=  0.460 | fused/control= 0.19x
+2026-07-23 11:54:33,691 [INFO]   MRR@10=0.0474  NDCG@3=0.0156  NDCG@10=0.0143
+2026-07-23 11:54:33,694 [INFO] === baseline nprobe=4 ===
+2026-07-23 11:54:42,293 [INFO]   k=  10: fused fu=  0.401 ft=  0.452 | control fu=  1.631 ft=  0.413 | fused/control= 0.25x
+2026-07-23 11:54:46,445 [INFO]   k= 100: fused fu=  0.410 ft=  0.397 | control fu=  1.788 ft=  0.359 | fused/control= 0.23x
+2026-07-23 11:54:50,667 [INFO]   k=1000: fused fu=  0.414 ft=  0.444 | control fu=  1.526 ft=  1.460 | fused/control= 0.27x
+2026-07-23 11:54:50,667 [INFO]   MRR@10=0.0474  NDCG@3=0.0154  NDCG@10=0.0142
+2026-07-23 11:54:50,670 [INFO] === baseline nprobe=8 ===
+2026-07-23 11:55:04,934 [INFO]   k=  10: fused fu=  1.271 ft=  1.255 | control fu=  1.478 ft=  1.623 | fused/control= 0.86x
+2026-07-23 11:55:09,744 [INFO]   k= 100: fused fu=  1.250 ft=  1.232 | control fu=  1.350 ft=  0.383 | fused/control= 0.93x
+2026-07-23 11:55:15,887 [INFO]   k=1000: fused fu=  1.270 ft=  1.247 | control fu=  2.023 ft=  0.565 | fused/control= 0.63x
+2026-07-23 11:55:15,888 [INFO]   MRR@10=0.0432  NDCG@3=0.0151  NDCG@10=0.0139
+2026-07-23 11:55:15,891 [INFO] === baseline nprobe=16 ===
+2026-07-23 11:55:39,931 [INFO]   k=  10: fused fu=  3.055 ft=  2.747 | control fu=  2.223 ft=  1.067 | fused/control= 1.37x
+2026-07-23 11:55:48,694 [INFO]   k= 100: fused fu=  3.051 ft=  3.060 | control fu=  1.428 ft=  0.434 | fused/control= 2.14x
+2026-07-23 11:55:57,993 [INFO]   k=1000: fused fu=  3.059 ft=  3.061 | control fu=  1.928 ft=  0.678 | fused/control= 1.59x
+2026-07-23 11:55:57,993 [INFO]   MRR@10=0.0423  NDCG@3=0.0150  NDCG@10=0.0139
+2026-07-23 11:55:58,001 [INFO] === baseline nprobe=32 ===
+2026-07-23 11:56:37,145 [INFO]   k=  10: fused fu=  5.996 ft=  6.132 | control fu=  1.729 ft=  1.094 | fused/control= 3.47x
+2026-07-23 11:56:51,482 [INFO]   k= 100: fused fu=  6.022 ft=  6.070 | control fu=  1.454 ft=  0.494 | fused/control= 4.14x
+2026-07-23 11:57:07,237 [INFO]   k=1000: fused fu=  6.006 ft=  6.041 | control fu=  1.866 ft=  0.818 | fused/control= 3.22x
+2026-07-23 11:57:07,237 [INFO]   MRR@10=0.0461  NDCG@3=0.0154  NDCG@10=0.0143
+2026-07-23 11:57:07,242 [INFO] === baseline nprobe=64 ===
+2026-07-23 11:58:05,405 [INFO]   k=  10: fused fu=  5.890 ft=  5.859 | control fu=  1.888 ft=  0.814 | fused/control= 3.12x
+2026-07-23 11:58:19,547 [INFO]   k= 100: fused fu=  5.851 ft=  5.935 | control fu=  1.522 ft=  0.634 | fused/control= 3.85x
+2026-07-23 11:58:34,819 [INFO]   k=1000: fused fu=  5.879 ft=  6.031 | control fu=  2.219 ft=  1.020 | fused/control= 2.65x
+2026-07-23 11:58:34,819 [INFO]   MRR@10=0.0461  NDCG@3=0.0154  NDCG@10=0.0143
+2026-07-23 11:58:34,824 [INFO] === baseline nprobe=128 ===

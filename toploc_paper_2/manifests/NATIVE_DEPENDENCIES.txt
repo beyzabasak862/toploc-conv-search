@@ -1,0 +1,59 @@
+# NATIVE_DEPENDENCIES.txt
+captured 2026-07-22T18:13:20Z on pegasus
+
+## g++ / linker
+g++ (Debian 12.2.0-14+deb12u1) 12.2.0
+GNU ld (GNU Binutils for Debian) 2.40
+
+## CPU capabilities (grep of /proc/cpuinfo flags)
+avx2
+f16c
+fma
+
+## ldd of each shipped .so (should be system libraries only)
+>>> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/native/prebuilt/native_qlr.cpython-310-x86_64-linux-gnu.so
+	linux-vdso.so.1 (0x00007ffd431bb000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f4aae600000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f4aae520000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f4aae882000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4aae33e000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f4aae8f0000)
+
+>>> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/native/prebuilt/native_qlr_v2.cpython-310-x86_64-linux-gnu.so
+	linux-vdso.so.1 (0x00007ffd213f3000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f3332000000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f3331f20000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f333224a000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f3331d3e000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f33322b4000)
+
+>>> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/native/prebuilt/native_qlr_v3.cpython-310-x86_64-linux-gnu.so
+	linux-vdso.so.1 (0x00007ffde7b6d000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f5146a00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f5146920000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f5146c38000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f514673e000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f5146ca2000)
+
+## readelf -d (RPATH/RUNPATH/NEEDED)
+>>> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/native/prebuilt/native_qlr.cpython-310-x86_64-linux-gnu.so
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
+
+>>> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/native/prebuilt/native_qlr_v2.cpython-310-x86_64-linux-gnu.so
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
+
+>>> /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE/native/prebuilt/native_qlr_v3.cpython-310-x86_64-linux-gnu.so
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [ld-linux-x86-64.so.2]
+

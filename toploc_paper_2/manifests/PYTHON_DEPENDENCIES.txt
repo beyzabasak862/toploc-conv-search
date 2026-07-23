@@ -1,0 +1,16 @@
+# PYTHON_DEPENDENCIES.txt — captured on the reference machine
+host_python: 3.11.15  platform: Linux-6.1.0-45-amd64-x86_64-with-glibc2.36
+
+## HYBRID_PYTHON  (Python 3.11 - Results 1, 5, 6, and Experiment 7)
+  numpy: 1.26.4
+  faiss: 1.9.0
+  joblib: 1.5.3          # Results 1, 5, 6 only (pca_1024_to_256.joblib)
+  threadpoolctl: 3.6.0
+  pandas: 3.0.3
+  sklearn: 1.9.0         # Results 1, 5, 6 only (class defs for pickled PCA); NOT imported by Experiment 7
+  pyarrow: 24.0.0
+
+## NATIVE_PYTHON  (Python 3.10 - Results 2, 3, 4)
+native_python: 3.10.19
+  numpy: 1.26.4
+  pybind11: 3.0.4

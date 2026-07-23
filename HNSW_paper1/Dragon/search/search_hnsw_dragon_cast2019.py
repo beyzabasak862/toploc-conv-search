@@ -20,7 +20,7 @@ OUTPUT_DIR     = "/home/toploc1/Datasets/toploc1/HNSW_paper1/Dragon/search/resul
 
 # Run the whole grid once per M value. Indexes are loaded ONE AT A TIME
 # (each ~119 GB) and freed before the next M loads -- never two in RAM.
-M_LIST = [16, 64]
+M_LIST = [16, 32, 64]
 
 
 def index_paths(m):

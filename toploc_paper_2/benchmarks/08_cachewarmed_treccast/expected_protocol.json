@@ -1,0 +1,105 @@
+{
+  "benchmark_id": "08_cachewarmed_treccast",
+  "scientific_label": "FULL TREC-CAsT DOCUMENT CORPUS / FULL MS MARCO V1 DEV.SMALL QUERY WORKLOAD / HYBRID FAISS QLR / MULTI-CONFIG CACHE-WARMED B-Q_A-Q_B POSITION-2 OBSERVATION",
+
+  "backend": "hybrid_faiss_treccast",
+  "backend_proof": [
+    "Producer python/hybrid/cachewarmed_treccast.py imports FaithfulQLR (hybrid FAISS) + src.data_loading + src.indexing.",
+    "It imports NO native_qlr / native_qlr_v2 / native_qlr_v3 module.",
+    "It reads NO NATIVE_EXPORT_DIR and NO NATIVE_MODULE_DIR.",
+    "Document search uses faiss IndexHNSWFlat.search / search_level_0 on HYBRID_DOC_INDEX."
+  ],
+
+  "document_corpus": {
+    "name": "full TREC-CAsT document corpus",
+    "approx_documents": 38600000,
+    "index_variable": "HYBRID_DOC_INDEX",
+    "index_file": "treccast_hnsw_M32.index (FAISS IndexHNSWFlat, M=32)",
+    "document_id_space": "same as hybrid Benchmarks 01, 05, 06, 07",
+    "explicitly_not": ["Benchmark 02's 500k MS MARCO native export", "NATIVE_EXPORT_DIR", "native 500k document IDs"]
+  },
+
+  "query_workload": {
+    "name": "full MS MARCO v1 dev.small",
+    "count": 6980,
+    "sampling": "none (all 6,980 queries, fixed order 0..N-1)",
+    "source_variable": "DEV_QUERY_DIR",
+    "explicitly_not": ["TREC-CAsT conversational queries", "any reduced subset"]
+  },
+
+  "canonical_producer": {
+    "wrapper":  "benchmarks/08_cachewarmed_treccast/RUN.sh",
+    "producer": "python/hybrid/cachewarmed_treccast.py",
+    "algorithm_module": "python/faithful/faithful_qlr.py (FaithfulQLR — same as Benchmark 07)",
+    "hybrid_helpers": ["python/hybrid/src/data_loading.py", "python/hybrid/src/indexing.py"],
+    "python_interpreter_variable": "HYBRID_PYTHON"
+  },
+
+  "baseline_configuration": {
+    "type": "ordinary hybrid FAISS IndexHNSWFlat.search (no seeding, no router, no union)",
+    "efSearch": 64,
+    "topk": 10,
+    "threads": "single (OMP/MKL/OPENBLAS/NUMEXPR = 1; faiss.omp_set_num_threads(1))",
+    "source": "authoritative hybrid baseline from Benchmarks 01/05/06 (EF_DEFAULT=64) and Benchmark 07 (timed_baseline)",
+    "note": "NOT Benchmark 02's native ef=50 baseline — Benchmark 02 contributes only the cache-warmed structural template."
+  },
+
+  "qa_qb_configuration": {
+    "cfg_a": {"name": "Q_A", "kp": 20, "kep": 10, "th": 0.35, "ef_default": 112, "ef_min": 10, "router_ef": 16, "search_type": 2},
+    "cfg_b": {"name": "Q_B", "kp": 20, "kep": 10, "th": 0.32, "ef_default": 112, "ef_min": 10, "router_ef": 12, "search_type": 2},
+    "s_max_source": "1.0 - Q25(ep_distances[:,0]) / 2.0  (25th percentile of squared-L2; paper 75th-percentile-of-similarity definition; computed at run time from QLR_ARTIFACT_DIR/ep_distances.npy)",
+    "adaptive_ef_formula": "python/faithful/faithful_qlr.py::FaithfulQLR.adaptive_ef (identical to Benchmark 07)",
+    "not_optimized": "Q_A and Q_B are the direct hybrid mapping of Benchmark 02's Q_A/Q_B; no parameter search, no ground-truth-based selection."
+  },
+
+  "parameter_mapping_bench02_to_bench08": [
+    {"bench02_native": "kp=20 (k_prime)",               "bench08_hybrid": "QLRConfig.kp=20",               "source": "faithful_qlr.QLRConfig.kp; runner.timed_qlr Ih[0,:kp]", "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "kep=10 (entry points/query)",   "bench08_hybrid": "QLRConfig.kep=10",              "source": "faithful_qlr.FaithfulQLR.union_ep",                    "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "th=0.35 (Q_A) / 0.32 (Q_B)",    "bench08_hybrid": "QLRConfig.th=0.35 / 0.32",      "source": "faithful_qlr; runner.timed_qlr (s < th -> fallback)",  "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "ef=112 (ef_default)",           "bench08_hybrid": "QLRConfig.ef_default=112",      "source": "faithful_qlr.FaithfulQLR.adaptive_ef upper bound",     "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "ef_min=10",                     "bench08_hybrid": "QLRConfig.ef_min=10",           "source": "faithful_qlr.FaithfulQLR.adaptive_ef lower bound",     "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "rEF=16 (Q_A) / 12 (Q_B)",       "bench08_hybrid": "QLRConfig.router_ef=16 / 12",   "source": "runner.timed_qlr qx.hnsw.efSearch = cfg.router_ef",    "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "backend=v2 (pooled beam)",      "bench08_hybrid": "search_type=2 (pooled beam)",   "source": "faithful_qlr.FaithfulQLR.seeded_beam search_level_0 search_type", "verdict": "DIRECT_EQUIVALENT"},
+    {"bench02_native": "s_max = quantile(ep_scores[:,0], 0.75) [IP similarity]", "bench08_hybrid": "compute_s_max(ep_distances[:,0], 0.25) = 1 - Q25(L2^2)/2 [same similarity quantile, L2 form]", "source": "runner.compute_s_max", "verdict": "SEMANTIC_EQUIVALENT (corpus metric differs: native IP vs hybrid L2 over unit vectors; both yield the 75th-percentile top-1 doc similarity)"},
+    {"bench02_native": "baseline: native v2 ef=50",     "bench08_hybrid": "baseline: hybrid HNSW ef=64",   "source": "Benchmarks 01/05/06 EF_DEFAULT=64; runner.timed_baseline", "verdict": "DELIBERATE_DIFFERENCE (task requires the authoritative hybrid ef=64 baseline, NOT the native ef=50 baseline)"},
+    {"bench02_native": "N=6980, warmup=300, reps=3, fixed order, [B,Q_A,Q_B] per query", "bench08_hybrid": "N=6980, warmup=300, reps=3, fixed order 0..N-1, [B,Q_A,Q_B] per query", "source": "benchmarks/02 RUN.sh + final_validate.py; adopted verbatim as the cache-warmed protocol", "verdict": "DIRECT_EQUIVALENT"}
+  ],
+  "incompatibilities": "None. Every Benchmark 02 QLR parameter has a direct hybrid equivalent in FaithfulQLR. The only intentional differences are (a) the baseline efSearch (hybrid ef=64 per task requirement, not native ef=50) and (b) the s_max metric form (L2 vs IP), both explicitly flagged above.",
+
+  "protocol_semantics": {
+    "n": 6980,
+    "warmup": 300,
+    "reps": 3,
+    "topk": 10,
+    "per_query_call_order": ["B (ordinary hybrid HNSW ef=64)", "Q_A (hybrid QLR)", "Q_B (hybrid QLR)"],
+    "q_b_position": "2 (inherits Q_A cache warmth on the same query)",
+    "query_order": "fixed 0..N-1",
+    "one_process": true,
+    "index_loaded_once": true,
+    "single_thread_env": ["OMP_NUM_THREADS=1", "MKL_NUM_THREADS=1", "OPENBLAS_NUM_THREADS=1", "NUMEXPR_NUM_THREADS=1"],
+    "cpu_affinity": "taskset -c $CORE (default 21) + os.sched_setaffinity",
+    "timing_boundary": "time.perf_counter_ns() around each FAISS call (identical to Benchmark 07 timed_baseline / timed_qlr)",
+    "accuracy_metric": "acc@10 (set-intersection with EXACT_DIR/exact_indices[:, :10])"
+  },
+
+  "algorithm_lock": {
+    "verbatim_from_benchmark_07": ["compute_s_max", "timed_baseline", "timed_qlr"],
+    "reused_faithful_methods": ["pca_transform", "union_ep", "adaptive_ef", "compute_seed_dists", "seeded_beam", "fallback_hnsw"],
+    "changed_only": ["package-local import wiring", "PCA loaded from PCA_MODEL joblib (same asset as Benchmarks 1/5/6) instead of extracted arrays", "output-root handling", "CHECK_ONLY support", "the surrounding fixed-order B-Q_A-Q_B cache-warmed execution loop (from Benchmark 02)"]
+  },
+
+  "outputs": [
+    "final_validation.json (baseline + qlr[A] + qlr[B] + caveat)",
+    "BASELINE_RESULT.json", "BEST_RESULT.json", "BEST_CONFIG.json",
+    "PER_QUERY_BASELINE.npy", "PER_QUERY_QLR_A.npy", "PER_QUERY_QLR_B.npy",
+    "ROUTE_MASK_A.npy", "ROUTE_MASK_B.npy", "EF_USED_A.npy", "EF_USED_B.npy",
+    "SEED_CT_A.npy", "SEED_CT_B.npy", "BASELINE_ACC10.npy", "RESULT_LABEL.txt"
+  ],
+
+  "caveats": [
+    "Q_B is the cache-warmed position-2 observation; NOT an isolated cold-cache result.",
+    "The result is NOT automatically paper-comparable.",
+    "Latency depends on page-cache state, CPU load, NUMA placement, memory pressure, filesystem residency and CPU frequency.",
+    "This benchmark is the hybrid TREC-CAsT analogue of Benchmark 02 and must never be conflated with the native 500k Benchmark 02, the frozen fixed-ef Benchmark 01, or the fixed-ef Stage-2 grid Benchmark 06."
+  ]
+}

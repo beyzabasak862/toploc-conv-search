@@ -1,0 +1,33 @@
+file	original_symbol_or_pattern	replacement	kind
+python/hybrid/rescue_full_run.py	PROJECT_ROOT = Path("/home/.../msmarco_HNSW")	SUBMISSION_CODE_PKG_ROOT env var + _HYBRID_LIB on sys.path	sys.path
+python/hybrid/rescue_full_run.py	DEV_QUERY_DIR = Path("/home/.../msmarco_snowflake/dev_query")	os.environ["DEV_QUERY_DIR"]	external path
+python/hybrid/rescue_full_run.py	DOC_INDEX_PATH = Path("/home/.../HNSW_indexes/treccast_hnsw_M32.index")	os.environ["HYBRID_DOC_INDEX"]	external path
+python/hybrid/rescue_full_run.py	PCA_QL_DIR = Path("/home/.../querylog_pca256")	os.environ["PCA_QL_DIR"]	external path
+python/hybrid/rescue_full_run.py	QUERY_INDEX_PATH = PCA_QL_DIR / ...	os.environ.get("ROUTER_INDEX", PCA_QL_DIR / ...)	external path
+python/hybrid/rescue_full_run.py	PCA_MODEL_PATH = PCA_QL_DIR / ...	os.environ.get("PCA_MODEL", PCA_QL_DIR / ...)	external path
+python/hybrid/rescue_full_run.py	QLR_ARTIFACT_DIR = Path("/home/.../qlr_artifacts_full")	os.environ["QLR_ARTIFACT_DIR"]	external path
+python/hybrid/rescue_full_run.py	EXACT_DIR = Path("/home/.../exact_results_full")	os.environ["EXACT_DIR"]	external path
+python/hybrid/rescue_full_run.py	OUT_DIR = PROJECT_ROOT / "claude_qlr_diagnostics" / "results" / f"full_{RUN_ID}"	os.environ.get("OUTPUT_ROOT", CWD/outputs/...) / f"full_{RUN_ID}"	output root
+python/hybrid/rescue_stage2_accuracy.py	PROJECT_ROOT + all path constants	same treatment as rescue_full_run.py + PCA_QMAX env	external path
+python/hybrid/rescue_stage2_accuracy.py	OUT_DIR = PROJECT_ROOT / "claude_qlr_diagnostics" / "results" / f"stage2_{RUN_ID}"	os.environ.get("OUTPUT_ROOT", ...) / f"stage2_{RUN_ID}"	output root
+python/native/benchmark_native.py	WS = Path(__file__).resolve().parent.parent	os.environ["NATIVE_MODULE_DIR"] on sys.path	sys.path
+python/native/benchmark_native.py	EXPORT_DIR = str(WS / "build" / "native_export")	os.environ["NATIVE_EXPORT_DIR"]	external path
+python/native/benchmark_native.py	FAITH = Path("/home/.../faithful_msmarco_v1_20260719_042528")	os.environ["FAITH_ROOT"]	external path
+python/native/benchmark_native.py	--out default $NATIVE_WS/results/native_500k.json	--out default honours OUTPUT_ROOT env	output root
+python/native/canonical_final.py	WS-based sys.path + FAITH + EXPORT	same treatment as benchmark_native.py	external path
+python/native/canonical_final.py	json.dump(out, open(WS/"results"/"canonical_final.json","w"))	OUTPUT_ROOT/canonical_final.json	output root
+python/native/final_validate.py	WS-based sys.path + FAITH + EXPORT_DIR	same treatment as benchmark_native.py	external path
+python/native/final_validate.py	--out_dir default WS/"overnight_final"	--out_dir default OUTPUT_ROOT	output root
+python/faithful/runner.py	PROJECT_ROOT = Path("/home/.../msmarco_HNSW")	SUBMISSION_CODE_PKG_ROOT env var + _HYBRID_LIB on sys.path	sys.path
+python/faithful/runner.py	DEV_QUERY_DIR = Path("/home/.../msmarco_snowflake/dev_query")	os.environ["DEV_QUERY_DIR"]	external path
+python/faithful/runner.py	DOC_INDEX_SHM = Path("/dev/shm/qlr_indexes/treccast_hnsw_M32.index")	os.environ.get("FAITHFUL_DOC_INDEX_SHM", "/dev/shm/qlr_indexes/treccast_hnsw_M32.index")	external path
+python/faithful/runner.py	DOC_INDEX_SSHFS = Path("/home/.../HNSW_indexes/treccast_hnsw_M32.index")	os.environ["HYBRID_DOC_INDEX"]	external path
+python/faithful/runner.py	QUERY_INDEX_SHM = Path("/dev/shm/qlr_indexes/train_query_pca256_hnsw.faiss")	os.environ.get("FAITHFUL_QUERY_INDEX_SHM", "/dev/shm/qlr_indexes/train_query_pca256_hnsw.faiss")	external path
+python/faithful/runner.py	QUERY_INDEX_SSHFS = Path("/home/.../train_query_pca256_hnsw.faiss")	os.environ.get("ROUTER_INDEX", PCA_QL_DIR / "train_query_pca256_hnsw.faiss")	external path
+python/faithful/runner.py	PCA_EXTRACTED = SCRIPT_DIR.parent / "pca_extracted"	os.environ["FAITHFUL_PCA_DIR"]	external path
+python/faithful/runner.py	PCA_MEAN = PCA_EXTRACTED / "pca_mean_1024.npy"	os.environ.get("FAITHFUL_PCA_MEAN", FAITHFUL_PCA_DIR / "pca_mean_1024.npy")	external path
+python/faithful/runner.py	PCA_COMPONENTS = PCA_EXTRACTED / "pca_components_256x1024.npy"	os.environ.get("FAITHFUL_PCA_COMPONENTS", FAITHFUL_PCA_DIR / "pca_components_256x1024.npy")	external path
+python/faithful/runner.py	QLR_ARTIFACT_DIR = Path("/home/.../qlr_artifacts_full")	os.environ["QLR_ARTIFACT_DIR"]	external path
+python/faithful/runner.py	EXACT_DIR = Path("/home/.../exact_results_full")	os.environ["EXACT_DIR"]	external path
+python/faithful/runner.py	out_dir = SCRIPT_DIR / "results" / run_id	out_dir = OUTPUT_ROOT / f"faithful_{run_id}" when OUTPUT_ROOT set, else legacy SCRIPT_DIR/results	output root
+python/hybrid/cachewarmed_treccast.py	(new hybrid producer)	sys.path.insert of ${PKG_ROOT}/python/{hybrid,faithful}; imports src.* + faithful_qlr; every external path from os.environ (DEV_QUERY_DIR/HYBRID_DOC_INDEX/PCA_QL_DIR/ROUTER_INDEX/PCA_MODEL/QLR_ARTIFACT_DIR/EXACT_DIR); out_dir from OUTPUT_ROOT	sys.path + external path + output root

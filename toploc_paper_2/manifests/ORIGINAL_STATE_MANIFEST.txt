@@ -1,0 +1,35 @@
+# ORIGINAL_STATE_MANIFEST — captured 2026-07-22T17:42:16Z
+
+## System
+hostname: pegasus
+user: toploc1
+uname: Linux pegasus 6.1.0-45-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.170-1 (2026-04-30) x86_64 GNU/Linux
+date_utc: Wed Jul 22 05:42:16 PM UTC 2026
+
+## Paths
+PROJECT_ROOT: /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW
+SUBMISSION_REPRO_PACKAGE: /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/claude_qlr_diagnostics/paper2_final_track/SUBMISSION_REPRO_PACKAGE
+SUBMISSION_CODE_PACKAGE (new): /home/toploc1/Datasets/toploc1/HNSW/msmarco_HNSW/SUBMISSION_CODE_PACKAGE
+
+## SUBMISSION_REPRO_PACKAGE state (before code-package generation)
+files:       351
+dirs:        45
+total_size:  2382598 bytes  (3.3M)
+
+## Index symlink target (must remain unchanged)
+lrwxrwxrwx 1 1040 1043 77 Jul 22 00:58 /home/toploc1/Datasets/toploc1/indexes/HNSW_indexes/treccast_hnsw_M32.index -> /home/toploc1/Datasets/toploc1/indexes/Snowflake/HNSW/treccast_hnsw_M32.index
+-rw-r--r-- 1 1040 1043 168768858058 May 13 15:26 /home/toploc1/Datasets/toploc1/indexes/Snowflake/HNSW/treccast_hnsw_M32.index
+
+## Authoritative Python environments (discovery only; not activated)
+HYBRID_PY: /home/toploc1/miniforge3/envs/toploc-cpp/bin/python -> Python 3.11.15
+NATIVE_PY: /home/fatemeh/anaconda3/envs/zeroec/bin/python -> Python 3.10.19
+
+## Git status (project root)
+master
+47e310c TopLoc reproduction: encode, index build, search grids, exact baselines, analysis
+ M .gitignore
+ M Exact_Search/Dragon/search_dragon_19_20.out
+ M Exact_Search/Dragon/search_flat_dragon.log
+ M "HNSW_paper1/Dragon/index build/logs/indexCreationHNSW_dragon_multiM.log"
+ M "HNSW_paper1/Dragon/index build/multiindex_dragon_last.out"
+?? Exact_Search/Dragon/metrics_flat_dragon_cast2020.json

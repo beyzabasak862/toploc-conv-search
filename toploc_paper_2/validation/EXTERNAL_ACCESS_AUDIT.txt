@@ -1,0 +1,10 @@
+# EXTERNAL_ACCESS_AUDIT.txt
+
+External-file access is controlled entirely by config/paths.env — every
+path in EXTERNAL_RESOURCES.yaml is either read via a config env var or
+not consulted at all in CHECK_ONLY mode.
+
+Live strace-based audit was not run on this host (strace not available
+in the sandbox); the external-copy test (step 9, PYTHONPATH cleared)
+serves as substitute evidence that no path outside the package or
+config-declared external resources is required to load the code.

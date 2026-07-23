@@ -1,0 +1,123 @@
+{
+  "experiment_id": "07_faithful_adaptive_depth",
+  "one_line_description": "Ordinary HNSW baseline vs paper-faithful QLR (Algorithm 1) with query-dependent adaptive HNSW search depth on the TREC-CAsT track (158 GB doc index, 6980 dev queries).",
+
+  "canonical_producer": {
+    "wrapper":  "benchmarks/07_faithful_adaptive_depth/RUN.sh",
+    "producer": "python/faithful/runner.py",
+    "algorithm_module": "python/faithful/faithful_qlr.py",
+    "producer_takes_cli_args": false
+  },
+
+  "python_interpreter_variable": "HYBRID_PYTHON",
+  "python_interpreter_purpose": "Faithful runner uses FAISS 1.9 IndexHNSWFlat.search_level_0 with the 9-argument signature (queries, k, seed_ids, seed_dists, out_D, out_I, nprobe, search_type). This is the same interpreter used by Experiments 1, 5, 6.",
+
+  "shared_external_paths": {
+    "DEV_QUERY_DIR":     "6980 dev query embeddings (parquet).",
+    "HYBRID_DOC_INDEX":  "158 GB FAISS IndexHNSWFlat over the TREC-CAsT corpus. Loaded from FAITHFUL_DOC_INDEX_SHM if present (mmap), else from HYBRID_DOC_INDEX.",
+    "PCA_QL_DIR":        "Directory holding the router HNSW index and PCA joblib. Only ROUTER_INDEX is used by Experiment 7 (PCA is loaded from FAITHFUL_PCA_DIR arrays, not from PCA_QL_DIR/pca_1024_to_256.joblib).",
+    "ROUTER_INDEX":      "FAISS IndexHNSWFlat over PCA-projected query-log embeddings (I_Q).  Loaded from FAITHFUL_QUERY_INDEX_SHM if present, else ROUTER_INDEX.",
+    "QLR_ARTIFACT_DIR":  "Contains ep_indices.npy (int32 [nQL, 10]) and ep_distances.npy (float32 [nQL, 10]). s_max is derived from the 25th percentile of ep_distances[:,0] (paper definition: 75th percentile of top-1 similarity).",
+    "EXACT_DIR":         "exact_indices.npy + exact_scores.npy over the 6980 dev queries (ground truth for acc@10)."
+  },
+  "faithful_specific_external_paths": {
+    "FAITHFUL_PCA_DIR":  "Directory holding pca_mean_1024.npy (float32 [1024]) and pca_components_256x1024.npy (float32 [256, 1024]).  These are the exact PCA arrays used by the reference faithful run; the joblib in PCA_QL_DIR is not used because the faithful implementation expects raw numpy arrays.",
+    "FAITHFUL_PCA_MEAN": "Optional override; defaults to FAITHFUL_PCA_DIR/pca_mean_1024.npy.",
+    "FAITHFUL_PCA_COMPONENTS": "Optional override; defaults to FAITHFUL_PCA_DIR/pca_components_256x1024.npy.",
+    "FAITHFUL_DOC_INDEX_SHM":   "Optional /dev/shm path preferred if the file exists (mmap).",
+    "FAITHFUL_QUERY_INDEX_SHM": "Optional /dev/shm path preferred if the file exists."
+  },
+
+  "baseline_configuration": {
+    "type": "ordinary FAISS IndexHNSWFlat.search (no seeding, no candidate union, no router).",
+    "ef_used_per_config": "cfg.ef_default (32, 48, or 64 depending on the calibration config being measured).",
+    "interleave": "For every query, a baseline HNSW search at cfg.ef_default is timed first, then the QLR search.  Same loaded index, same query order, same warmup.",
+    "additional_baseline_sweep": {
+      "purpose": "Equal-accuracy comparison (paper Table 1 methodology).",
+      "ef_values": [16, 24, 32, 40, 48, 64, 96, 128, 160, 200],
+      "measured_on_calib":   true,
+      "measured_on_full_6980_if_finalists_exist": true,
+      "n_reps": 2
+    }
+  },
+
+  "adaptive_search_depth_configuration": {
+    "algorithm_source_file": "python/faithful/faithful_qlr.py",
+    "algorithm_function": "FaithfulQLR.adaptive_ef",
+    "formula_pseudocode": [
+      "if s < th:              return FALLBACK_HNSW(q, ef_default)  # not adaptive; full HNSW",
+      "if s > s_max:           return int(ef_min)",
+      "if s_max - th <= 0:     return int(ef_default)",
+      "ef' = ef_min + (ef_default - ef_min) * (s_max - s) / (s_max - th)",
+      "ef' = clip(ef', ef_min, ef_default)",
+      "return int(round(ef'))"
+    ],
+    "s_source":         "router top-1 similarity of the historical query (I_Q[q, :1]).",
+    "s_max_source":     "1.0 - Q25(ep_distances[:,0]) / 2.0 -> paper's 75th percentile of top-1 doc similarity (see runner.py::compute_s_max).",
+    "th":               "per-config: {0.30, 0.40, 0.42, 0.50}",
+    "ef_min":           "per-config: {8, 10, 16}",
+    "ef_default_range": "per-config: {32, 48, 64}",
+    "adaptive_is":      "PER-QUERY search-depth, not per-config sweep, not entry-point selection.",
+    "explicitly_not":   [
+      "fixed ef16 sweep",
+      "fixed ef32 sweep",
+      "manually selected ef per experiment",
+      "repeated escalation searches",
+      "post-hoc ef choice using ground truth",
+      "accuracy-aware ef choice using evaluation labels"
+    ]
+  },
+
+  "protocol_semantics": {
+    "seed": 20260718,
+    "topk": 10,
+    "n_warmup": 30,
+    "phase_0_baseline_sanity": {"n_queries": 200, "ef": 64, "n_reps": 2},
+    "phase_1_baseline_sweep_calib": {"n_queries": 500, "ef_values": [16,24,32,40,48,64,96,128,160,200], "n_reps": 2},
+    "phase_2_calibration":          {"n_configs": 12, "n_queries": 500,  "n_reps": 2},
+    "phase_3_holdout":              {"max_promoted": 3, "n_queries": 1500, "n_reps": 3},
+    "phase_4_full":                 {"max_finalists": 2, "n_queries": 6980, "n_reps": 3},
+    "phase_5_baseline_sweep_full":  {"n_queries": 6980, "n_reps": 2, "runs_only_if_finalists": true},
+    "acc_floor":       0.952,
+    "acc_tol_vs_base": 0.005,
+    "speedup_target":  1.40,
+    "single_thread_env": ["OMP_NUM_THREADS=1", "MKL_NUM_THREADS=1", "OPENBLAS_NUM_THREADS=1", "NUMEXPR_NUM_THREADS=1"],
+    "cpu_affinity":       "taskset -c $CORE (default 21)",
+    "timing_boundary":    "time.perf_counter_ns() -- per-query total_us includes PCA + router + union + adaptive-ef + seed dist + seeded beam (or PCA + router + fallback HNSW).",
+    "accuracy_metric":    "acc@10 (set-intersection with exact_indices[:, :10])."
+  },
+
+  "calibration_configs": [
+    {"name": "A_paper_kp10_kep10_th40_efmin10_ef64_st2", "kp":10, "kep":10, "th":0.40, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16},
+    {"name": "B_kp10_kep10_th42_efmin10_ef64_st2",       "kp":10, "kep":10, "th":0.42, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16},
+    {"name": "C_kp10_kep10_th50_efmin10_ef64_st2",       "kp":10, "kep":10, "th":0.50, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16},
+    {"name": "D_kp10_kep10_th42_efmin16_ef48_st2",       "kp":10, "kep":10, "th":0.42, "ef_min":16, "ef_default":48, "search_type":2, "router_ef":16},
+    {"name": "E_kp10_kep10_th42_efmin10_ef64_st1",       "kp":10, "kep":10, "th":0.42, "ef_min":10, "ef_default":64, "search_type":1, "router_ef":16},
+    {"name": "F_kp20_kep10_th42_efmin10_ef64_st2",       "kp":20, "kep":10, "th":0.42, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16},
+    {"name": "G_kp10_kep5_th42_efmin10_ef64_st2",        "kp":10, "kep":5,  "th":0.42, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16},
+    {"name": "H_kp10_kep10_th42_efmin10_ef32_st2",       "kp":10, "kep":10, "th":0.42, "ef_min":10, "ef_default":32, "search_type":2, "router_ef":16},
+    {"name": "I_kp10_kep10_th42_efmin8_ef48_st2",        "kp":10, "kep":10, "th":0.42, "ef_min":8,  "ef_default":48, "search_type":2, "router_ef":16},
+    {"name": "J_kp10_kep10_th42_efmin16_ef32_st2",       "kp":10, "kep":10, "th":0.42, "ef_min":16, "ef_default":32, "search_type":2, "router_ef":16},
+    {"name": "K_kp5_kep10_th42_efmin10_ef64_st2",        "kp":5,  "kep":10, "th":0.42, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16},
+    {"name": "L_kp10_kep10_th30_efmin10_ef64_st2",       "kp":10, "kep":10, "th":0.30, "ef_min":10, "ef_default":64, "search_type":2, "router_ef":16}
+  ],
+
+  "outputs_written_by_producer_under_out_dir_faithful_TS": [
+    "config_manifest.json",
+    "baseline_sanity.json",
+    "baseline_sweep.json",
+    "baseline_sweep_full.json (only if a config is promoted to full)",
+    "calibration.json",
+    "holdout.json",
+    "full.json",
+    "SUMMARY.json",
+    "latency_arrays/<config_name>.npz (per finalist)"
+  ],
+
+  "explicit_scope": [
+    "Experiment 7 must not be presented as the frozen fixed-ef Result 1 (01_safe_hybrid).",
+    "Experiment 7 must not be presented as the cache-warmed native Result 2 (02_cachewarmed_best).",
+    "Experiment 7 must not be confused with the fixed-ef Stage-2 grid Result 6 (06_stage2_bounded_pareto).",
+    "Historical faithful result metrics (if referenced) are for context only and are not evidence for this submission."
+  ]
+}
