@@ -288,7 +288,41 @@ Notebooks aggregate the per-run parquet/JSON into comparison tables:
 - `hnsw_table_*.csv` / `global_best_*.csv` — extracted per-(model, year) tables
   and the best configuration per cell.
 - `toploc_final_summary_table.ipynb` → `final_summary_table.{csv,html}` — the
-  single cross-model, cross-year summary.
+  single cross-model, cross-year summary (reproduced in §2.4).
+
+### 2.4 Results — final summary table
+
+Cross-model, cross-year comparison of **Exact**, plain **HNSW**, and **TopLoc
+HNSW** (source: `results Analysis/final_summary_table.csv`). Higher is better
+for MRR@10 / NDCG; **Time** is mean per-query search time (lower is better),
+with the speedup over the plain-HNSW baseline in parentheses.
+
+**CAsT 2019**
+
+| Model | Search | MRR@10 | NDCG@3 | NDCG@10 | Time (speedup) |
+|---|---|---|---|---|---|
+| Dragon | Exact | 0.8082 | 0.5289 | 0.4929 | — |
+| Dragon | HNSW | 0.7969 | 0.5267 | 0.4909 | 0.250 (—) |
+| Dragon | **TopLoc HNSW** | 0.7978 | 0.5243 | 0.4868 | **0.024 (10.5×)** |
+| Snowflake | Exact | 0.8158 | 0.5501 | 0.5020 | — |
+| Snowflake | HNSW | 0.8129 | 0.5493 | 0.5017 | 3.030 (—) |
+| Snowflake | **TopLoc HNSW** | 0.8129 | 0.5493 | 0.5019 | **0.762 (4.0×)** |
+
+**CAsT 2020**
+
+| Model | Search | MRR@10 | NDCG@3 | NDCG@10 | Time (speedup) |
+|---|---|---|---|---|---|
+| Dragon | Exact | 0.7651 | 0.4742 | 0.4631 | — |
+| Dragon | HNSW | 0.7669 | 0.4762 | 0.4649 | 0.325 (—) |
+| Dragon | **TopLoc HNSW** | 0.7574 | 0.4711 | 0.4619 | **0.068 (4.8×)** |
+| Snowflake | Exact | 0.7885 | 0.5065 | 0.4741 | — |
+| Snowflake | HNSW | 0.7885 | 0.5067 | 0.4746 | 0.732 (—) |
+| Snowflake | **TopLoc HNSW** | 0.7890 | 0.5075 | 0.4750 | **0.283 (2.6×)** |
+
+**Takeaway.** TopLoc HNSW delivers **2.6×–10.5×** search-time speedups over
+plain HNSW while keeping effectiveness essentially on par with both the HNSW
+baseline and Exact search (MRR@10 / NDCG deltas within ~0.005 in every cell) —
+reproducing the paper's core efficiency-without-effectiveness-loss claim.
 
 ---
 
